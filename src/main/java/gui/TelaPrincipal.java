@@ -44,6 +44,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jPanelPrincipal = new javax.swing.JPanel();
         jPanelTelaPrincipal = new javax.swing.JPanel();
         jPanelContaCorrente = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
         jSeparator1 = new javax.swing.JSeparator();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -187,15 +189,27 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jPanelPrincipal.add(jPanelTelaPrincipal, "telaPrincipal");
 
+        jLabel1.setFont(new java.awt.Font("Montserrat", 0, 36)); // NOI18N
+        jLabel1.setText("Conta Corrente");
+
         javax.swing.GroupLayout jPanelContaCorrenteLayout = new javax.swing.GroupLayout(jPanelContaCorrente);
         jPanelContaCorrente.setLayout(jPanelContaCorrenteLayout);
         jPanelContaCorrenteLayout.setHorizontalGroup(
             jPanelContaCorrenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1019, Short.MAX_VALUE)
+            .addComponent(jSeparator2)
+            .addGroup(jPanelContaCorrenteLayout.createSequentialGroup()
+                .addGap(348, 348, 348)
+                .addComponent(jLabel1)
+                .addContainerGap(392, Short.MAX_VALUE))
         );
         jPanelContaCorrenteLayout.setVerticalGroup(
             jPanelContaCorrenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 697, Short.MAX_VALUE)
+            .addGroup(jPanelContaCorrenteLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(631, Short.MAX_VALUE))
         );
 
         jPanelPrincipal.add(jPanelContaCorrente, "telaContaCorrente");
@@ -294,6 +308,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButtonDespesa;
     private javax.swing.JButton jButtonReceita;
     private javax.swing.JButton jButtonVisualizar;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelLogo;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
@@ -303,5 +318,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelPrincipal;
     private javax.swing.JPanel jPanelTelaPrincipal;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     // End of variables declaration//GEN-END:variables
 }
