@@ -180,7 +180,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jPanelTelaPrincipal.setLayout(jPanelTelaPrincipalLayout);
         jPanelTelaPrincipalLayout.setHorizontalGroup(
             jPanelTelaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1019, Short.MAX_VALUE)
+            .addGap(0, 1041, Short.MAX_VALUE)
         );
         jPanelTelaPrincipalLayout.setVerticalGroup(
             jPanelTelaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -190,7 +190,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jPanelPrincipal.add(jPanelTelaPrincipal, "telaPrincipal");
 
         jLabel1.setFont(new java.awt.Font("Montserrat", 0, 36)); // NOI18N
-        jLabel1.setText("Conta Corrente");
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("<html><center>Conta Corrente<center></html>");
+        jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout jPanelContaCorrenteLayout = new javax.swing.GroupLayout(jPanelContaCorrente);
         jPanelContaCorrente.setLayout(jPanelContaCorrenteLayout);
@@ -200,13 +202,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
             .addGroup(jPanelContaCorrenteLayout.createSequentialGroup()
                 .addGap(348, 348, 348)
                 .addComponent(jLabel1)
-                .addContainerGap(392, Short.MAX_VALUE))
+                .addGap(348, 348, 348))
         );
         jPanelContaCorrenteLayout.setVerticalGroup(
             jPanelContaCorrenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelContaCorrenteLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(631, Short.MAX_VALUE))
