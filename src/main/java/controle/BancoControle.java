@@ -14,9 +14,8 @@ import persistencia.BancoDao;
  */
 public class BancoControle implements IBancoDao{
     
-    private BancoDao objBancoDao = new BancoDao("./ArquivosDeDados/Banco.txt");
-    
-    
+    private BancoDao objBancoDao = new BancoDao("./src/main/java/resources/Banco.txt");
+       
     @Override
     public void incluir(Banco objeto) throws Exception {
         try {

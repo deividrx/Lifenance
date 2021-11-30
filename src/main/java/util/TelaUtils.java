@@ -16,10 +16,6 @@ import jiconfont.IconCode;
 import jiconfont.icons.font_awesome.FontAwesome;
 import jiconfont.swing.IconFontSwing;
 
-/**
- *
- * @author galdi
- */
 public class TelaUtils {
    
     public static Icon getIconFontAwesome(IconCode iconCode, int size) {
@@ -36,16 +32,29 @@ public class TelaUtils {
             new FlatDraculaIJTheme(),
             new FlatSpacegrayIJTheme(),
             new FlatOneDarkIJTheme(),
-            new FlatGruvboxDarkSoftIJTheme()    
+            new FlatGruvboxDarkSoftIJTheme(),
+            new FlatSolarizedLightIJTheme()
         ));
         
         for (LookAndFeel tema : temas) {
             if (tema.getName().equals(name)) {
-                
                 return tema;
             }
         }
         
         return null;
+    }
+    
+    public static String getUiSizeNumber(String uiSize) {
+        switch (uiSize) {
+            case "Normal":
+                return "1.0";
+            case "Grande":
+                return "1.2";
+            case "Extra Grande":
+                return "1.5";
+            default: 
+                return null;
+        }
     }
 }

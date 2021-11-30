@@ -1,6 +1,6 @@
 package gui;
 
-import com.formdev.flatlaf.intellijthemes.FlatGruvboxDarkSoftIJTheme;
+import gui.panels.JPanelContaCorrente;
 import java.awt.CardLayout;
 import javax.swing.*;
 import jiconfont.icons.font_awesome.FontAwesome;
@@ -14,6 +14,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     public TelaPrincipal() {
         initComponents();
         panelPrincipal = (CardLayout) jPanelPrincipal.getLayout();
+        
         
     }
     
@@ -43,12 +44,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jButtonContaCorrente = new javax.swing.JButton();
         jPanelPrincipal = new javax.swing.JPanel();
         jPanelTelaPrincipal = new javax.swing.JPanel();
-        jPanelContaCorrente = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jSeparator2 = new javax.swing.JSeparator();
         jSeparator1 = new javax.swing.JSeparator();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        jMenu3 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -184,37 +183,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
         );
         jPanelTelaPrincipalLayout.setVerticalGroup(
             jPanelTelaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 697, Short.MAX_VALUE)
+            .addGap(0, 719, Short.MAX_VALUE)
         );
 
         jPanelPrincipal.add(jPanelTelaPrincipal, "telaPrincipal");
-
-        jLabel1.setFont(new java.awt.Font("Montserrat", 0, 36)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("<html><center>Conta Corrente<center></html>");
-        jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-
-        javax.swing.GroupLayout jPanelContaCorrenteLayout = new javax.swing.GroupLayout(jPanelContaCorrente);
-        jPanelContaCorrente.setLayout(jPanelContaCorrenteLayout);
-        jPanelContaCorrenteLayout.setHorizontalGroup(
-            jPanelContaCorrenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSeparator2)
-            .addGroup(jPanelContaCorrenteLayout.createSequentialGroup()
-                .addGap(348, 348, 348)
-                .addComponent(jLabel1)
-                .addGap(348, 348, 348))
-        );
-        jPanelContaCorrenteLayout.setVerticalGroup(
-            jPanelContaCorrenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelContaCorrenteLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(631, Short.MAX_VALUE))
-        );
-
-        jPanelPrincipal.add(jPanelContaCorrente, "telaContaCorrente");
 
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
@@ -224,6 +196,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 jMenu1ActionPerformed(evt);
             }
         });
+
+        jMenu3.setText("jMenu3");
+        jMenu1.add(jMenu3);
+
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Edit");
@@ -287,11 +263,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonVisualizarActionPerformed
 
     private void jButtonReceitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReceitaActionPerformed
-       
+       JPanelContaCorrente test = new JPanelContaCorrente();
+       jPanelPrincipal.add(test, "telaTeste");
+       panelPrincipal.show(jPanelPrincipal, "telaTeste");
     }//GEN-LAST:event_jButtonReceitaActionPerformed
 
     private void jButtonContaCorrenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonContaCorrenteActionPerformed
         try {
+            JPanelContaCorrente test = new JPanelContaCorrente();
+            jPanelPrincipal.add(test, "telaContaCorrente");
             panelPrincipal.show(jPanelPrincipal, "telaContaCorrente");
         } catch (Exception erro) {
             JOptionPane.showMessageDialog(this, erro.getMessage(), "Erro!", JOptionPane.ERROR_MESSAGE);
@@ -299,7 +279,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonContaCorrenteActionPerformed
 
     private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
-        
+
     }//GEN-LAST:event_jMenu1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -310,16 +290,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButtonDespesa;
     private javax.swing.JButton jButtonReceita;
     private javax.swing.JButton jButtonVisualizar;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelLogo;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JPanel jPanelContaCorrente;
     private javax.swing.JPanel jPanelMenuPrincipal;
     private javax.swing.JPanel jPanelPrincipal;
     private javax.swing.JPanel jPanelTelaPrincipal;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
     // End of variables declaration//GEN-END:variables
 }
