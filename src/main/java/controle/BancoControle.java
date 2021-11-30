@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controle;
+package controle;
 import java.util.ArrayList;
 import modelos.entidades.Banco;
 import modelos.interfaces.IBancoDao;
@@ -14,7 +14,7 @@ import persistencia.BancoDao;
  */
 public class BancoControle implements IBancoDao{
     
-    private BancoDao objBancoDao = new BancoDao("./src/main/java/resources/Banco.txt");
+    private BancoDao objBancoDao = new BancoDao("./src/main/java/resources/dados/Banco.txt");
        
     @Override
     public void incluir(Banco objeto) throws Exception {
@@ -33,7 +33,8 @@ public class BancoControle implements IBancoDao{
 
     @Override
     public void alterar(Banco objeto) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (consultarPorID(objeto.getId()) == null) throw new Exception("Alterar o Id do Banco não é permitido!");
+        objBancoDao.alterar(objeto);
     }
 
     @Override

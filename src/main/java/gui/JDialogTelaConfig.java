@@ -5,13 +5,13 @@ import javax.swing.*;
 import util.TelaUtils;
 import java.util.Properties;
 
-public class TelaConfig extends javax.swing.JDialog {
+public class JDialogTelaConfig extends javax.swing.JDialog {
     
     private final TelaPrincipal tela;
     private String temaSelecionado = "FlatLaf Dark";
     private Properties config = Config.getProperties();
     
-    public TelaConfig(TelaPrincipal tela, boolean modal) {
+    public JDialogTelaConfig(TelaPrincipal tela, boolean modal) {
         super(tela, modal);
         this.tela = tela;
         initComponents();

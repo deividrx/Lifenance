@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package persistencia;
+
 import modelos.interfaces.IBancoDao;
 import modelos.entidades.Banco;
 import java.util.ArrayList;
@@ -11,6 +12,7 @@ import java.util.ArrayList;
 //Biblioteca para manipulação de arquivo texto no disco
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 
@@ -25,7 +27,6 @@ public class BancoDao implements IBancoDao {
     public BancoDao(String nomeDoArqquivoDdosNoDisco) {
         this.nomeDoArquivoDadosNodisco = nomeDoArqquivoDdosNoDisco;
     }
-    
     
     @Override
     public void incluir(Banco objeto) throws Exception {
@@ -45,7 +46,22 @@ public class BancoDao implements IBancoDao {
 
     @Override
     public void alterar(Banco objeto) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            ArrayList<Banco> arrayDosBancos = listagem(); 
+            FileWriter fw = new FileWriter(nomeDoArquivoDadosNodisco);
+            BufferedWriter bw = new BufferedWriter(fw);
+            for (int i = 0; i < arrayDosBancos.size(); i++) {
+                if (arrayDosBancos.get(i).getId() == objeto.getId()) {
+                    bw.write(objeto.toString() + "\n");
+                } else {
+                    bw.write(arrayDosBancos.get(i).toString() + "\n");
+                }       
+            }
+            //Fechar o arquivo
+            bw.close();
+        } catch (Exception erro) {
+            throw erro;
+        }
     }
 
     @Override
@@ -65,10 +81,8 @@ public class BancoDao implements IBancoDao {
             //Fechar o arquivo
             bw.close();
         } catch (Exception e) {
-            
+            throw e;
         }
- 
-        
     }
 
     @Override
@@ -100,13 +114,13 @@ public class BancoDao implements IBancoDao {
     @Override
     public ArrayList<Banco> listagem() throws Exception {
         try {
-            ArrayList<Banco> arrayDosBancos = new ArrayList<Banco>();
+            ArrayList<Banco> arrayDosBancos = new ArrayList<>();
             //Abrir o arquivo
-            FileReader fr = new FileReader(nomeDoArquivoDadosNodisco);
+            FileReader fr = new FileReader(new File(nomeDoArquivoDadosNodisco));
             BufferedReader br = new BufferedReader(fr);
             String linha = "";
-            Banco aux = new Banco();
             while ((linha = br.readLine()) != null) {
+                Banco aux = new Banco();
                 String vetorString[] = linha.split(";");
                 aux.setId(Integer.parseInt(vetorString[0]));
                 aux.setDescricao(vetorString[1]);

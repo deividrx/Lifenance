@@ -1,2 +1,7 @@
-200;Banco Banana
-300;Arroz
+125;Banco Banana v2
+1;Banco Banana
+2;Banco Rosa
+3;Banco da esquina
+5;Banco B
+6;Banco Henrique
+123;Arnaldo Mão de esterco

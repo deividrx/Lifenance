@@ -243,7 +243,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void jButtonConfigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfigActionPerformed
         try {
-            TelaConfig telaConfig = new TelaConfig(this, true);
+            JDialogTelaConfig telaConfig = new JDialogTelaConfig(this, true);
             telaConfig.setVisible(true);
         } catch (Exception erro) {
             JOptionPane.showMessageDialog(this, erro.getMessage(), "Erro!", JOptionPane.ERROR_MESSAGE);
