@@ -1,22 +1,26 @@
 package gui;
 
-import application.Config;
+import persistencia.Config;
 import javax.swing.*;
 import util.TelaUtils;
 import java.util.Properties;
 
 public class JDialogTelaConfig extends javax.swing.JDialog {
     
+    private Properties propriedades;
+    private Config config;
     private final TelaPrincipal tela;
     private String temaSelecionado = "FlatLaf Dark";
-    private Properties config = Config.getProperties();
+    //private Properties config = Config.getProperties();
     
-    public JDialogTelaConfig(TelaPrincipal tela, boolean modal) {
+    public JDialogTelaConfig(TelaPrincipal tela, boolean modal) throws Exception {
         super(tela, modal);
         this.tela = tela;
         initComponents();
-        jComboBoxTemas.setSelectedItem(Config.getProperties().get("LookAndFeel"));
-        jComboBoxSize.setSelectedItem(config.get("UiSize"));
+        config = new Config();
+        propriedades = config.getProperties();
+        jComboBoxTemas.setSelectedItem(propriedades.get("LookAndFeel"));
+        jComboBoxSize.setSelectedItem(propriedades.get("UiSize"));
     }
 
     @SuppressWarnings("unchecked")
@@ -35,6 +39,7 @@ public class JDialogTelaConfig extends javax.swing.JDialog {
         setTitle("Configurações");
         setResizable(false);
 
+        jComboBoxTemas.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jComboBoxTemas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "FlatLaf Dark", "FlatLaf Light", "Nord", "Dracula", "Spacegray", "One Dark", "Gruvbox Dark Soft", "Solarized Light" }));
         jComboBoxTemas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -48,6 +53,7 @@ public class JDialogTelaConfig extends javax.swing.JDialog {
         jLabel4.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
         jLabel4.setText("Tamanho da Interface:");
 
+        jComboBoxSize.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jComboBoxSize.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Normal", "Grande", "Extra Grande" }));
         jComboBoxSize.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -55,6 +61,7 @@ public class JDialogTelaConfig extends javax.swing.JDialog {
             }
         });
 
+        jButtonConfirmar.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         jButtonConfirmar.setText("Confirmar");
         jButtonConfirmar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -62,6 +69,7 @@ public class JDialogTelaConfig extends javax.swing.JDialog {
             }
         });
 
+        jButtonCancelar.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         jButtonCancelar.setText("Cancelar");
         jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -132,8 +140,8 @@ public class JDialogTelaConfig extends javax.swing.JDialog {
         try {
            tela.setLookAndFeel(TelaUtils.getLookAndFeel(temaSelecionado));
            this.dispose();
-           config.put("LookAndFeel", temaSelecionado);
-           Config.salvarProperties(config);
+           propriedades.put("LookAndFeel", temaSelecionado);
+           config.salvarProperties(propriedades);
         } catch (Exception erro) {
             JOptionPane.showMessageDialog(this, erro.getMessage(), "Erro!", JOptionPane.ERROR_MESSAGE);
         }
@@ -141,8 +149,8 @@ public class JDialogTelaConfig extends javax.swing.JDialog {
 
     private void jComboBoxSizeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxSizeActionPerformed
         try {
-            config.put("UiSize", jComboBoxSize.getSelectedItem().toString());
-            Config.salvarProperties(config);
+            propriedades.put("UiSize", jComboBoxSize.getSelectedItem().toString());
+            config.salvarProperties(propriedades);
         } catch (Exception erro) {
             JOptionPane.showMessageDialog(this, erro.getMessage(), "Erro!", JOptionPane.ERROR_MESSAGE); 
         }

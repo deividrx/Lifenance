@@ -1,124 +1,81 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package persistencia;
 
 import modelos.interfaces.IBancoDao;
 import modelos.entidades.Banco;
 import java.util.ArrayList;
-
-//Biblioteca para manipulação de arquivo texto no disco
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 
-/**
- *
- * @author galdi
- */
 public class BancoDao implements IBancoDao {
     //Atributo
-    private String nomeDoArquivoDadosNodisco = "";
+    private final File arquivo;
+    
     //Metodos
-    public BancoDao(String nomeDoArqquivoDdosNoDisco) {
-        this.nomeDoArquivoDadosNodisco = nomeDoArqquivoDdosNoDisco;
+    public BancoDao(String arquivo) throws Exception{
+        this.arquivo = new DataFiles(arquivo).getFile();
     }
     
     @Override
     public void incluir(Banco objeto) throws Exception {
-        try {
-            //Criar o arquivo
-            FileWriter fw = new FileWriter(nomeDoArquivoDadosNodisco, true);
-            //Criar o buffer do arquivo
-            BufferedWriter bw = new BufferedWriter(fw);
-            //Escreve no arquivo
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(arquivo, true))) {
             bw.write(objeto.toString() + "\n");
-            //Fechar o arquivo
-            bw.close();
-        } catch (Exception erro) {
-            throw erro;
         }
     }
 
     @Override
     public void alterar(Banco objeto) throws Exception {
-        try {
-            ArrayList<Banco> arrayDosBancos = listagem(); 
-            FileWriter fw = new FileWriter(nomeDoArquivoDadosNodisco);
-            BufferedWriter bw = new BufferedWriter(fw);
+        ArrayList<Banco> arrayDosBancos = listagem(); 
+        
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(arquivo))) {
             for (int i = 0; i < arrayDosBancos.size(); i++) {
                 if (arrayDosBancos.get(i).getId() == objeto.getId()) {
                     bw.write(objeto.toString() + "\n");
                 } else {
                     bw.write(arrayDosBancos.get(i).toString() + "\n");
-                }       
-            }
-            //Fechar o arquivo
-            bw.close();
-        } catch (Exception erro) {
-            throw erro;
+                }
+            }       
         }
     }
 
     @Override
     public void apagarPorID(int id) throws Exception {
-        try {
-            ArrayList<Banco> arrayDosBancos = listagem(); 
-            //Criar o arquivo
-            FileWriter fw = new FileWriter(nomeDoArquivoDadosNodisco);
-            //Criar o buffer do arquivo
-            BufferedWriter bw = new BufferedWriter(fw);
-            //Escreve no arquivo
+        ArrayList<Banco> arrayDosBancos = listagem(); 
+        FileWriter fw = new FileWriter(arquivo);
+        
+        try (BufferedWriter bw = new BufferedWriter(fw)) {
             for (int i = 0; i < arrayDosBancos.size(); i++) {
                 if (id != arrayDosBancos.get(i).getId())
                     bw.write(arrayDosBancos.get(i).toString() + "\n");
-                    
             }
-            //Fechar o arquivo
-            bw.close();
-        } catch (Exception e) {
-            throw e;
         }
     }
 
     @Override
     public Banco consultarPorID(int id) throws Exception {
-        BufferedReader br = null;
-        try {
-            //Abrir o arquivo
-            FileReader fr = new FileReader(nomeDoArquivoDadosNodisco);
-            br = new BufferedReader(fr);
-            String linha = "";
+        try (BufferedReader br = new BufferedReader(new FileReader(arquivo))) {
             Banco aux = new Banco();
+            String linha;
+            
             while ((linha = br.readLine()) != null) {
                 String vetorString[] = linha.split(";");
                 aux.setId(Integer.parseInt(vetorString[0]));
                 aux.setDescricao(vetorString[1]);
                 if(aux.getId() == id) return aux;
             }
-            aux = null;
-            return aux;
             
-        } catch (Exception erro) {
-            throw erro;
-        } finally {
-            br.close();
-        }
-           
+            return null;
+        } 
     }
 
     @Override
     public ArrayList<Banco> listagem() throws Exception {
-        try {
-            ArrayList<Banco> arrayDosBancos = new ArrayList<>();
-            //Abrir o arquivo
-            FileReader fr = new FileReader(new File(nomeDoArquivoDadosNodisco));
-            BufferedReader br = new BufferedReader(fr);
-            String linha = "";
+        ArrayList<Banco> arrayDosBancos = new ArrayList<>();
+        
+        try (BufferedReader br = new BufferedReader(new FileReader(arquivo))) {
+            String linha;
             while ((linha = br.readLine()) != null) {
                 Banco aux = new Banco();
                 String vetorString[] = linha.split(";");
@@ -126,11 +83,9 @@ public class BancoDao implements IBancoDao {
                 aux.setDescricao(vetorString[1]);
                 arrayDosBancos.add(aux);
             }
-            br.close();
-            return arrayDosBancos;
-        } catch (Exception e) {
-            throw e;
         }
+        
+        return arrayDosBancos;
     }
     
 }

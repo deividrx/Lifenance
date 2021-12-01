@@ -1,33 +1,24 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controle;
 import java.util.ArrayList;
 import modelos.entidades.Banco;
 import modelos.interfaces.IBancoDao;
 import persistencia.BancoDao;
-/**
- *
- * @author galdi
- */
+
 public class BancoControle implements IBancoDao{
     
-    private BancoDao objBancoDao = new BancoDao("./src/main/java/resources/dados/Banco.txt");
+    private final BancoDao objBancoDao;
+
+    public BancoControle() throws Exception {
+        objBancoDao = new BancoDao("Banco.txt");
+    }
        
     @Override
     public void incluir(Banco objeto) throws Exception {
-        try {
-            
-            Banco aux = objBancoDao.consultarPorID(objeto.getId());
-            if (aux == null) {
-                objBancoDao.incluir(objeto);
-            } else {
-                throw new Exception("Banco j√° cadastrado!");
-            }
-        } catch (Exception erro) {
-            throw erro;
+        Banco aux = objBancoDao.consultarPorID(objeto.getId());
+        if (aux == null) {
+            objBancoDao.incluir(objeto);
+        } else {
+            throw new Exception("Banco j· cadastrado!");
         }
     }
 
@@ -51,6 +42,4 @@ public class BancoControle implements IBancoDao{
     public ArrayList<Banco> listagem() throws Exception {
          return objBancoDao.listagem();
     }
-    
-    
 }

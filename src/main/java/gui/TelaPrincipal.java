@@ -14,8 +14,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     public TelaPrincipal() {
         initComponents();
         panelPrincipal = (CardLayout) jPanelPrincipal.getLayout();
-        
-        
     }
     
     public void setLookAndFeel(LookAndFeel tema) {
@@ -57,11 +55,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jButtonConta.setFont(new java.awt.Font("Montserrat", 0, 16)); // NOI18N
         jButtonConta.setText("Conta");
         jButtonConta.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButtonConta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonContaActionPerformed(evt);
-            }
-        });
 
         jLabelLogo.setFont(new java.awt.Font("Montserrat", 1, 25)); // NOI18N
         jLabelLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -87,38 +80,18 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jButtonCartao.setFont(new java.awt.Font("Montserrat", 0, 16)); // NOI18N
         jButtonCartao.setText("Registrar cartão");
         jButtonCartao.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButtonCartao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCartaoActionPerformed(evt);
-            }
-        });
 
         jButtonDespesa.setFont(new java.awt.Font("Montserrat", 0, 16)); // NOI18N
         jButtonDespesa.setText("<html><center>Registrar<br> Despesa</br><cemter></html>");
         jButtonDespesa.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButtonDespesa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonDespesaActionPerformed(evt);
-            }
-        });
 
         jButtonVisualizar.setFont(new java.awt.Font("Montserrat", 0, 16)); // NOI18N
         jButtonVisualizar.setText("Visualizar");
         jButtonVisualizar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButtonVisualizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonVisualizarActionPerformed(evt);
-            }
-        });
 
         jButtonReceita.setFont(new java.awt.Font("Montserrat", 0, 16)); // NOI18N
         jButtonReceita.setText("<html><center>Registrar<br>Receita</br><center></html>");
         jButtonReceita.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButtonReceita.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonReceitaActionPerformed(evt);
-            }
-        });
 
         jButtonContaCorrente.setFont(new java.awt.Font("Montserrat", 0, 16)); // NOI18N
         jButtonContaCorrente.setText("<html><center>Registrar<br>Conta Corrente</br><center></html>");
@@ -191,11 +164,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
         jMenu1.setText("File");
-        jMenu1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu1ActionPerformed(evt);
-            }
-        });
 
         jMenu3.setText("jMenu3");
         jMenu1.add(jMenu3);
@@ -229,10 +197,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonContaActionPerformed
-       
-    }//GEN-LAST:event_jButtonContaActionPerformed
-
     private void jLabelLogoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelLogoMouseClicked
         try {
             panelPrincipal.show(jPanelPrincipal, "telaPrincipal");
@@ -250,37 +214,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButtonConfigActionPerformed
 
-    private void jButtonCartaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCartaoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonCartaoActionPerformed
-
-    private void jButtonDespesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDespesaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonDespesaActionPerformed
-
-    private void jButtonVisualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVisualizarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonVisualizarActionPerformed
-
-    private void jButtonReceitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReceitaActionPerformed
-       JPanelContaCorrente test = new JPanelContaCorrente();
-       jPanelPrincipal.add(test, "telaTeste");
-       panelPrincipal.show(jPanelPrincipal, "telaTeste");
-    }//GEN-LAST:event_jButtonReceitaActionPerformed
-
     private void jButtonContaCorrenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonContaCorrenteActionPerformed
         try {
-            JPanelContaCorrente test = new JPanelContaCorrente();
+            JPanelContaCorrente test = new JPanelContaCorrente(this);
             jPanelPrincipal.add(test, "telaContaCorrente");
             panelPrincipal.show(jPanelPrincipal, "telaContaCorrente");
         } catch (Exception erro) {
             JOptionPane.showMessageDialog(this, erro.getMessage(), "Erro!", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButtonContaCorrenteActionPerformed
-
-    private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
-
-    }//GEN-LAST:event_jMenu1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCartao;

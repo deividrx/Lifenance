@@ -8,9 +8,6 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="File"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenu1ActionPerformed"/>
-          </Events>
           <SubComponents>
             <Menu class="javax.swing.JMenu" name="jMenu3">
               <Properties>
@@ -126,9 +123,6 @@
             <Property name="text" type="java.lang.String" value="Conta"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonContaActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelLogo">
           <Properties>
@@ -167,9 +161,6 @@
             <Property name="text" type="java.lang.String" value="Registrar cart&#xe3;o"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonCartaoActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButtonDespesa">
           <Properties>
@@ -179,9 +170,6 @@
             <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;center&gt;Registrar&lt;br&gt; Despesa&lt;/br&gt;&lt;cemter&gt;&lt;/html&gt;"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonDespesaActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButtonVisualizar">
           <Properties>
@@ -191,9 +179,6 @@
             <Property name="text" type="java.lang.String" value="Visualizar"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonVisualizarActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButtonReceita">
           <Properties>
@@ -203,9 +188,6 @@
             <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;center&gt;Registrar&lt;br&gt;Receita&lt;/br&gt;&lt;center&gt;&lt;/html&gt;"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonReceitaActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButtonContaCorrente">
           <Properties>

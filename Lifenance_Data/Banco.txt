@@ -1,0 +1,9 @@
+111;Banco Batata
+255;Banco Rosa
+322;Banco da esquina
+523;Banco B
+20;Banco do zé
+23;Banco do João
+123;Banco do Theo 
+53;Banco do Breno Tocador
+700;Banco pegadinha
