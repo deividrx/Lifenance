@@ -17,9 +17,7 @@ public class BancoDao implements IBancoDao {
     public BancoDao(String arquivo) throws Exception{
         this.arquivo = new DataFiles(arquivo).getFile();
     }
-    
-    //Teste Branch dev
-    
+
     @Override
     public void incluir(Banco objeto) throws Exception {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(arquivo, true))) {
