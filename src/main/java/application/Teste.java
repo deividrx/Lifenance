@@ -6,6 +6,7 @@
 package application;
 
 import modelos.entidades.Receita;
+import modelos.entidades.enums.TipoReceita;
 
 /**
  *
@@ -14,8 +15,12 @@ import modelos.entidades.Receita;
 public class Teste {
      public static void main(String[] args) {
         Receita receita = new Receita();
-        receita.setTipo(Receita.Tipo.FIXA);
-        System.out.println(receita.getTipo());
+        receita.setTipo(TipoReceita.FIXA);
+        receita.setNome("Salário");
+        
+        String saida = "Receita: " + receita.getNome() + " Tipo:"+ receita.getTipo();
+        
+        System.out.println(saida);
         
     }
 }

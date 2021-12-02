@@ -6,22 +6,31 @@
 package modelos.entidades;
 
 import java.util.Date;
+import modelos.entidades.enums.TipoReceita;
 
 public class Receita {
-    
-    //Enumeration
-    public enum Tipo {
-        FIXA, ESPORADICA; 
-    }
-    
+
     private int id = 0;
     private String nome = "";
     private String descricao = "";
     private float valor = 0;
     private Date dataDaReceita;
-    private Tipo tipo;
-    private int iDContaCorrente;
+    private TipoReceita tipo;
+    private int IDContaCorrente;
 
+    public Receita() {
+    }
+
+    public Receita(int id, String nome, String descricao, float valor,Date dataDaReceita, TipoReceita tipo, int IDContaCorrente) {
+        this.id = id;
+        this.nome = nome;
+        this.descricao = descricao;
+        this.valor = valor;
+        this.dataDaReceita = dataDaReceita;
+        this.tipo = tipo;
+        this.IDContaCorrente = IDContaCorrente;
+    }
+    
     public String getNome() {
         return nome;
     }
@@ -62,20 +71,20 @@ public class Receita {
         this.dataDaReceita = dataDaReceita;
     }
 
-    public Tipo getTipo() {
+    public TipoReceita getTipo() {
         return tipo;
     }
 
-    public void setTipo(Tipo tipo) {
+    public void setTipo(TipoReceita tipo) {
         this.tipo = tipo;
     }
 
     public int getiDContaCorrente() {
-        return iDContaCorrente;
+        return IDContaCorrente;
     }
 
     public void setiDContaCorrente(int iDContaCorrente) {
-        this.iDContaCorrente = iDContaCorrente;
+        this.IDContaCorrente = iDContaCorrente;
     }
     
 }
