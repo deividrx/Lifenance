@@ -9,6 +9,6 @@ package modelos.interfaces;
  *
  * @author galdi
  */
-public class IDespesaDAO {
+public interface IDespesaDAO {
     
 }
