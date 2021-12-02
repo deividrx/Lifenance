@@ -18,7 +18,7 @@ public class BancoDao implements IBancoDao {
         this.arquivo = new DataFiles(arquivo).getFile();
     }
     
-    //Git Funciona!
+    //Git Funciona! :)
     
     @Override
     public void incluir(Banco objeto) throws Exception {

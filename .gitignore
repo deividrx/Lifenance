@@ -23,3 +23,6 @@
 hs_err_pid*
 /Lifenance_Data/
 /build/libs/Lifenance_Data/
+/.idea/
+/.gradle/
+/build/
