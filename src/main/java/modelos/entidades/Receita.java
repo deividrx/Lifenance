@@ -7,18 +7,19 @@ package modelos.entidades;
 
 import java.util.Date;
 
-/**
- *
- * @author galdi
- */
 public class Receita {
+    
+    //Enumeration
+    public enum Tipo {
+        FIXA, ESPORADICA; 
+    }
     
     private int id = 0;
     private String nome = "";
     private String descricao = "";
     private float valor = 0;
     private Date dataDaReceita;
-    private EnumTipoReceitaDespesa tipo;
+    private Tipo tipo;
     private int iDContaCorrente;
 
     public String getNome() {
@@ -61,11 +62,11 @@ public class Receita {
         this.dataDaReceita = dataDaReceita;
     }
 
-    public EnumTipoReceitaDespesa getTipo() {
+    public Tipo getTipo() {
         return tipo;
     }
 
-    public void setTipo(EnumTipoReceitaDespesa tipo) {
+    public void setTipo(Tipo tipo) {
         this.tipo = tipo;
     }
 

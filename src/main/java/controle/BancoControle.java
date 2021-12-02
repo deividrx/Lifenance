@@ -1,10 +1,10 @@
 package controle;
 import java.util.ArrayList;
 import modelos.entidades.Banco;
-import modelos.interfaces.IBancoDao;
 import persistencia.BancoDao;
+import modelos.interfaces.IBancoDAO;
 
-public class BancoControle implements IBancoDao{
+public class BancoControle implements IBancoDAO{
     
     private final BancoDao objBancoDao;
 

@@ -1,6 +1,5 @@
 package persistencia;
 
-import modelos.interfaces.IBancoDao;
 import modelos.entidades.Banco;
 import java.util.ArrayList;
 import java.io.BufferedReader;
@@ -8,8 +7,9 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
+import modelos.interfaces.IBancoDAO;
 
-public class BancoDao implements IBancoDao {
+public class BancoDao implements IBancoDAO {
     //Atributo
     private final File arquivo;
     
