@@ -7,3 +7,4 @@
 123;Banco do Theo 
 53;Banco do Breno Tocador
 700;Banco pegadinha
+55;Banco do Brazil
