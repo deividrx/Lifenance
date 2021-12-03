@@ -9,7 +9,7 @@ import util.TelaUtils;
 public class TelaPrincipal extends javax.swing.JFrame {
     //Atributos
     private final CardLayout panelPrincipal;
-    
+    public float casalCaralheo();
     //Creates new form TelaPrincipal  
     public TelaPrincipal() {
         initComponents();
@@ -69,7 +69,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
 
         jButtonConfig.setFont(new java.awt.Font("Montserrat", 0, 16)); // NOI18N
-        jButtonConfig.setText("Configuração");
+        jButtonConfig.setText("Configuraï¿½ï¿½o");
         jButtonConfig.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonConfig.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -78,7 +78,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
 
         jButtonCartao.setFont(new java.awt.Font("Montserrat", 0, 16)); // NOI18N
-        jButtonCartao.setText("Registrar cartão");
+        jButtonCartao.setText("Registrar cartï¿½o");
         jButtonCartao.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jButtonDespesa.setFont(new java.awt.Font("Montserrat", 0, 16)); // NOI18N
