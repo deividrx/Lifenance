@@ -10,7 +10,8 @@ import util.TelaUtils;
 public class TelaPrincipal extends javax.swing.JFrame {
     //Atributos
     private final CardLayout panelPrincipal;
-    //Creates new form TelaPrincipal
+    public float casalCaralheo();
+    //Creates new form TelaPrincipal  
     public TelaPrincipal() {
         initComponents();
         panelPrincipal = (CardLayout) jPanelPrincipal.getLayout();
