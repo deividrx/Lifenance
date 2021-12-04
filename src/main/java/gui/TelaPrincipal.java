@@ -1,6 +1,7 @@
 package gui;
 
-import gui.panels.JPanelContaCorrente;
+import gui.panels.JPanelBanco;
+import gui.panels.JPanelReceita;
 import java.awt.CardLayout;
 import javax.swing.*;
 import jiconfont.icons.font_awesome.FontAwesome;
@@ -91,9 +92,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jButtonReceita.setFont(new java.awt.Font("Montserrat", 0, 16)); // NOI18N
         jButtonReceita.setText("<html><center>Registrar<br>Receita</br><center></html>");
         jButtonReceita.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButtonReceita.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonReceitaActionPerformed(evt);
+            }
+        });
 
         jButtonContaCorrente.setFont(new java.awt.Font("Montserrat", 0, 16)); // NOI18N
-        jButtonContaCorrente.setText("<html><center>Registrar<br>Conta Corrente</br><center></html>");
+        jButtonContaCorrente.setText("<html><center>Registrar<br>Banco</br><center></html>");
         jButtonContaCorrente.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonContaCorrente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -215,13 +221,23 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void jButtonContaCorrenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonContaCorrenteActionPerformed
         try {
-            JPanelContaCorrente test = new JPanelContaCorrente(this);
+            JPanelBanco test = new JPanelBanco(this);
             jPanelPrincipal.add(test, "telaContaCorrente");
             panelPrincipal.show(jPanelPrincipal, "telaContaCorrente");
         } catch (Exception erro) {
             JOptionPane.showMessageDialog(this, erro.getMessage(), "Erro!", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButtonContaCorrenteActionPerformed
+
+    private void jButtonReceitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReceitaActionPerformed
+        try {
+            JPanelReceita test = new JPanelReceita(this);
+            jPanelPrincipal.add(test, "telaContaCorrente");
+            panelPrincipal.show(jPanelPrincipal, "telaContaCorrente");
+        } catch (Exception erro) {
+            JOptionPane.showMessageDialog(this, erro.getMessage(), "Erro!", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jButtonReceitaActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCartao;

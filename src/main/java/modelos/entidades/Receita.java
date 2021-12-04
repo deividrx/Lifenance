@@ -20,7 +20,7 @@ public class Receita {
 
     public Receita() {
     }
-
+    
     public Receita(int id, String nome, String descricao, float valor,Date dataDaReceita, TipoReceita tipo, int IDContaCorrente) {
         this.id = id;
         this.nome = nome;
@@ -86,5 +86,9 @@ public class Receita {
     public void setiDContaCorrente(int iDContaCorrente) {
         this.IDContaCorrente = iDContaCorrente;
     }
-    
+
+    @Override
+    public String toString() {
+       return id + ";" + nome + ";" + descricao + ";" + valor + ";" + dataDaReceita + ";" + tipo + ";" + IDContaCorrente;
+    }
 }

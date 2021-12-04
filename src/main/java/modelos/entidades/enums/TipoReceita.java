@@ -7,4 +7,12 @@ package modelos.entidades.enums;
 
 public enum TipoReceita {
     FIXA, ESPORADICA;
+    
+    public static TipoReceita parse(String tipo) {
+        if (tipo.equalsIgnoreCase(FIXA.toString()))
+            return FIXA;
+        else
+            return ESPORADICA;
+    }
+    
 }
