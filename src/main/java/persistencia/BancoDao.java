@@ -30,11 +30,11 @@ public class BancoDao implements IBancoDAO {
         ArrayList<Banco> arrayDosBancos = listagem(); 
         
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(arquivo))) {
-            for (int i = 0; i < arrayDosBancos.size(); i++) {
-                if (arrayDosBancos.get(i).getId() == objeto.getId()) {
+            for (Banco banco : arrayDosBancos) {
+                if (banco.getId() == objeto.getId()) {
                     bw.write(objeto.toString() + "\n");
                 } else {
-                    bw.write(arrayDosBancos.get(i).toString() + "\n");
+                    bw.write(banco.toString() + "\n");
                 }
             }       
         }

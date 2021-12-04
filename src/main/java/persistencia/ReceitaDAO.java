@@ -16,11 +16,6 @@ import modelos.entidades.Receita;
 import modelos.entidades.enums.TipoReceita;
 import modelos.interfaces.IReceitaDAO;
 
-
-/**
- *
- * @author galdi
- */
 public class ReceitaDAO implements IReceitaDAO {
     
     private File arquivo;
@@ -54,13 +49,13 @@ public class ReceitaDAO implements IReceitaDAO {
 
     @Override
     public void apagarPorID(int id) throws Exception {
-        ArrayList<Receita> arrayDosBancos = listagem(); 
+        ArrayList<Receita> arrayDasReceitas = listagem();
         FileWriter fw = new FileWriter(arquivo);
         
         try (BufferedWriter bw = new BufferedWriter(fw)) {
-            for (int i = 0; i < arrayDosBancos.size(); i++) {
-                if (id != arrayDosBancos.get(i).getId())
-                    bw.write(arrayDosBancos.get(i).toString() + "\n");
+            for (Receita receita : arrayDasReceitas) {
+                if (id != receita.getId())
+                    bw.write(receita.toString() + "\n");
             }
         }
     }
@@ -72,7 +67,7 @@ public class ReceitaDAO implements IReceitaDAO {
             String linha;
             
             while ((linha = br.readLine()) != null) {
-                String vetorString[] = linha.split(";");
+                String[] vetorString = linha.split(";");
                 aux.setId(Integer.parseInt(vetorString[0]));
                 if(aux.getId() == id) return aux;
             }
@@ -88,7 +83,7 @@ public class ReceitaDAO implements IReceitaDAO {
             String linha;
             while ((linha = br.readLine()) != null) {
                 Receita aux = new Receita();
-                String vetorString[] = linha.split(";");
+                String[] vetorString = linha.split(";");
                 aux.setId(Integer.parseInt(vetorString[0]));
                 aux.setNome(vetorString[1]);
                 aux.setDescricao(vetorString[2]);
@@ -99,7 +94,6 @@ public class ReceitaDAO implements IReceitaDAO {
                 arrayDasReceitas.add(aux);
             }
         }
-        
         return arrayDasReceitas;
     }
     
