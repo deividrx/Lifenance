@@ -188,13 +188,16 @@
             <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;center&gt;Registrar&lt;br&gt;Receita&lt;/br&gt;&lt;center&gt;&lt;/html&gt;"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonReceitaActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButtonContaCorrente">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Montserrat" size="16" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;center&gt;Registrar&lt;br&gt;Conta Corrente&lt;/br&gt;&lt;center&gt;&lt;/html&gt;"/>
+            <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;center&gt;Registrar&lt;br&gt;Banco&lt;/br&gt;&lt;center&gt;&lt;/html&gt;"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
           </Properties>
           <Events>

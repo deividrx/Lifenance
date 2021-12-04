@@ -15,7 +15,6 @@ public class Cartao {
     private int cvv = 0;
     private int id = 0;
 
-    //private
     // Metodos
     public Cartao() {
 

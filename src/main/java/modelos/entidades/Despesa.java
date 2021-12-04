@@ -22,7 +22,6 @@ public class Despesa {
     private TipoDespesa tipo;
     private int IDContaCorrente;
     
-    
     public Despesa(int id, String nome, String descricao, float valor, Date dataDaReceita, TipoDespesa tipo, int IDContaCorrente) {
         this.id = id;
         this.nome = nome;
@@ -88,4 +87,10 @@ public class Despesa {
     public void setIDContaCorrente(int IDContaCorrente) {
         this.IDContaCorrente = IDContaCorrente;
     }
+
+    @Override
+    public String toString() {
+        return id + ";" + nome + ";" + descricao + ";" + valor + ";" + dataDaReceita + ";" + tipo + ";" + IDContaCorrente;
+    }
+ 
 }
