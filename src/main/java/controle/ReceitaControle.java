@@ -27,7 +27,7 @@ public class ReceitaControle implements IReceitaDAO {
         if (receita.consultarPorID(objeto.getId()) == null) {
             receita.incluir(objeto);
         } else {
-            throw new Exception("Receita j· cadastrada!");
+            throw new Exception("Receita j√° cadastrada!");
         }
     }
 

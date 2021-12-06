@@ -1,22 +1,22 @@
 package controle;
 import java.util.ArrayList;
 import modelos.entidades.Banco;
-import persistencia.BancoDao;
+import persistencia.BancoDAO;
 import modelos.interfaces.IBancoDAO;
 
 public class BancoControle implements IBancoDAO{
     
-    private final BancoDao objBancoDao;
+    private final BancoDAO objBancoDAO;
 
     public BancoControle() throws Exception {
-        objBancoDao = new BancoDao("Banco.txt");
+        objBancoDAO = new BancoDAO("Banco.txt");
     }
        
     @Override
     public void incluir(Banco objeto) throws Exception {
-        Banco aux = objBancoDao.consultarPorID(objeto.getId());
+        Banco aux = objBancoDAO.consultarPorID(objeto.getId());
         if (aux == null) {
-            objBancoDao.incluir(objeto);
+            objBancoDAO.incluir(objeto);
         } else {
             throw new Exception("Banco j· cadastrado!");
         }
@@ -24,22 +24,22 @@ public class BancoControle implements IBancoDAO{
 
     @Override
     public void alterar(Banco objeto) throws Exception {
-        if (consultarPorID(objeto.getId()) == null) throw new Exception("Alterar o Id do Banco n„o È permitido!");
-        objBancoDao.alterar(objeto);
+        if (consultarPorID(objeto.getId()) == null) throw new Exception("Alterar o Id do Banco n√£o √© permitido!");
+        objBancoDAO.alterar(objeto);
     }
 
     @Override
     public void apagarPorID(int id) throws Exception {
-        objBancoDao.apagarPorID(id);
+        objBancoDAO.apagarPorID(id);
     }
 
     @Override
     public Banco consultarPorID(int id) throws Exception {
-       return objBancoDao.consultarPorID(id);
+       return objBancoDAO.consultarPorID(id);
     }
 
     @Override
     public ArrayList<Banco> listagem() throws Exception {
-         return objBancoDao.listagem();
+         return objBancoDAO.listagem();
     }
 }

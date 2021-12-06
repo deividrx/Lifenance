@@ -52,23 +52,29 @@ public class CartaoDAO implements ICartaoDAO {
 
     @Override
     public ArrayList<Cartao> listagem() throws Exception {
-        ArrayList<Cartao> arrayDosBancos = new ArrayList<>();
+        ArrayList<Cartao> arrayCartao = new ArrayList<>();
 
         try (BufferedReader br = new BufferedReader(new FileReader(arquivo))) {
             String linha;
             while ((linha = br.readLine()) != null) {
-                Cartao aux = new Cartao();
-                String vetorString[] = linha.split(";");
-                aux.setId(Integer.parseInt(vetorString[0]));
-                arrayDosBancos.add(aux);
+                Cartao aux = new Cartao(linha.split(";"));
+                arrayCartao.add(aux);
             }
         }
 
-        return arrayDosBancos;
+        return arrayCartao;
     }
 
     @Override
     public void apagarPorId(int id) throws Exception {
+        ArrayList<Cartao> arrayCartao = listagem();
+        FileWriter fw = new FileWriter(arquivo);
 
+        try (BufferedWriter bw = new BufferedWriter(fw)) {
+            for (int i = 0; i < arrayCartao.size(); i++) {
+                if (id != arrayCartao.get(i).getId())
+                    bw.write(arrayCartao.get(i).toString() + "\n");
+            }
+        }
     }
 }

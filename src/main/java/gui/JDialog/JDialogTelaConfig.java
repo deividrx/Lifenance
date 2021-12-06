@@ -1,5 +1,6 @@
-package gui;
+package gui.JDialog;
 
+import gui.TelaPrincipal;
 import persistencia.Config;
 import javax.swing.*;
 import util.TelaUtils;

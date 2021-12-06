@@ -9,12 +9,12 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import modelos.interfaces.IBancoDAO;
 
-public class BancoDao implements IBancoDAO {
+public class BancoDAO implements IBancoDAO {
     //Atributo
     private final File arquivo;
     
     //Metodos
-    public BancoDao(String arquivo) throws Exception{
+    public BancoDAO(String arquivo) throws Exception{
         this.arquivo = new DataFiles(arquivo).getFile();
     }
 

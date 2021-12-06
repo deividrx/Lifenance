@@ -13,10 +13,9 @@ public class Conta {
     private int id = 0;
 
     // metodos
-
-
     public Conta() {
     }
+    
     public Conta(int numero, int agencia, TipoDeConta tipo, float limite, float saldo, int idBanco,int id) {
         this.numero =  numero;
         this.agencia=  agencia;
@@ -85,7 +84,6 @@ public class Conta {
 
     @Override
     public String toString() {
-        return + numero +" ; "+ agencia + " ; "+ tipo +" ; " + limite +" ; " + saldo +" ; "+ idBanco +" ; "+ id
-                ;
+        return numero +";"+ agencia + ";"+ tipo +";" + limite +";" + saldo +";"+ idBanco +";"+ id;
     }
 }
