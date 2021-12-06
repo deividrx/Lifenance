@@ -15,7 +15,7 @@ public class BancoDAO implements IBancoDAO {
     
     //Metodos
     public BancoDAO(String arquivo) throws Exception{
-        this.arquivo = new DataFiles(arquivo).getFile();
+        this.arquivo = new DataFiles(new File(arquivo)).getFile();
     }
 
     @Override

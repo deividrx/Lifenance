@@ -1,13 +1,12 @@
 package modelos.entidades;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Cartao {
     //Atributos
     private int numero = 0;
     private Date validade;
-    private String bandeira = "";
+    private int bandeira = 0;
     private int multa = 0;
     private float limite = 0;
     private Date vencimento;
@@ -15,27 +14,13 @@ public class Cartao {
     private String nome = "";
     private int cvv = 0;
     private int id = 0;
-    private SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyyy");
 
     // Metodos
     public Cartao() {
 
     }
 
-    public Cartao(String[] dados)  throws Exception {
-        this.numero = Integer.parseInt(dados[0]);
-        this.validade = format.parse(dados[1]);
-        this.bandeira = dados[2];
-        this.multa = Integer.parseInt(dados[3]) ;
-        this.limite = Float.parseFloat(dados[4]);
-        this.vencimento = format.parse(dados[5]);
-        this.fechamento = format.parse(dados[6]);
-        this.nome = dados[7];
-        this.cvv = Integer.parseInt(dados[8]);
-        this.id = Integer.parseInt(dados[9]);
-    }
-
-    public Cartao(int numero, Date validade, String bandeira, int multa, float limite, Date vencimento,
+    public Cartao(int numero, Date validade, int bandeira, int multa, float limite, Date vencimento,
                   Date fechamento, String nome, int cvv, int id) {
         this.numero = numero;
         this.validade = validade;
@@ -66,11 +51,11 @@ public class Cartao {
         this.validade = validade;
     }
 
-    public String getBandeira() {
+    public int getBandeira() {
         return bandeira;
     }
 
-    public void setBandeira(String bandeira) {
+    public void setBandeira(int bandeira) {
         this.bandeira = bandeira;
     }
 

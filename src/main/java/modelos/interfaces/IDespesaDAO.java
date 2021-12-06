@@ -6,6 +6,8 @@
 package modelos.interfaces;
 
 import java.util.ArrayList;
+
+import modelos.entidades.Cartao;
 import modelos.entidades.Despesa;
 
 /**
@@ -16,6 +18,6 @@ public interface IDespesaDAO {
     void incluir(Despesa objeto) throws Exception;
     void alterar(Despesa objeto) throws Exception;
     void apagarPorID(int id) throws Exception;
-    Despesa consultarPorID(int id) throws Exception;
-    ArrayList<Despesa> listagem() throws Exception;
+    Cartao consultarPorID(int id) throws Exception;
+    ArrayList<Cartao> listagem() throws Exception;
 }

@@ -22,7 +22,7 @@ public class Despesa {
     private TipoDespesa tipo;
     private int IDContaCorrente;
     
-    public Despesa(int id, String nome, String descricao, float valor, Date dataDaReceita, TipoDespesa tipo, int IDContaCorrente) {
+    public Despesa() {
         this.id = id;
         this.nome = nome;
         this.descricao = descricao;
