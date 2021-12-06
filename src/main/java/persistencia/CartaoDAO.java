@@ -11,7 +11,7 @@ public class CartaoDAO implements ICartaoDAO {
     private File arquivo;
 
     public CartaoDAO(String arquivo) throws Exception {
-        this.arquivo = new DataFiles(new File(arquivo)).getFile();
+        this.arquivo = new DataFiles(arquivo).getFile();
     }
 
     @Override
