@@ -126,17 +126,23 @@
               <Font name="Segoe UI" size="14" style="0"/>
             </Property>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="6" rowCount="0">
+              <Table columnCount="7" rowCount="0">
                 <Column editable="false" title="Conta" type="java.lang.Object"/>
                 <Column editable="false" title="Ag&#xea;ncia" type="java.lang.Object"/>
                 <Column editable="false" title="Tipo" type="java.lang.Object"/>
                 <Column editable="false" title="Limite" type="java.lang.Object"/>
-                <Column editable="true" title="saldo" type="java.lang.Object"/>
+                <Column editable="false" title="saldo" type="java.lang.Object"/>
                 <Column editable="false" title="Banco" type="java.lang.Object"/>
+                <Column editable="false" title="id" type="java.lang.Object"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
               <TableColumnModel selectionModel="0">
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
                 <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                   <Title/>
                   <Editor/>

@@ -13,6 +13,8 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 import gui.jdialog.JDialogConta;
+import javax.swing.table.DefaultTableColumnModel;
+import javax.swing.table.TableColumnModel;
 import jiconfont.icons.font_awesome.FontAwesome;
 import modelos.entidades.Banco;
 import modelos.entidades.Conta;
@@ -35,6 +37,8 @@ public class JPanelConta extends javax.swing.JPanel {
         this.parent = parent;
         initComponents();
         model = (DefaultTableModel) jTable.getModel();
+        TableColumnModel tcm = (DefaultTableColumnModel) jTable.getColumnModel();
+        tcm.removeColumn(tcm.getColumn(6));
         mostrarListagem();
     }
 
@@ -45,7 +49,7 @@ public class JPanelConta extends javax.swing.JPanel {
             model.setNumRows(0);
             
             for (int i = 0; i < contas.size(); i++) {
-                String[] saida = new String[6];
+                String[] saida = new String[7];
                 Conta aux = contas.get(i);
                 saida[0] = Integer.toString(aux.getNumero());
                 saida[1] = Integer.toString(aux.getAgencia());
@@ -53,8 +57,11 @@ public class JPanelConta extends javax.swing.JPanel {
                 saida[3] = Float.toString(aux.getLimite());
                 saida[4] = Float.toString(aux.getSaldo());
                 saida[5] = bancoControle.consultarPorID(aux.getIdBanco()).getDescricao();
+                saida[6] = Integer.toString(aux.getId());
                 model.addRow(saida);
             }
+            
+            
             
         } catch (Exception erro) {
             JOptionPane.showMessageDialog(this, erro.getMessage(), "Erro!", JOptionPane.ERROR_MESSAGE);
@@ -109,11 +116,11 @@ public class JPanelConta extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Conta", "Agência", "Tipo", "Limite", "saldo", "Banco"
+                "Conta", "Agï¿½ncia", "Tipo", "Limite", "saldo", "Banco", "id"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, true, false
+                false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -207,8 +214,8 @@ public class JPanelConta extends javax.swing.JPanel {
 
     private void jMenuItemExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemExcluirActionPerformed
           try {
-            //objBancoControle.apagarPorID(Integer.parseInt(model.getValueAt(jTable.getSelectedRow(), 0).toString()));
-            //mostrarListagem();
+            contaControle.apagarPorID(Integer.parseInt(model.getValueAt(jTable.getSelectedRow(), 6).toString()));
+            mostrarListagem();
         } catch (Exception erro) {
             JOptionPane.showMessageDialog(this, erro.getMessage(), "Erro!", JOptionPane.ERROR_MESSAGE);
         }
@@ -223,9 +230,9 @@ public class JPanelConta extends javax.swing.JPanel {
 
     private void jMenuItemEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEditarActionPerformed
         try {
-            //JDialogBancoAlterar addBanco = new JDialogBancoAlterar(parent, true, jTable.getValueAt(jTable.getSelectedRow(), 0).toString());
-            //addBanco.setVisible(true);
-            //mostrarListagem();
+            JDialogConta alterarConta = new JDialogConta(parent, true);
+            alterarConta.setVisible(true);
+            mostrarListagem();
         } catch (Exception erro) {
             JOptionPane.showMessageDialog(this, erro.getMessage(), "Erro!", JOptionPane.ERROR_MESSAGE);
         }

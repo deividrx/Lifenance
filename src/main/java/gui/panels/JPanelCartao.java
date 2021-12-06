@@ -6,6 +6,7 @@
 package gui.panels;
 
 import controle.BancoControle;
+import controle.CartaoControle;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -15,6 +16,7 @@ import gui.JDialog.JDialogBancoAlterar;
 import gui.JDialog.JDialogBancoInserir;
 import jiconfont.icons.font_awesome.FontAwesome;
 import modelos.entidades.Banco;
+import modelos.entidades.Cartao;
 import util.TelaUtils;
 
 /**
@@ -23,12 +25,12 @@ import util.TelaUtils;
  */
 public class JPanelCartao extends javax.swing.JPanel {
     
-    private BancoControle objBancoControle;
+    private CartaoControle cartaoControle;
     private DefaultTableModel model;
     private JFrame parent;
     
     public JPanelCartao(JFrame parent) throws Exception {
-        objBancoControle = new BancoControle();
+        cartaoControle = new CartaoControle();
         this.parent = parent;
         initComponents();
         model = (DefaultTableModel) jTable.getModel();
@@ -37,16 +39,21 @@ public class JPanelCartao extends javax.swing.JPanel {
 
     private void mostrarListagem() {
         try {
-            ArrayList<Banco> arrayDosBancos = objBancoControle.listagem();
+            ArrayList<Cartao> cartoes = cartaoControle.listagem();
             model = (DefaultTableModel) jTable.getModel();
             model.setNumRows(0);
             
-            for (int i = 0; i < arrayDosBancos.size(); i++) {
+            for (int i = 0; i < cartoes.size(); i++) {
                 String[] saida = new String[2];
-                Banco aux = arrayDosBancos.get(i);
-                saida[0] = aux.getId() + "";
-                saida[1] = aux.getDescricao();
-                //incluir nova linha na tabela
+                Cartao aux = cartoes.get(i);
+                saida[0] = Integer.toString(aux.getNumero());
+                saida[1] = aux.getBandeira();
+                saida[2] = aux.getValidade().toString();
+                saida[3] = Float.toString(aux.getLimite());
+                saida[4] = Integer.toString(aux.getMulta());
+                saida[5] = Integer.toString(aux.getCvv());
+                
+                
                 model.addRow(saida);
             }
             
@@ -94,7 +101,7 @@ public class JPanelCartao extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Montserrat", 0, 36)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("<html><center>Cartão<center></html>");
+        jLabel1.setText("<html><center>Cartï¿½o<center></html>");
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -103,11 +110,11 @@ public class JPanelCartao extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Número", "Bandeira", "Validade", "Limite", "Multa", "CVV"
+                "Nï¿½mero", "Bandeira", "Validade", "Limite", "Multa", "Fatura Vencimento", "Nome", "Fatura Fechamento"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -126,7 +133,7 @@ public class JPanelCartao extends javax.swing.JPanel {
         jButtonNovoBanco.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         jButtonNovoBanco.setIcon(TelaUtils.getIconFontAwesome(FontAwesome.PLUS, 16)
         );
-        jButtonNovoBanco.setText("Cadastrar Cartão");
+        jButtonNovoBanco.setText("Cadastrar Cartï¿½o");
         jButtonNovoBanco.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonNovoBancoActionPerformed(evt);
@@ -134,7 +141,7 @@ public class JPanelCartao extends javax.swing.JPanel {
         });
 
         jTextField1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField1.setText("Pesquisar Cartão");
+        jTextField1.setText("Pesquisar Cartï¿½o");
         jTextField1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTextField1MouseClicked(evt);
