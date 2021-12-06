@@ -12,7 +12,7 @@ public class DespesDAO  implements IDespesaDAO {
     private final File arquivo;
 
 
-    public DespesDAO(File arquivo) throws Exception {
+    public DespesDAO(String arquivo) throws Exception {
         this.arquivo = new DataFiles(arquivo).getFile();
         ;
     }
@@ -53,7 +53,7 @@ public class DespesDAO  implements IDespesaDAO {
     }
 
     @Override
-    public Cartao consultarPorID(int id) throws Exception {
+    public Despesa consultarPorID(int id) throws Exception {
         try (BufferedReader br = new BufferedReader(new FileReader(arquivo))) {
             Despesa aux = new Despesa();
             String linha;
@@ -68,18 +68,13 @@ public class DespesDAO  implements IDespesaDAO {
 
     @Override
     public ArrayList<Despesa> listagem() throws Exception {
-
-
         ArrayList<Despesa> arrayDespesas = new ArrayList<>();
-
         try (BufferedReader br = new BufferedReader(new FileReader(arquivo))) {
             String linha;
             while ((linha = br.readLine()) != null) {
-                Despesa aux = new Cartao(linha.split(";"));
+                Despesa aux = new Despesa();
                 arrayDespesas.add(aux);
             }
-
-
             return arrayDespesas;
         }
     }
