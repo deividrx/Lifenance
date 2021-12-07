@@ -133,9 +133,9 @@ public class Cartao {
     @Override
     public String toString() {
         return  +
-                numero + ";" + validade + ";" + bandeira +"" +
-                ";"+ multa + ";" + limite + ";"+ vencimento + ";"+ fechamento +
-                ";"+ nome +";"  + ";" + cvv + ";" + id ;
+                numero + ";" + format.format(validade) + ";" + bandeira +"" +
+                ";"+ multa + ";" + limite + ";"+ format.format(vencimento) + ";"+ format.format(fechamento) +
+                ";"+ nome +";" + cvv + ";" + id ;
     }
 }
 

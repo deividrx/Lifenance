@@ -11,8 +11,8 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-import gui.JDialog.JDialogBancoAlterar;
-import gui.JDialog.JDialogBancoInserir;
+import gui.jdialog.JDialogBancoAlterar;
+import gui.jdialog.JDialogBancoInserir;
 import jiconfont.icons.font_awesome.FontAwesome;
 import modelos.entidades.Banco;
 import util.TelaUtils;

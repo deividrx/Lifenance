@@ -6,64 +6,55 @@
 package gui.panels;
 
 import controle.BancoControle;
-import controle.CartaoControle;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
+
 import gui.jdialog.JDialogBancoAlterar;
-import gui.jdialog.JDialogCartao;
-import java.text.SimpleDateFormat;
+import gui.jdialog.JDialogBancoInserir;
 import javax.swing.table.DefaultTableColumnModel;
 import javax.swing.table.TableColumnModel;
 import jiconfont.icons.font_awesome.FontAwesome;
 import modelos.entidades.Banco;
-import modelos.entidades.Cartao;
 import util.TelaUtils;
 
 /**
  *
  * @author galdi
  */
-public class JPanelCartao extends javax.swing.JPanel {
+public class JPanelDespesa extends javax.swing.JPanel {
     
-    private CartaoControle cartaoControle;
+    private BancoControle objBancoControle;
     private DefaultTableModel model;
     private JFrame parent;
     
-    public JPanelCartao(JFrame parent) throws Exception {
-        cartaoControle = new CartaoControle();
+    public JPanelDespesa(JFrame parent) throws Exception {
+        objBancoControle = new BancoControle();
         this.parent = parent;
         initComponents();
         model = (DefaultTableModel) jTable.getModel();
         TableColumnModel tcm = (DefaultTableColumnModel) jTable.getColumnModel();
-        tcm.removeColumn(tcm.getColumn(8));
+        tcm.removeColumn(tcm.getColumn(0));
+        tcm.removeColumn(tcm.getColumn(5));
         mostrarListagem();
     }
 
     private void mostrarListagem() {
         try {
-            ArrayList<Cartao> cartoes = cartaoControle.listagem();
+            ArrayList<Banco> arrayDosBancos = objBancoControle.listagem();
             model = (DefaultTableModel) jTable.getModel();
             model.setNumRows(0);
             
-            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-            
-            for (int i = 0; i < cartoes.size(); i++) {
-                String[] saida = new String[9];
-                Cartao aux = cartoes.get(i);
-                saida[0] = Integer.toString(aux.getNumero());
-                saida[1] = aux.getBandeira();
-                saida[2] = sdf.format(aux.getValidade());
-                saida[3] = Float.toString(aux.getLimite());
-                saida[4] = Integer.toString(aux.getMulta());
-                saida[5] = sdf.format(aux.getVencimento());
-                saida[6] = aux.getNome();
-                saida[7] = sdf.format(aux.getFechamento());
-                saida[8] = Integer.toString(aux.getId());
+            for (int i = 0; i < arrayDosBancos.size(); i++) {
+                String[] saida = new String[2];
+                Banco aux = arrayDosBancos.get(i);
+                saida[0] = aux.getId() + "";
+                saida[1] = aux.getDescricao();
+                //incluir nova linha na tabela
                 model.addRow(saida);
-            } 
+            }
             
         } catch (Exception erro) {
             JOptionPane.showMessageDialog(this, erro.getMessage(), "Erro!", JOptionPane.ERROR_MESSAGE);
@@ -84,8 +75,11 @@ public class JPanelCartao extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable = new javax.swing.JTable();
         jButtonNovoBanco = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        jXDatePicker1 = new org.jdesktop.swingx.JXDatePicker();
+        jLabel2 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jLabel3 = new javax.swing.JLabel();
 
         jMenuItemEditar.setText("Editar Banco");
         jMenuItemEditar.addActionListener(new java.awt.event.ActionListener() {
@@ -109,7 +103,7 @@ public class JPanelCartao extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Montserrat", 0, 36)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("<html><center>Cartï¿½o<center></html>");
+        jLabel1.setText("<html><center>Despesa<center></html>");
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -118,11 +112,11 @@ public class JPanelCartao extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Nï¿½mero", "Bandeira", "Validade", "Limite", "Multa", "Fatura Vencimento", "Nome", "Fatura Fechamento", "id"
+                "ID", "Nome", "Valor", "Data", "Tipo", "Descrição", "ID Conta Corrente"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, true
+                false, false, false, false, false, true, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -141,32 +135,32 @@ public class JPanelCartao extends javax.swing.JPanel {
         jButtonNovoBanco.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         jButtonNovoBanco.setIcon(TelaUtils.getIconFontAwesome(FontAwesome.PLUS, 16)
         );
-        jButtonNovoBanco.setText("Cadastrar Cartï¿½o");
+        jButtonNovoBanco.setText("Criar despesa");
         jButtonNovoBanco.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonNovoBancoActionPerformed(evt);
             }
         });
 
-        jTextField1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField1.setText("Pesquisar Cartï¿½o");
-        jTextField1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTextField1MouseClicked(evt);
-            }
-        });
-
         jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton1.setIcon(TelaUtils.getIconFontAwesome(FontAwesome.SEARCH, 16));
         jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton1.setMaximumSize(new java.awt.Dimension(48, 26));
-        jButton1.setMinimumSize(new java.awt.Dimension(48, 26));
-        jButton1.setPreferredSize(new java.awt.Dimension(48, 26));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
+
+        jXDatePicker1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+
+        jLabel2.setFont(new java.awt.Font("Montserrat", 0, 16)); // NOI18N
+        jLabel2.setText("Mês:");
+
+        jComboBox1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel3.setFont(new java.awt.Font("Montserrat", 0, 16)); // NOI18N
+        jLabel3.setText("Conta:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -181,7 +175,13 @@ public class JPanelCartao extends javax.swing.JPanel {
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jXDatePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -197,20 +197,23 @@ public class JPanelCartao extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonNovoBanco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jXDatePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 595, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 599, Short.MAX_VALUE)
                 .addGap(20, 20, 20))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonNovoBancoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNovoBancoActionPerformed
         try {
-            JDialogCartao addCard = new JDialogCartao(parent, true);
-            addCard.setVisible(true);
+            JDialogBancoInserir addBanco = new JDialogBancoInserir(parent, true);
+            addBanco.setVisible(true);
             mostrarListagem();
         } catch (Exception erro) {
             JOptionPane.showMessageDialog(this, erro.getMessage(), "Erro!", JOptionPane.ERROR_MESSAGE);
@@ -219,7 +222,7 @@ public class JPanelCartao extends javax.swing.JPanel {
 
     private void jMenuItemExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemExcluirActionPerformed
           try {
-            cartaoControle.apagarPorId(Integer.parseInt(model.getValueAt(jTable.getSelectedRow(), 8).toString()));
+            objBancoControle.apagarPorID(Integer.parseInt(model.getValueAt(jTable.getSelectedRow(), 0).toString()));
             mostrarListagem();
         } catch (Exception erro) {
             JOptionPane.showMessageDialog(this, erro.getMessage(), "Erro!", JOptionPane.ERROR_MESSAGE);
@@ -245,30 +248,29 @@ public class JPanelCartao extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
-            int id = Integer.parseInt(jTextField1.getText());
-            BancoControle aux = new BancoControle();
-            Banco auxBanco = aux.consultarPorID(id);
+            //int id = Integer.parseInt(jTextField1.getText());
+            //BancoControle aux = new BancoControle();
+            //Banco auxBanco = aux.consultarPorID(id);
             
-            if (auxBanco == null) {
-                throw new Exception("Banco nï¿½o existe!");
-            }
+            //if (auxBanco == null) {
+            //    throw new Exception("Banco nï¿½o existe!");
+            //}
             
-            JOptionPane.showMessageDialog(this, "ID: " + auxBanco.getId() + " = " + auxBanco.getDescricao(), "Banco Encontrado!", JOptionPane.INFORMATION_MESSAGE);
+            //JOptionPane.showMessageDialog(this, "ID: " + auxBanco.getId() + " = " + auxBanco.getDescricao(), "Banco Encontrado!", JOptionPane.INFORMATION_MESSAGE);
         } catch (Exception erro) {
             JOptionPane.showMessageDialog(this, erro.getMessage(), "Erro!", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jTextField1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField1MouseClicked
-        jTextField1.setText("");
-    }//GEN-LAST:event_jTextField1MouseClicked
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonNovoBanco;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JEditorPane jEditorPane1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JMenuItem jMenuItemEditar;
     private javax.swing.JMenuItem jMenuItemExcluir;
     private javax.swing.JPopupMenu jPopupMenu2;
@@ -276,6 +278,6 @@ public class JPanelCartao extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTable jTable;
-    private javax.swing.JTextField jTextField1;
+    private org.jdesktop.swingx.JXDatePicker jXDatePicker1;
     // End of variables declaration//GEN-END:variables
 }

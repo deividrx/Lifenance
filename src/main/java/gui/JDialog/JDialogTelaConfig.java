@@ -1,4 +1,4 @@
-package gui.JDialog;
+package gui.jdialog;
 
 import gui.TelaPrincipal;
 import persistencia.Config;

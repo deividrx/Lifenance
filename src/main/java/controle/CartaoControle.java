@@ -16,7 +16,10 @@ public class CartaoControle implements ICartaoDAO {
 
     @Override
     public void incluir(Cartao objeto) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (cartaoDAO.consultarPorID(objeto.getId()) == null)
+            cartaoDAO.incluir(objeto);
+        else
+            throw new Exception("Está conta já está cadastrada!");
     }
 
     @Override
@@ -31,7 +34,7 @@ public class CartaoControle implements ICartaoDAO {
 
     @Override
     public ArrayList<Cartao> listagem() throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return cartaoDAO.listagem();
     }
 
     @Override

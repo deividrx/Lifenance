@@ -1,6 +1,6 @@
 package gui;
 
-import gui.JDialog.JDialogTelaConfig;
+import gui.jdialog.JDialogTelaConfig;
 import gui.panels.*;
 import java.awt.CardLayout;
 import javax.swing.*;
@@ -40,9 +40,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jButtonVisualizar = new javax.swing.JButton();
         jButtonReceita = new javax.swing.JButton();
         jButtonBanco = new javax.swing.JButton();
-        jButtonReceita1 = new javax.swing.JButton();
+        jButtonConta = new javax.swing.JButton();
         jPanelPrincipal = new javax.swing.JPanel();
         jPanelTelaPrincipal = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -87,6 +88,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jButtonDespesa.setFont(new java.awt.Font("Montserrat", 0, 16)); // NOI18N
         jButtonDespesa.setText("<html><center>Registrar<br> Despesa</br><cemter></html>");
         jButtonDespesa.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButtonDespesa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDespesaActionPerformed(evt);
+            }
+        });
 
         jButtonVisualizar.setFont(new java.awt.Font("Montserrat", 0, 16)); // NOI18N
         jButtonVisualizar.setText("Visualizar");
@@ -105,12 +111,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jButtonReceita1.setFont(new java.awt.Font("Montserrat", 0, 16)); // NOI18N
-        jButtonReceita1.setText("<html><center>Registrar<br>Conta</br><center></html>");
-        jButtonReceita1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButtonReceita1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonConta.setFont(new java.awt.Font("Montserrat", 0, 16)); // NOI18N
+        jButtonConta.setText("<html><center>Registrar<br>Conta</br><center></html>");
+        jButtonConta.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButtonConta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonReceita1ActionPerformed(evt);
+                jButtonContaActionPerformed(evt);
             }
         });
 
@@ -128,7 +134,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     .addComponent(jButtonVisualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButtonReceita)
                     .addComponent(jButtonBanco)
-                    .addComponent(jButtonReceita1))
+                    .addComponent(jButtonConta))
                 .addContainerGap(40, Short.MAX_VALUE))
         );
 
@@ -150,7 +156,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButtonBanco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButtonReceita1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonConta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButtonConfig, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20))
@@ -160,15 +166,23 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jPanelPrincipal.setLayout(new java.awt.CardLayout());
 
+        jLabel1.setText("Bem-vindo");
+
         javax.swing.GroupLayout jPanelTelaPrincipalLayout = new javax.swing.GroupLayout(jPanelTelaPrincipal);
         jPanelTelaPrincipal.setLayout(jPanelTelaPrincipalLayout);
         jPanelTelaPrincipalLayout.setHorizontalGroup(
             jPanelTelaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1041, Short.MAX_VALUE)
+            .addGroup(jPanelTelaPrincipalLayout.createSequentialGroup()
+                .addGap(381, 381, 381)
+                .addComponent(jLabel1)
+                .addContainerGap(601, Short.MAX_VALUE))
         );
         jPanelTelaPrincipalLayout.setVerticalGroup(
             jPanelTelaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 719, Short.MAX_VALUE)
+            .addGroup(jPanelTelaPrincipalLayout.createSequentialGroup()
+                .addGap(172, 172, 172)
+                .addComponent(jLabel1)
+                .addContainerGap(531, Short.MAX_VALUE))
         );
 
         jPanelPrincipal.add(jPanelTelaPrincipal, "telaPrincipal");
@@ -246,7 +260,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButtonCartaoActionPerformed
 
-    private void jButtonReceita1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReceita1ActionPerformed
+    private void jButtonContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonContaActionPerformed
         try {
             JPanelConta conta = new JPanelConta(this);
             jPanelPrincipal.add(conta, "telaConta");
@@ -254,16 +268,27 @@ public class TelaPrincipal extends javax.swing.JFrame {
         } catch (Exception erro) {
             JOptionPane.showMessageDialog(this, erro.getMessage(), "Erro!", JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_jButtonReceita1ActionPerformed
+    }//GEN-LAST:event_jButtonContaActionPerformed
+
+    private void jButtonDespesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDespesaActionPerformed
+         try {
+            JPanelDespesa despesa = new JPanelDespesa(this);
+            jPanelPrincipal.add(despesa, "telaDespesa");
+            panelPrincipal.show(jPanelPrincipal, "telaDespesa");
+        } catch (Exception erro) {
+            JOptionPane.showMessageDialog(this, erro.getMessage(), "Erro!", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jButtonDespesaActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonBanco;
     private javax.swing.JButton jButtonCartao;
     private javax.swing.JButton jButtonConfig;
+    private javax.swing.JButton jButtonConta;
     private javax.swing.JButton jButtonDespesa;
     private javax.swing.JButton jButtonReceita;
-    private javax.swing.JButton jButtonReceita1;
     private javax.swing.JButton jButtonVisualizar;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelLogo;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
