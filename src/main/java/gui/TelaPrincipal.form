@@ -82,7 +82,6 @@
                       <Component id="jButtonConfig" linkSize="2" alignment="0" max="32767" attributes="0"/>
                       <Component id="jButtonCartao" linkSize="2" alignment="0" max="32767" attributes="0"/>
                       <Component id="jButtonDespesa" linkSize="2" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jButtonVisualizar" linkSize="2" alignment="0" max="32767" attributes="0"/>
                       <Component id="jButtonReceita" linkSize="2" alignment="0" max="32767" attributes="0"/>
                       <Component id="jButtonBanco" linkSize="2" alignment="0" max="32767" attributes="0"/>
                       <Component id="jButtonConta" alignment="0" max="32767" attributes="0"/>
@@ -98,8 +97,6 @@
                   <Component id="jLabelLogo" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jButtonCartao" linkSize="4" min="-2" pref="38" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="jButtonVisualizar" linkSize="4" min="-2" pref="38" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jButtonDespesa" linkSize="4" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -169,15 +166,6 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonDespesaActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButtonVisualizar">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Montserrat" size="16" style="0"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Visualizar"/>
-            <Property name="horizontalTextPosition" type="int" value="0"/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JButton" name="jButtonReceita">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -186,6 +174,9 @@
             <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;center&gt;Registrar&lt;br&gt;Receita&lt;/br&gt;&lt;center&gt;&lt;/html&gt;"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonReceitaActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButtonBanco">
           <Properties>
@@ -227,19 +218,19 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="381" max="-2" attributes="0"/>
-                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="601" max="32767" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace pref="380" max="32767" attributes="0"/>
+                      <Component id="jLabel1" min="-2" pref="280" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="380" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="172" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="531" max="32767" attributes="0"/>
+                      <EmptySpace pref="566" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -247,7 +238,11 @@
           <SubComponents>
             <Component class="javax.swing.JLabel" name="jLabel1">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Bem-vindo"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Montserrat" size="36" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;center&gt;Bem-Vindo  ao&lt;br&gt; Lifenance&lt;/br&gt;&lt;cemter&gt;&lt;/html&gt;"/>
+                <Property name="horizontalTextPosition" type="int" value="0"/>
               </Properties>
             </Component>
           </SubComponents>

@@ -6,6 +6,9 @@
 package controle;
 
 import java.util.ArrayList;
+import java.util.Date;
+import modelos.entidades.Conta;
+import modelos.entidades.Despesa;
 import modelos.entidades.Receita;
 import modelos.interfaces.IReceitaDAO;
 import persistencia.ReceitaDAO;
@@ -33,17 +36,18 @@ public class ReceitaControle implements IReceitaDAO {
 
     @Override
     public void alterar(Receita objeto) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (consultarPorID(objeto.getId()) == null) throw new Exception("Alterar o Id da Receita não é permitido!");
+        receita.alterar(objeto);
     }
 
     @Override
     public void apagarPorID(int id) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        receita.apagarPorID(id);
     }
 
     @Override
     public Receita consultarPorID(int id) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    return receita.consultarPorID(id);
     }
 
     @Override
@@ -51,4 +55,16 @@ public class ReceitaControle implements IReceitaDAO {
        return receita.listagem();
     }
     
+    public ArrayList<Receita> listagem(Date data, Conta conta) throws Exception {
+        ArrayList<Receita> receitas = listagem();
+        ArrayList<Receita> achados = new ArrayList<>();
+        for (int i = 0; i < receitas.size(); i++) {
+            Receita aux = receitas.get(i);
+            if (aux.getiDContaCorrente() == conta.getId() && aux.getDataDaReceita() == data) {
+                achados.add(aux);
+            }
+            
+        }
+        return achados;
+    }
 }

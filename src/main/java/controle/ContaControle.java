@@ -32,7 +32,8 @@ public class ContaControle implements IContaDAO {
 
     @Override
     public void alterar(Conta objeto) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (consultarPorID(objeto.getId()) == null) throw new Exception("Alterar o Id da Conta não é permitido!");
+        contaDAO.alterar(objeto);
     }
 
     @Override

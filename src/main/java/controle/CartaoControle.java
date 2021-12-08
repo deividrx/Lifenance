@@ -1,7 +1,10 @@
 package controle;
 
 import java.util.ArrayList;
+import java.util.Date;
 import modelos.entidades.Cartao;
+import modelos.entidades.Conta;
+import modelos.entidades.Despesa;
 import modelos.interfaces.ICartaoDAO;
 import persistencia.CartaoDAO;
 
@@ -24,11 +27,16 @@ public class CartaoControle implements ICartaoDAO {
 
     @Override
     public void alterar(Cartao objeto) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (consultarPorID(objeto.getId()) == null) throw new Exception("Alterar o Id do Cartao não é permitido!");
+        cartaoDAO.alterar(objeto);
     }
 
     @Override
     public Cartao consultarPorID(int id) throws Exception {
+        return cartaoDAO.consultarPorID(id);
+    }
+    
+    public Cartao consultarPorNumero(Long num) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -39,9 +47,7 @@ public class CartaoControle implements ICartaoDAO {
 
     @Override
     public void apagarPorId(int id) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        cartaoDAO.apagarPorId(id);
     }
-    
-    
     
 }

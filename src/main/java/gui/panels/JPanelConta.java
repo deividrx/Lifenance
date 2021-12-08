@@ -231,6 +231,7 @@ public class JPanelConta extends javax.swing.JPanel {
     private void jMenuItemEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEditarActionPerformed
         try {
             JDialogConta alterarConta = new JDialogConta(parent, true);
+            alterarConta.setAlterar(true, Integer.parseInt(model.getValueAt(jTable.getSelectedRow(), 6).toString()));
             alterarConta.setVisible(true);
             mostrarListagem();
         } catch (Exception erro) {

@@ -5,7 +5,7 @@ import java.util.Date;
 
 public class Cartao {
     //Atributos
-    private int numero = 0;
+    private long numero = 0;
     private Date validade;
     private String bandeira = "";
     private int multa = 0;
@@ -22,8 +22,16 @@ public class Cartao {
 
     }
 
+    public SimpleDateFormat getFormat() {
+        return format;
+    }
+
+    public void setFormat(SimpleDateFormat format) {
+        this.format = format;
+    }
+
     public Cartao(String[] dados)  throws Exception {
-        this.numero = Integer.parseInt(dados[0]);
+        this.numero = Long.parseLong(dados[0]);
         this.validade = format.parse(dados[1]);
         this.bandeira = dados[2];
         this.multa = Integer.parseInt(dados[3]) ;
@@ -35,7 +43,7 @@ public class Cartao {
         this.id = Integer.parseInt(dados[9]);
     }
 
-    public Cartao(int numero, Date validade, String bandeira, int multa, float limite, Date vencimento,
+    public Cartao(Long numero, Date validade, String bandeira, int multa, float limite, Date vencimento,
                   Date fechamento, String nome, int cvv, int id) {
         this.numero = numero;
         this.validade = validade;
@@ -47,14 +55,13 @@ public class Cartao {
         this.nome = nome;
         this.cvv = cvv;
         this.id = id;
-
     }
 
-    public int getNumero() {
+    public long getNumero() {
         return numero;
     }
 
-    public void setNumero(int numero) {
+    public void setNumero(Long numero) {
         this.numero = numero;
     }
 

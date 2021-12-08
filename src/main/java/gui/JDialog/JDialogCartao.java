@@ -6,18 +6,39 @@
 package gui.jdialog;
 
 import controle.CartaoControle;
+import controle.ContaControle;
 import javax.swing.JOptionPane;
+import javax.swing.text.MaskFormatter;
 import modelos.entidades.Cartao;
+import modelos.entidades.Conta;
 
 /**
  *
  * @author galdi
  */
 public class JDialogCartao extends javax.swing.JDialog {
-
-    public JDialogCartao(java.awt.Frame parent, boolean modal) {
+    
+    private boolean alterar;
+    private int idAlterar;
+    private MaskFormatter cardMask = new MaskFormatter("################");
+    private MaskFormatter numberMask = new MaskFormatter("***");
+    private MaskFormatter limiteMask = new MaskFormatter("******");
+    
+    public JDialogCartao(java.awt.Frame parent, boolean modal) throws Exception {
         super(parent, modal);
         initComponents();
+        cardMask.setValidCharacters("0123456789");
+        numberMask.setValidCharacters("0123456789");
+        ContaControle contaControl = new ContaControle();
+         for (Conta conta : contaControl.listagem()) {
+            String text = "Número: " + conta.getNumero() + " e Agencia: " + conta.getAgencia();
+            jComboBoxConta.addItem(text);
+        }
+    }
+    
+    public void alterar(int id) {
+        idAlterar = id;
+        alterar = true;
     }
 
     /**
@@ -28,9 +49,9 @@ public class JDialogCartao extends javax.swing.JDialog {
     private void initComponents() {
 
         jLabel4 = new javax.swing.JLabel();
-        jTextFieldAvisoLimite = new javax.swing.JTextField();
+        jTextFieldAvisoLimite = new javax.swing.JFormattedTextField(numberMask);
         jLabel5 = new javax.swing.JLabel();
-        jTextFieldNumCard = new javax.swing.JTextField();
+        jTextFieldNumCard = new javax.swing.JFormattedTextField(cardMask);
         jLabel6 = new javax.swing.JLabel();
         jXDatePickerValidade = new org.jdesktop.swingx.JXDatePicker();
         jLabel7 = new javax.swing.JLabel();
@@ -38,9 +59,9 @@ public class JDialogCartao extends javax.swing.JDialog {
         jLabel8 = new javax.swing.JLabel();
         jXDatePickerFaturaFechamento = new org.jdesktop.swingx.JXDatePicker();
         jLabel9 = new javax.swing.JLabel();
-        jTextFieldLimite = new javax.swing.JTextField();
+        jTextFieldLimite = new javax.swing.JFormattedTextField(limiteMask);
         jLabel10 = new javax.swing.JLabel();
-        jTextFieldCVV = new javax.swing.JTextField();
+        jTextFieldCVV = new javax.swing.JFormattedTextField(numberMask);
         jComboBoxTipo = new javax.swing.JComboBox<>();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
@@ -108,7 +129,6 @@ public class JDialogCartao extends javax.swing.JDialog {
         jTextFieldBandeira.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         jComboBoxConta.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jComboBoxConta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel14.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
         jLabel14.setText("Conta:");
@@ -256,18 +276,32 @@ public class JDialogCartao extends javax.swing.JDialog {
         try {
             CartaoControle card = new CartaoControle();
             Cartao aux = new Cartao();
-            aux.setBandeira(jTextFieldBandeira.getText());
-            aux.setCvv(Integer.parseInt(jTextFieldCVV.getText()));
-            aux.setFechamento(jXDatePickerFaturaFechamento.getDate());
-            aux.setLimite(Float.parseFloat(jTextFieldLimite.getText()));
-            aux.setMulta(Integer.parseInt(jTextFieldLimite.getText()));
-            aux.setNome(jTextFieldNome.getText());
-            aux.setNumero(Integer.parseInt(jTextFieldNumCard.getText()));
-            aux.setValidade(jXDatePickerValidade.getDate());
-            aux.setVencimento(jXDatePickerFaturaVencimento.getDate());
-            aux.setId(card.hashCode());
             
-            card.incluir(aux);
+            if (alterar) {
+                aux.setBandeira(jTextFieldBandeira.getText());
+                aux.setCvv(Integer.parseInt(jTextFieldCVV.getText()));
+                aux.setFechamento(jXDatePickerFaturaFechamento.getDate());
+                aux.setLimite(Float.parseFloat(jTextFieldLimite.getText()));
+                aux.setMulta(Integer.parseInt(jTextFieldLimite.getText()));
+                aux.setNome(jTextFieldNome.getText());
+                aux.setNumero(Long.parseLong(jTextFieldNumCard.getText()));
+                aux.setValidade(jXDatePickerValidade.getDate());
+                aux.setVencimento(jXDatePickerFaturaVencimento.getDate());
+                aux.setId(idAlterar);
+                card.alterar(aux);
+            } else {
+                aux.setBandeira(jTextFieldBandeira.getText());
+                aux.setCvv(Integer.parseInt(jTextFieldCVV.getText()));
+                aux.setFechamento(jXDatePickerFaturaFechamento.getDate());
+                aux.setLimite(Float.parseFloat(jTextFieldLimite.getText()));
+                aux.setMulta(Integer.parseInt(jTextFieldLimite.getText()));
+                aux.setNome(jTextFieldNome.getText());
+                aux.setNumero(Long.parseLong(jTextFieldNumCard.getText()));
+                aux.setValidade(jXDatePickerValidade.getDate());
+                aux.setVencimento(jXDatePickerFaturaVencimento.getDate());
+                aux.setId(card.hashCode());
+                card.incluir(aux);
+            }
             this.dispose();
             
         } catch (Exception erro) {
