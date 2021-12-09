@@ -18,5 +18,4 @@ dependencies {
     implementation 'com.github.jiconfont:jiconfont-font_awesome:4.7.0.1'
     implementation 'com.formdev:flatlaf-swingx:1.6.4'
     implementation 'org.swinglabs.swingx:swingx-all:1.6.5-1'
-    implementation 'org.openjfx:javafx:17-ea+8'
 }

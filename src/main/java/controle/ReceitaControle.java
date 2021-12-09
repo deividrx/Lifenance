@@ -8,8 +8,8 @@ package controle;
 import java.util.ArrayList;
 import java.util.Date;
 import modelos.entidades.Conta;
-import modelos.entidades.Despesa;
 import modelos.entidades.Receita;
+import modelos.entidades.enums.TipoReceita;
 import modelos.interfaces.IReceitaDAO;
 import persistencia.ReceitaDAO;
 
@@ -47,7 +47,7 @@ public class ReceitaControle implements IReceitaDAO {
 
     @Override
     public Receita consultarPorID(int id) throws Exception {
-    return receita.consultarPorID(id);
+        return receita.consultarPorID(id);
     }
 
     @Override
@@ -56,12 +56,19 @@ public class ReceitaControle implements IReceitaDAO {
     }
     
     public ArrayList<Receita> listagem(Date data, Conta conta) throws Exception {
+        if(data == null) throw new Exception("Data inválida!");
+        if(conta == null) throw new Exception("Conta inválida!");
         ArrayList<Receita> receitas = listagem();
         ArrayList<Receita> achados = new ArrayList<>();
         for (int i = 0; i < receitas.size(); i++) {
             Receita aux = receitas.get(i);
-            if (aux.getiDContaCorrente() == conta.getId() && aux.getDataDaReceita() == data) {
+            if (aux.getTipo() == TipoReceita.FIXA)
                 achados.add(aux);
+            else {
+                if (aux.getiDContaCorrente() == conta.getId() && aux.getDataDaReceita().getMonth() == data.getMonth() 
+                        && aux.getDataDaReceita().getYear() == data.getYear()) {
+                    achados.add(aux);
+                }
             }
             
         }

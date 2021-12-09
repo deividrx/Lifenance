@@ -5,7 +5,6 @@
  */
 package gui.panels;
 
-import controle.BancoControle;
 import controle.ContaControle;
 import controle.DespesaControle;
 import java.util.ArrayList;
@@ -15,7 +14,7 @@ import javax.swing.table.DefaultTableModel;
 
 
 import gui.jdialog.JDialogBancoAlterar;
-import gui.jdialog.JDialogBancoInserir;
+import gui.jdialog.JDialogDespesa;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.table.DefaultTableColumnModel;
@@ -23,6 +22,7 @@ import javax.swing.table.TableColumnModel;
 import jiconfont.icons.font_awesome.FontAwesome;
 import modelos.entidades.Conta;
 import modelos.entidades.Despesa;
+import modelos.entidades.enums.TipoDespesa;
 import util.TelaUtils;
 
 /**
@@ -56,18 +56,24 @@ public class JPanelDespesa extends javax.swing.JPanel {
 
     private void mostrarListagem(Date data, Conta conta) {
         try {
-            ArrayList<Despesa> arrayDosBancos = despesaControl.listagem(data, conta);
+            ArrayList<Despesa> arrayDasDespesas = despesaControl.listagem(data, conta);
             model = (DefaultTableModel) jTable.getModel();
             model.setNumRows(0);
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+            SimpleDateFormat sdfFixa = new SimpleDateFormat("dd");
             
-            for (int i = 0; i < arrayDosBancos.size(); i++) {
-                String[] saida = new String[2];
-                Despesa aux = arrayDosBancos.get(i);
+            for (int i = 0; i < arrayDasDespesas.size(); i++) {
+                String[] saida = new String[7];
+                Despesa aux = arrayDasDespesas.get(i);
                 saida[0] = aux.getId() + "";
                 saida[1] = aux.getNome();
                 saida[2] = Float.toString(aux.getValor());
-                saida[3] = sdf.format(aux.getDataDaReceita());
+                
+                if (aux.getTipo() == TipoDespesa.FIXA)
+                    saida[3] = sdfFixa.format(aux.getDataDaReceita());
+                else
+                    saida[3] = sdf.format(aux.getDataDaReceita());
+                
                 saida[4] = aux.getTipo().toString().toLowerCase();
                 saida[5] = aux.getDescricao();
                 saida[6] = Integer.toString(aux.getIDContaCorrente());
@@ -92,14 +98,14 @@ public class JPanelDespesa extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable = new javax.swing.JTable();
-        jButtonNovoBanco = new javax.swing.JButton();
+        jButtonNovaDespesa = new javax.swing.JButton();
         jButtonPesquisar = new javax.swing.JButton();
         jXDatePicker1 = new org.jdesktop.swingx.JXDatePicker();
         jLabel2 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
 
-        jMenuItemEditar.setText("Editar Banco");
+        jMenuItemEditar.setText("Editar Despesa");
         jMenuItemEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItemEditarActionPerformed(evt);
@@ -107,7 +113,7 @@ public class JPanelDespesa extends javax.swing.JPanel {
         });
         jPopupMenu2.add(jMenuItemEditar);
 
-        jMenuItemExcluir.setText("Excluir Banco");
+        jMenuItemExcluir.setText("Excluir Despesa");
         jMenuItemExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItemExcluirActionPerformed(evt);
@@ -150,13 +156,13 @@ public class JPanelDespesa extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(jTable);
 
-        jButtonNovoBanco.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        jButtonNovoBanco.setIcon(TelaUtils.getIconFontAwesome(FontAwesome.PLUS, 16)
+        jButtonNovaDespesa.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        jButtonNovaDespesa.setIcon(TelaUtils.getIconFontAwesome(FontAwesome.PLUS, 16)
         );
-        jButtonNovoBanco.setText("Criar despesa");
-        jButtonNovoBanco.addActionListener(new java.awt.event.ActionListener() {
+        jButtonNovaDespesa.setText("Criar despesa");
+        jButtonNovaDespesa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonNovoBancoActionPerformed(evt);
+                jButtonNovaDespesaActionPerformed(evt);
             }
         });
 
@@ -202,7 +208,7 @@ public class JPanelDespesa extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonNovoBanco))
+                        .addComponent(jButtonNovaDespesa))
                     .addComponent(jScrollPane1))
                 .addGap(20, 20, 20))
         );
@@ -221,7 +227,7 @@ public class JPanelDespesa extends javax.swing.JPanel {
                             .addComponent(jXDatePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2)))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButtonNovoBanco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonNovaDespesa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel3)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -230,20 +236,20 @@ public class JPanelDespesa extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonNovoBancoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNovoBancoActionPerformed
+    private void jButtonNovaDespesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNovaDespesaActionPerformed
         try {
-            JDialogBancoInserir addBanco = new JDialogBancoInserir(parent, true);
-            addBanco.setVisible(true);
-            //mostrarListagem();
+            JDialogDespesa addDespesa = new JDialogDespesa(parent, true);
+            addDespesa.setVisible(true);
+            mostrarListagem(dataSelecionada, contaSelecionada);
         } catch (Exception erro) {
             JOptionPane.showMessageDialog(this, erro.getMessage(), "Erro!", JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_jButtonNovoBancoActionPerformed
+    }//GEN-LAST:event_jButtonNovaDespesaActionPerformed
 
     private void jMenuItemExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemExcluirActionPerformed
           try {
-            //objBancoControle.apagarPorID(Integer.parseInt(model.getValueAt(jTable.getSelectedRow(), 0).toString()));
-            //mostrarListagem();
+            despesaControl.apagarPorID(Integer.parseInt(model.getValueAt(jTable.getSelectedRow(), 0).toString()));
+            mostrarListagem(dataSelecionada, contaSelecionada);
         } catch (Exception erro) {
             JOptionPane.showMessageDialog(this, erro.getMessage(), "Erro!", JOptionPane.ERROR_MESSAGE);
         }
@@ -279,7 +285,7 @@ public class JPanelDespesa extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonNovoBanco;
+    private javax.swing.JButton jButtonNovaDespesa;
     private javax.swing.JButton jButtonPesquisar;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JEditorPane jEditorPane1;

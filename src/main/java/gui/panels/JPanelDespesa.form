@@ -10,7 +10,7 @@
       <SubComponents>
         <MenuItem class="javax.swing.JMenuItem" name="jMenuItemEditar">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Editar Banco"/>
+            <Property name="text" type="java.lang.String" value="Editar Despesa"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemEditarActionPerformed"/>
@@ -18,7 +18,7 @@
         </MenuItem>
         <MenuItem class="javax.swing.JMenuItem" name="jMenuItemExcluir">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Excluir Banco"/>
+            <Property name="text" type="java.lang.String" value="Excluir Despesa"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemExcluirActionPerformed"/>
@@ -78,7 +78,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jButtonPesquisar" min="-2" pref="48" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="jButtonNovoBanco" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButtonNovaDespesa" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Component id="jScrollPane1" max="32767" attributes="0"/>
               </Group>
@@ -103,7 +103,7 @@
                       </Group>
                   </Group>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jButtonNovoBanco" alignment="3" max="32767" attributes="0"/>
+                      <Component id="jButtonNovaDespesa" alignment="3" max="32767" attributes="0"/>
                       <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -202,7 +202,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="jButtonNovoBanco">
+    <Component class="javax.swing.JButton" name="jButtonNovaDespesa">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="13" style="0"/>
@@ -213,7 +213,7 @@
         <Property name="text" type="java.lang.String" value="Criar despesa"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonNovoBancoActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonNovaDespesaActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButtonPesquisar">

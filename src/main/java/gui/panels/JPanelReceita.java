@@ -5,6 +5,7 @@
  */
 package gui.panels;
 
+import controle.ContaControle;
 import controle.ReceitaControle;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -12,8 +13,17 @@ import javax.swing.table.DefaultTableModel;
 
 import gui.jdialog.JDialogBancoAlterar;
 import gui.jdialog.JDialogBancoInserir;
+import gui.jdialog.JDialogReceita;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import javax.swing.table.DefaultTableColumnModel;
+import javax.swing.table.TableColumnModel;
 import jiconfont.icons.font_awesome.FontAwesome;
-import modelos.entidades.Banco;
+import modelos.entidades.Conta;
+import modelos.entidades.Receita;
+import modelos.entidades.enums.TipoDespesa;
+import modelos.entidades.enums.TipoReceita;
 import util.TelaUtils;
 
 /**
@@ -26,32 +36,54 @@ public class JPanelReceita extends javax.swing.JPanel {
     private DefaultTableModel model;
     private JFrame parent;
     
+    private Conta contaSelecionada;
+    private Date dataSelecionada;
+    
     public JPanelReceita(JFrame parent) throws Exception {
         receitaControl = new ReceitaControle();
         this.parent = parent;
         initComponents();
         model = (DefaultTableModel) jTable.getModel();
-        mostrarListagem();
+        TableColumnModel tcm = (DefaultTableColumnModel) jTable.getColumnModel();
+        tcm.removeColumn(tcm.getColumn(0));
+        tcm.removeColumn(tcm.getColumn(5));
+        ContaControle contaControl = new ContaControle();
+        for (Conta conta : contaControl.listagem()) {
+            String text = "Número: " + conta.getNumero() + " e Agencia: " + conta.getAgencia();
+            jComboBox1.addItem(text);
+        }
+        jXDatePicker1.setFormats("MM/yyyy");
     }
 
-    private void mostrarListagem() {
-        //try {
-            //ArrayList<Banco> arrayDosBancos = objBancoControle.listagem();
+    private void mostrarListagem(Date data, Conta conta) {
+        try {
+            ArrayList<Receita> arrayDasReceitas = receitaControl.listagem();
             model = (DefaultTableModel) jTable.getModel();
             model.setNumRows(0);
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+            SimpleDateFormat sdfFixa = new SimpleDateFormat("dd");
             
-            //for (int i = 0; i < arrayDosBancos.size(); i++) {
-            //    String[] saida = new String[2];
-            //    Banco aux = arrayDosBancos.get(i);
-            //    saida[0] = aux.getId() + "";
-            //    saida[1] = aux.getDescricao();
-            //    //incluir nova linha na tabela
-            //    model.addRow(saida);
-            //}
+             for (int i = 0; i < arrayDasReceitas.size(); i++) {
+                String[] saida = new String[7];
+                Receita aux = arrayDasReceitas.get(i);
+                saida[0] = aux.getId() + "";
+                saida[1] = aux.getNome();
+                saida[2] = Float.toString(aux.getValor());
+                
+                if (aux.getTipo() == TipoReceita.FIXA)
+                    saida[3] = sdfFixa.format(aux.getDataDaReceita());
+                else
+                    saida[3] = sdf.format(aux.getDataDaReceita());
+                
+                saida[4] = aux.getTipo().toString().toLowerCase();
+                saida[5] = aux.getDescricao();
+                saida[6] = Integer.toString(aux.getiDContaCorrente());
+                model.addRow(saida);
+            }
             
-        //} catch (Exception erro) {
-        //    JOptionPane.showMessageDialog(this, erro.getMessage(), "Erro!", JOptionPane.ERROR_MESSAGE);
-       // }
+        } catch (Exception erro) {
+            JOptionPane.showMessageDialog(this, erro.getMessage(), "Erro!", JOptionPane.ERROR_MESSAGE);
+        }
     }
     
     @SuppressWarnings("unchecked")
@@ -67,7 +99,7 @@ public class JPanelReceita extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable = new javax.swing.JTable();
-        jButtonNovoBanco = new javax.swing.JButton();
+        jButtonNovaReceita = new javax.swing.JButton();
         jButtonPesquisar = new javax.swing.JButton();
         jXDatePicker1 = new org.jdesktop.swingx.JXDatePicker();
         jComboBox1 = new javax.swing.JComboBox<>();
@@ -105,11 +137,11 @@ public class JPanelReceita extends javax.swing.JPanel {
 
             },
             new String [] {
-                "ID", "Nome do Banco"
+                "ID", "Nome", "Valor", "Data", "Tipo", "Descrição", "ID Conta Corrente"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false
+                false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -125,13 +157,13 @@ public class JPanelReceita extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(jTable);
 
-        jButtonNovoBanco.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        jButtonNovoBanco.setIcon(TelaUtils.getIconFontAwesome(FontAwesome.PLUS, 16)
+        jButtonNovaReceita.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        jButtonNovaReceita.setIcon(TelaUtils.getIconFontAwesome(FontAwesome.PLUS, 16)
         );
-        jButtonNovoBanco.setText("Criar Receita");
-        jButtonNovoBanco.addActionListener(new java.awt.event.ActionListener() {
+        jButtonNovaReceita.setText("Criar Receita");
+        jButtonNovaReceita.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonNovoBancoActionPerformed(evt);
+                jButtonNovaReceitaActionPerformed(evt);
             }
         });
 
@@ -177,7 +209,7 @@ public class JPanelReceita extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonNovoBanco))
+                        .addComponent(jButtonNovaReceita))
                     .addComponent(jScrollPane1))
                 .addGap(20, 20, 20))
         );
@@ -190,7 +222,7 @@ public class JPanelReceita extends javax.swing.JPanel {
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButtonNovoBanco, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
+                    .addComponent(jButtonNovaReceita, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -208,20 +240,20 @@ public class JPanelReceita extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonNovoBancoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNovoBancoActionPerformed
+    private void jButtonNovaReceitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNovaReceitaActionPerformed
         try {
-            JDialogBancoInserir addBanco = new JDialogBancoInserir(parent, true);
-            addBanco.setVisible(true);
-            mostrarListagem();
+            JDialogReceita addDespesa = new JDialogReceita(parent, true);
+            addDespesa.setVisible(true);
+            mostrarListagem(dataSelecionada, contaSelecionada);
         } catch (Exception erro) {
             JOptionPane.showMessageDialog(this, erro.getMessage(), "Erro!", JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_jButtonNovoBancoActionPerformed
+    }//GEN-LAST:event_jButtonNovaReceitaActionPerformed
 
     private void jMenuItemExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemExcluirActionPerformed
           try {
-            //objBancoControle.apagarPorID(Integer.parseInt(model.getValueAt(jTable.getSelectedRow(), 0).toString()));
-            mostrarListagem();
+            receitaControl.apagarPorID(Integer.parseInt(model.getValueAt(jTable.getSelectedRow(), 0).toString()));
+            mostrarListagem(dataSelecionada, contaSelecionada);
         } catch (Exception erro) {
             JOptionPane.showMessageDialog(this, erro.getMessage(), "Erro!", JOptionPane.ERROR_MESSAGE);
         }
@@ -236,9 +268,7 @@ public class JPanelReceita extends javax.swing.JPanel {
 
     private void jMenuItemEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEditarActionPerformed
         try {
-            JDialogBancoAlterar addBanco = new JDialogBancoAlterar(parent, true, jTable.getValueAt(jTable.getSelectedRow(), 0).toString());
-            addBanco.setVisible(true);
-            mostrarListagem();
+            //mostrarListagem();
         } catch (Exception erro) {
             JOptionPane.showMessageDialog(this, erro.getMessage(), "Erro!", JOptionPane.ERROR_MESSAGE);
         }
@@ -246,10 +276,10 @@ public class JPanelReceita extends javax.swing.JPanel {
 
     private void jButtonPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisarActionPerformed
         try {
-            //ContaControle conta = new ContaControle();
-           // dataSelecionada = jXDatePicker1.getDate();
-            //contaSelecionada = conta.listagem().get(jComboBox1.getSelectedIndex());
-            //mostrarListagem(dataSelecionada, contaSelecionada);
+            ContaControle conta = new ContaControle();
+            dataSelecionada = jXDatePicker1.getDate();
+            contaSelecionada = conta.listagem().get(jComboBox1.getSelectedIndex());
+            mostrarListagem(dataSelecionada, contaSelecionada);
         } catch (Exception erro) {
             JOptionPane.showMessageDialog(this, erro.getMessage(), "Erro!", JOptionPane.ERROR_MESSAGE);
         }
@@ -257,7 +287,7 @@ public class JPanelReceita extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonNovoBanco;
+    private javax.swing.JButton jButtonNovaReceita;
     private javax.swing.JButton jButtonPesquisar;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JEditorPane jEditorPane1;

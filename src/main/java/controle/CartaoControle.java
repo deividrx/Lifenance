@@ -1,10 +1,7 @@
 package controle;
 
 import java.util.ArrayList;
-import java.util.Date;
 import modelos.entidades.Cartao;
-import modelos.entidades.Conta;
-import modelos.entidades.Despesa;
 import modelos.interfaces.ICartaoDAO;
 import persistencia.CartaoDAO;
 
@@ -37,7 +34,11 @@ public class CartaoControle implements ICartaoDAO {
     }
     
     public Cartao consultarPorNumero(Long num) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        for (Cartao card : listagem()) {
+            if (card.getNumero() == num)
+                return card;
+        }
+        return null;
     }
 
     @Override

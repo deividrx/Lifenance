@@ -89,7 +89,7 @@ public class ReceitaDAO implements IReceitaDAO {
                 aux.setDescricao(vetorString[2]);
                 aux.setValor(Float.parseFloat(vetorString[3]));
                 aux.setDataDaReceita(format.parse(vetorString[4]));
-                aux.setTipo(TipoReceita.parse(vetorString[5]));
+                aux.setTipo(TipoReceita.valueOf(vetorString[5]));
                 aux.setiDContaCorrente(Integer.parseInt(vetorString[6]));
                 arrayDasReceitas.add(aux);
             }

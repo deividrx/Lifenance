@@ -18,8 +18,8 @@ public class Application {
                 config.createDefaultConfigFile();
             }
             
-            UIManager.setLookAndFeel(TelaUtils.getLookAndFeel(config.getProperties().getProperty("LookAndFeel")));
             System.setProperty("sun.java2d.uiScale", Objects.requireNonNull(TelaUtils.getUiSizeNumber(config.getProperties().getProperty("UiSize"))));
+            UIManager.setLookAndFeel(TelaUtils.getLookAndFeel(config.getProperties().getProperty("LookAndFeel")));
             
         } catch (Exception erro) {
             JOptionPane.showMessageDialog(null, erro.getMessage(), "Erro!", JOptionPane.ERROR_MESSAGE);

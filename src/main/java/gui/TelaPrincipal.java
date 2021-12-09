@@ -3,6 +3,8 @@ package gui;
 import gui.jdialog.JDialogTelaConfig;
 import gui.panels.*;
 import java.awt.CardLayout;
+import java.io.File;
+import java.io.IOException;
 import javax.swing.*;
 import jiconfont.icons.font_awesome.FontAwesome;
 import util.TelaUtils;
@@ -40,9 +42,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jButtonReceita = new javax.swing.JButton();
         jButtonBanco = new javax.swing.JButton();
         jButtonConta = new javax.swing.JButton();
+        jButtonConta1 = new javax.swing.JButton();
         jPanelPrincipal = new javax.swing.JPanel();
         jPanelTelaPrincipal = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jXImageView2 = new org.jdesktop.swingx.JXImageView();
         jSeparator1 = new javax.swing.JSeparator();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -120,6 +124,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jButtonConta1.setFont(new java.awt.Font("Montserrat", 0, 16)); // NOI18N
+        jButtonConta1.setText("Visualizar");
+        jButtonConta1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButtonConta1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonConta1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelMenuPrincipalLayout = new javax.swing.GroupLayout(jPanelMenuPrincipal);
         jPanelMenuPrincipal.setLayout(jPanelMenuPrincipalLayout);
         jPanelMenuPrincipalLayout.setHorizontalGroup(
@@ -133,7 +146,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     .addComponent(jButtonDespesa)
                     .addComponent(jButtonReceita)
                     .addComponent(jButtonBanco)
-                    .addComponent(jButtonConta))
+                    .addComponent(jButtonConta)
+                    .addComponent(jButtonConta1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(40, Short.MAX_VALUE))
         );
 
@@ -154,6 +168,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addComponent(jButtonBanco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButtonConta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButtonConta1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButtonConfig, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20))
@@ -161,28 +177,38 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jPanelMenuPrincipalLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButtonBanco, jButtonCartao, jButtonConfig, jButtonDespesa, jButtonReceita});
 
+        jPanelMenuPrincipalLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButtonConta, jButtonConta1});
+
         jPanelPrincipal.setLayout(new java.awt.CardLayout());
 
-        jLabel1.setFont(new java.awt.Font("Montserrat", 0, 36)); // NOI18N
-        jLabel1.setText("<html><center>Bem-Vindo  ao<br> Lifenance</br><cemter></html>");
-        jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jPanelTelaPrincipal.setLayout(new javax.swing.OverlayLayout(jPanelTelaPrincipal));
 
-        javax.swing.GroupLayout jPanelTelaPrincipalLayout = new javax.swing.GroupLayout(jPanelTelaPrincipal);
-        jPanelTelaPrincipal.setLayout(jPanelTelaPrincipalLayout);
-        jPanelTelaPrincipalLayout.setHorizontalGroup(
-            jPanelTelaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelTelaPrincipalLayout.createSequentialGroup()
-                .addContainerGap(380, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(380, 380, 380))
+        jLabel1.setFont(new java.awt.Font("Montserrat", 0, 36)); // NOI18N
+        jLabel1.setText("Bem-Vindo ao Lifenance");
+        jLabel1.setAlignmentX(0.5F);
+        jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jPanelTelaPrincipal.add(jLabel1);
+
+        jXImageView2.setAlpha(0.5F);
+        jXImageView2.setEditable(false);
+        try {
+            jXImageView2.setImageURL(new java.net.URL("https://images.unsplash.com/photo-1561414927-6d86591d0c4f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1073&q=80"));
+        } catch (java.io.IOException e1) {
+            e1.printStackTrace();
+        }
+
+        javax.swing.GroupLayout jXImageView2Layout = new javax.swing.GroupLayout(jXImageView2);
+        jXImageView2.setLayout(jXImageView2Layout);
+        jXImageView2Layout.setHorizontalGroup(
+            jXImageView2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1040, Short.MAX_VALUE)
         );
-        jPanelTelaPrincipalLayout.setVerticalGroup(
-            jPanelTelaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelTelaPrincipalLayout.createSequentialGroup()
-                .addGap(65, 65, 65)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(566, Short.MAX_VALUE))
+        jXImageView2Layout.setVerticalGroup(
+            jXImageView2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 719, Short.MAX_VALUE)
         );
+
+        jPanelTelaPrincipal.add(jXImageView2);
 
         jPanelPrincipal.add(jPanelTelaPrincipal, "telaPrincipal");
 
@@ -190,7 +216,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jMenu1.setText("Arquivo");
 
-        jMenu3.setText("jMenu3");
+        jMenu3.setText("Exportar gastos");
         jMenu1.add(jMenu3);
 
         jMenuBar1.add(jMenu1);
@@ -289,11 +315,22 @@ public class TelaPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButtonReceitaActionPerformed
 
+    private void jButtonConta1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConta1ActionPerformed
+        try {
+            JPanelVisualizar view = new JPanelVisualizar(this);
+            jPanelPrincipal.add(view, "telaV");
+            panelPrincipal.show(jPanelPrincipal, "telaV");
+        } catch (Exception erro) {
+            JOptionPane.showMessageDialog(this, erro.getMessage(), "Erro!", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jButtonConta1ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonBanco;
     private javax.swing.JButton jButtonCartao;
     private javax.swing.JButton jButtonConfig;
     private javax.swing.JButton jButtonConta;
+    private javax.swing.JButton jButtonConta1;
     private javax.swing.JButton jButtonDespesa;
     private javax.swing.JButton jButtonReceita;
     private javax.swing.JLabel jLabel1;
@@ -306,5 +343,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelPrincipal;
     private javax.swing.JPanel jPanelTelaPrincipal;
     private javax.swing.JSeparator jSeparator1;
+    private org.jdesktop.swingx.JXImageView jXImageView2;
     // End of variables declaration//GEN-END:variables
 }

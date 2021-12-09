@@ -43,7 +43,7 @@ public class CartaoDAO implements ICartaoDAO {
             String linha;
             while ((linha = br.readLine()) != null) {
                 String[] vetorString = linha.split(";");
-                aux.setId(Integer.parseInt(vetorString[0]));
+                aux.setId(Integer.parseInt(vetorString[8]));
                 if(aux.getId() == id) return aux;
             }
             return null;

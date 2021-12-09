@@ -5,6 +5,7 @@
  */
 package modelos.entidades;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import modelos.entidades.enums.TipoDespesa;
 
@@ -21,6 +22,7 @@ public class Despesa {
     private Date dataDaReceita;
     private TipoDespesa tipo;
     private int IDContaCorrente;
+    private SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyyy");
     
     public Despesa() {
         this.id = id;
@@ -90,7 +92,7 @@ public class Despesa {
 
     @Override
     public String toString() {
-        return id + ";" + nome + ";" + descricao + ";" + valor + ";" + dataDaReceita + ";" + tipo + ";" + IDContaCorrente;
+        return id + ";" + nome + ";" + descricao + ";" + valor + ";" + format.format(dataDaReceita) + ";" + tipo + ";" + IDContaCorrente;
     }
  
 }

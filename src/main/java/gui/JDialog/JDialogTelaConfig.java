@@ -12,8 +12,7 @@ public class JDialogTelaConfig extends javax.swing.JDialog {
     private Config config;
     private final TelaPrincipal tela;
     private String temaSelecionado = "FlatLaf Dark";
-    //private Properties config = Config.getProperties();
-    
+
     public JDialogTelaConfig(TelaPrincipal tela, boolean modal) throws Exception {
         super(tela, modal);
         this.tela = tela;
@@ -37,7 +36,7 @@ public class JDialogTelaConfig extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Configuraï¿½ï¿½es");
+        setTitle("Configurações");
         setResizable(false);
 
         jComboBoxTemas.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -79,7 +78,7 @@ public class JDialogTelaConfig extends javax.swing.JDialog {
         });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        jLabel1.setText("<html><b>Aviso: </b>ï¿½ necessï¿½rio reiniciar o programa para aplicar a mudanï¿½a<br> de tamanho de tela.<br></html>");
+        jLabel1.setText("<html><b>Aviso: </b>É necessário reiniciar o programa para aplicar a mudança<br> de tamanho de tela.<br></html>");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

@@ -89,7 +89,7 @@ public class JPanelCartao extends javax.swing.JPanel {
         jTextField = new JFormattedTextField(fieldMask);
         jButtonPesquisar = new javax.swing.JButton();
 
-        jMenuItemEditar.setText("Editar Cartï¿½o");
+        jMenuItemEditar.setText("Editar Cartão");
         jMenuItemEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItemEditarActionPerformed(evt);
@@ -97,7 +97,7 @@ public class JPanelCartao extends javax.swing.JPanel {
         });
         jPopupMenu2.add(jMenuItemEditar);
 
-        jMenuItemExcluir.setText("Excluir Cartï¿½o\n");
+        jMenuItemExcluir.setText("Excluir Cartão\n");
         jMenuItemExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItemExcluirActionPerformed(evt);
@@ -111,7 +111,7 @@ public class JPanelCartao extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Montserrat", 0, 36)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("<html><center>Cartï¿½o<center></html>");
+        jLabel1.setText("<html><center>Cartão<center></html>");
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -120,7 +120,7 @@ public class JPanelCartao extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Nï¿½mero", "Bandeira", "Validade", "Limite", "Multa", "Fatura Vencimento", "Nome", "Fatura Fechamento", "id"
+                "Número", "Bandeira", "Validade", "Limite", "Multa", "Fatura Vencimento", "Nome", "Fatura Fechamento", "id"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -143,7 +143,7 @@ public class JPanelCartao extends javax.swing.JPanel {
         jButtonNovoCard.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         jButtonNovoCard.setIcon(TelaUtils.getIconFontAwesome(FontAwesome.PLUS, 16)
         );
-        jButtonNovoCard.setText("Cadastrar Cartï¿½o");
+        jButtonNovoCard.setText("Cadastrar Cartão");
         jButtonNovoCard.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonNovoCardActionPerformed(evt);
@@ -237,7 +237,7 @@ public class JPanelCartao extends javax.swing.JPanel {
     private void jMenuItemEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEditarActionPerformed
         try {
             JDialogCartao alterar = new JDialogCartao(parent, true);
-            alterar.alterar(Integer.parseInt(jTable.getValueAt(jTable.getSelectedRow(), 0).toString()));
+            alterar.alterar(Integer.parseInt(model.getValueAt(jTable.getSelectedRow(), 8).toString()));
             alterar.setVisible(true);
             mostrarListagem();
         } catch (Exception erro) {
@@ -254,13 +254,11 @@ public class JPanelCartao extends javax.swing.JPanel {
             Cartao auxCard = aux.consultarPorNumero(num);
             
             if (auxCard == null) {
-                throw new Exception("Cartï¿½o nï¿½o existe!");
+                throw new Exception("Cartão não existe!");
             }
             
-            
-            
             for (int i = 0; i < jTable.getRowCount(); i++) {
-                if (Integer.parseInt(jTable.getValueAt(i, 8).toString()) == auxCard.getId()) 
+                if (Integer.parseInt(model.getValueAt(i, 8).toString()) == auxCard.getId()) 
                     sl.setSelectionInterval(i, i);
             }
         } catch (Exception erro) {

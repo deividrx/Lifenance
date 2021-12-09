@@ -116,7 +116,7 @@ public class JPanelConta extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Conta", "Agï¿½ncia", "Tipo", "Limite", "saldo", "Banco", "id"
+                "Conta", "Agência", "Tipo", "Limite", "saldo", "Banco", "id"
             }
         ) {
             boolean[] canEdit = new boolean [] {

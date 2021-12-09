@@ -5,11 +5,14 @@ import modelos.entidades.Despesa;
 import modelos.interfaces.IDespesaDAO;
 
 import java.io.*;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import modelos.entidades.enums.TipoDespesa;
 
 public class DespesDAO  implements IDespesaDAO {
     //Atributos
     private final File arquivo;
+    private SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyyy");
 
 
     public DespesDAO(String arquivo) throws Exception {
@@ -73,6 +76,14 @@ public class DespesDAO  implements IDespesaDAO {
             String linha;
             while ((linha = br.readLine()) != null) {
                 Despesa aux = new Despesa();
+                String[] vetor = linha.split(";");
+                aux.setId(Integer.parseInt(vetor[0]));
+                aux.setNome(vetor[1]);
+                aux.setDescricao(vetor[2]);
+                aux.setValor(Float.parseFloat(vetor[3]));
+                aux.setDataDaReceita(format.parse(vetor[4]));
+                aux.setTipo(TipoDespesa.valueOf(vetor[5]));
+                aux.setIDContaCorrente(Integer.parseInt(vetor[6]));
                 arrayDespesas.add(aux);
             }
             return arrayDespesas;

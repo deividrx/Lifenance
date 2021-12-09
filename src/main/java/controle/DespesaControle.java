@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import modelos.entidades.Conta;
 import modelos.entidades.Despesa;
+import modelos.entidades.enums.TipoDespesa;
 import modelos.interfaces.IDespesaDAO;
 import persistencia.DespesDAO;
 
@@ -58,14 +59,21 @@ public class DespesaControle implements IDespesaDAO {
     }
     
     public ArrayList<Despesa> listagem(Date data, Conta conta) throws Exception {
+        if(data == null) throw new Exception("Data inválida!");
+        if(conta == null) throw new Exception("Conta inválida!");
         ArrayList<Despesa> despesas = listagem();
         ArrayList<Despesa> achados = new ArrayList<>();
         for (int i = 0; i < despesas.size(); i++) {
             Despesa aux = despesas.get(i);
-            if (aux.getIDContaCorrente() == conta.getId() && aux.getDataDaReceita() == data) {
-                achados.add(aux);
-            }
             
+            if (aux.getTipo() == TipoDespesa.FIXA)
+                achados.add(aux);
+            else {
+                if (aux.getIDContaCorrente() == conta.getId() && aux.getDataDaReceita().getMonth() == data.getMonth() 
+                        && aux.getDataDaReceita().getYear() == data.getYear()) {
+                    achados.add(aux);
+                }
+            }
         }
         return achados;
     }
