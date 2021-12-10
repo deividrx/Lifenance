@@ -66,13 +66,11 @@ public class DespesaControle implements IDespesaDAO {
         for (int i = 0; i < despesas.size(); i++) {
             Despesa aux = despesas.get(i);
             
-            if (aux.getTipo() == TipoDespesa.FIXA)
+            if (aux.getTipo() == TipoDespesa.FIXA && aux.getIDContaCorrente() == conta.getId())
                 achados.add(aux);
-            else {
-                if (aux.getIDContaCorrente() == conta.getId() && aux.getDataDaReceita().getMonth() == data.getMonth() 
+            else if (aux.getIDContaCorrente() == conta.getId() && aux.getDataDaReceita().getMonth() == data.getMonth() 
                         && aux.getDataDaReceita().getYear() == data.getYear()) {
                     achados.add(aux);
-                }
             }
         }
         return achados;

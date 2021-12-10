@@ -45,10 +45,19 @@ public class ContaControle implements IContaDAO {
     public Conta consultarPorID(int id) throws Exception {
         return contaDAO.consultarPorID(id);
     }
+    
+    public ArrayList<Conta> consultarPorNumero(int num) throws Exception {
+        ArrayList<Conta> achados = new ArrayList<>();
+        for (Conta conta : listagem()) {
+            if (conta.getNumero() == num) 
+                achados.add(conta);
+        }
+        return achados;
+    }
 
     @Override
     public ArrayList<Conta> listagem() throws Exception {
         return contaDAO.listagem();
-   }
-
+    }
+    
 }

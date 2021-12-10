@@ -6,6 +6,7 @@
 package gui.panels;
 
 import controle.BancoControle;
+import controle.CartaoControle;
 import controle.ContaControle;
 import java.util.ArrayList;
 import javax.swing.JFrame;
@@ -13,10 +14,12 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 import gui.jdialog.JDialogConta;
+import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableColumnModel;
 import javax.swing.table.TableColumnModel;
 import jiconfont.icons.font_awesome.FontAwesome;
 import modelos.entidades.Banco;
+import modelos.entidades.Cartao;
 import modelos.entidades.Conta;
 import util.TelaUtils;
 
@@ -241,15 +244,22 @@ public class JPanelConta extends javax.swing.JPanel {
 
     private void jButtonPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisarActionPerformed
         try {
-            int id = Integer.parseInt(jTextFieldPesquisa.getText());
-            BancoControle aux = new BancoControle();
-            Banco auxBanco = aux.consultarPorID(id);
+            ListSelectionModel sl = jTable.getSelectionModel();
+            int num = Integer.parseInt(jTextFieldPesquisa.getText());
+            ContaControle aux = new ContaControle();
+            ArrayList<Conta> contas = aux.consultarPorNumero(num);
             
-            if (auxBanco == null) {
-                throw new Exception("Banco nï¿½o existe!");
+            if (contas == null) {
+                throw new Exception("Conta não existe!");
             }
             
-            JOptionPane.showMessageDialog(this, "ID: " + auxBanco.getId() + " = " + auxBanco.getDescricao(), "Banco Encontrado!", JOptionPane.INFORMATION_MESSAGE);
+            for (Conta conta : contas) {
+               for (int i = 0; i < jTable.getRowCount(); i++) {
+                    if (Integer.parseInt(model.getValueAt(i, 6).toString()) == conta.getId()) 
+                        sl.setSelectionInterval(i, i);
+                } 
+            }
+            
         } catch (Exception erro) {
             JOptionPane.showMessageDialog(this, erro.getMessage(), "Erro!", JOptionPane.ERROR_MESSAGE);
         }

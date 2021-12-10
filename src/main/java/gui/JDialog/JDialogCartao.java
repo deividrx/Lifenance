@@ -50,7 +50,7 @@ public class JDialogCartao extends javax.swing.JDialog {
     private void initComponents() {
 
         jLabel4 = new javax.swing.JLabel();
-        jTextFieldAvisoLimite = new javax.swing.JFormattedTextField(numberMask);
+        jTextFieldMulta = new javax.swing.JFormattedTextField(numberMask);
         jLabel5 = new javax.swing.JLabel();
         jTextFieldNumCard = new javax.swing.JFormattedTextField(cardMask);
         jLabel6 = new javax.swing.JLabel();
@@ -81,7 +81,7 @@ public class JDialogCartao extends javax.swing.JDialog {
         jLabel4.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
         jLabel4.setText("Número do Cartão:");
 
-        jTextFieldAvisoLimite.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jTextFieldMulta.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         jLabel5.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
         jLabel5.setText("Nome do proprietário:");
@@ -114,7 +114,7 @@ public class JDialogCartao extends javax.swing.JDialog {
         jTextFieldCVV.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         jComboBoxTipo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jComboBoxTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Débito", "Crédito" }));
 
         jLabel11.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
         jLabel11.setText("Tipo:");
@@ -125,7 +125,7 @@ public class JDialogCartao extends javax.swing.JDialog {
         jTextFieldNome.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         jLabel13.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
-        jLabel13.setText("Aviso de limite: (%)");
+        jLabel13.setText("Multa: (%)");
 
         jTextFieldBandeira.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
@@ -197,7 +197,7 @@ public class JDialogCartao extends javax.swing.JDialog {
                                     .addComponent(jTextFieldNome))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextFieldAvisoLimite)
+                                    .addComponent(jTextFieldMulta)
                                     .addComponent(jTextFieldBandeira, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
                                     .addComponent(jLabel14)
                                     .addComponent(jComboBoxConta, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
@@ -243,7 +243,7 @@ public class JDialogCartao extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextFieldLimite, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldAvisoLimite, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldMulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
@@ -283,7 +283,7 @@ public class JDialogCartao extends javax.swing.JDialog {
                 aux.setCvv(Integer.parseInt(jTextFieldCVV.getText()));
                 aux.setFechamento(jXDatePickerFaturaFechamento.getDate());
                 aux.setLimite(Float.parseFloat(jTextFieldLimite.getText()));
-                aux.setMulta(Integer.parseInt(jTextFieldLimite.getText()));
+                aux.setMulta(Integer.parseInt(jTextFieldMulta.getText()));
                 aux.setNome(jTextFieldNome.getText());
                 aux.setNumero(Long.parseLong(jTextFieldNumCard.getText()));
                 aux.setValidade(jXDatePickerValidade.getDate());
@@ -295,7 +295,7 @@ public class JDialogCartao extends javax.swing.JDialog {
                 aux.setCvv(Integer.parseInt(jTextFieldCVV.getText()));
                 aux.setFechamento(jXDatePickerFaturaFechamento.getDate());
                 aux.setLimite(Float.parseFloat(jTextFieldLimite.getText()));
-                aux.setMulta(Integer.parseInt(jTextFieldLimite.getText()));
+                aux.setMulta(Integer.parseInt(jTextFieldMulta.getText()));
                 aux.setNome(jTextFieldNome.getText());
                 aux.setNumero(Long.parseLong(jTextFieldNumCard.getText()));
                 aux.setValidade(jXDatePickerValidade.getDate());
@@ -327,10 +327,10 @@ public class JDialogCartao extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField jTextFieldAvisoLimite;
     private javax.swing.JTextField jTextFieldBandeira;
     private javax.swing.JTextField jTextFieldCVV;
     private javax.swing.JTextField jTextFieldLimite;
+    private javax.swing.JTextField jTextFieldMulta;
     private javax.swing.JTextField jTextFieldNome;
     private javax.swing.JTextField jTextFieldNumCard;
     private org.jdesktop.swingx.JXDatePicker jXDatePickerFaturaFechamento;

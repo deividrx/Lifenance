@@ -1,10 +1,10 @@
 package gui;
 
+import gui.jdialog.JDialogExportar;
+import gui.jdialog.JDialogSobre;
 import gui.jdialog.JDialogTelaConfig;
 import gui.panels.*;
 import java.awt.CardLayout;
-import java.io.File;
-import java.io.IOException;
 import javax.swing.*;
 import jiconfont.icons.font_awesome.FontAwesome;
 import util.TelaUtils;
@@ -17,6 +17,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
     public TelaPrincipal() {
         initComponents();
         panelPrincipal = (CardLayout) jPanelPrincipal.getLayout();
+        jMenuExportar.setIcon(TelaUtils.getIconFontAwesome(FontAwesome.EXTERNAL_LINK_SQUARE, 16));
+        
     }
     
     public void setLookAndFeel(LookAndFeel tema) {
@@ -50,8 +52,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenu3 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
+        jMenuExportar = new javax.swing.JMenu();
+        jMenuSobre = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema Lifenance");
@@ -216,13 +218,23 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jMenu1.setText("Arquivo");
 
-        jMenu3.setText("Exportar gastos");
-        jMenu1.add(jMenu3);
+        jMenuExportar.setText("Exportar gastos");
+        jMenuExportar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenuExportarMouseClicked(evt);
+            }
+        });
+        jMenu1.add(jMenuExportar);
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Sobre");
-        jMenuBar1.add(jMenu2);
+        jMenuSobre.setText("Sobre");
+        jMenuSobre.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenuSobreMouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(jMenuSobre);
 
         setJMenuBar(jMenuBar1);
 
@@ -325,6 +337,24 @@ public class TelaPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButtonConta1ActionPerformed
 
+    private void jMenuExportarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuExportarMouseClicked
+        try {
+            JDialogExportar export = new JDialogExportar(this, true);
+            export.setVisible(true);
+        } catch (Exception erro) {
+            JOptionPane.showMessageDialog(this, erro.getMessage(), "Erro!", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jMenuExportarMouseClicked
+
+    private void jMenuSobreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuSobreMouseClicked
+        try {
+            JDialogSobre about = new JDialogSobre(this, true);
+            about.setVisible(true);
+        } catch (Exception erro) {
+            JOptionPane.showMessageDialog(this, erro.getMessage(), "Erro!", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jMenuSobreMouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonBanco;
     private javax.swing.JButton jButtonCartao;
@@ -336,9 +366,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelLogo;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenu jMenuExportar;
+    private javax.swing.JMenu jMenuSobre;
     private javax.swing.JPanel jPanelMenuPrincipal;
     private javax.swing.JPanel jPanelPrincipal;
     private javax.swing.JPanel jPanelTelaPrincipal;

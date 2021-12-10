@@ -59,7 +59,7 @@ public class JPanelCartao extends javax.swing.JPanel {
                 saida[1] = aux.getBandeira();
                 saida[2] = sdf.format(aux.getValidade());
                 saida[3] = Float.toString(aux.getLimite());
-                saida[4] = Integer.toString(aux.getMulta());
+                saida[4] = Integer.toString(aux.getMulta()) + "%";
                 saida[5] = sdf.format(aux.getVencimento());
                 saida[6] = aux.getNome();
                 saida[7] = sdf.format(aux.getFechamento());
@@ -247,7 +247,6 @@ public class JPanelCartao extends javax.swing.JPanel {
 
     private void jButtonPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisarActionPerformed
         try {
-            System.out.println(jTextField.getText());
             ListSelectionModel sl = jTable.getSelectionModel();
             Long num = Long.parseLong(jTextField.getText());
             CartaoControle aux = new CartaoControle();

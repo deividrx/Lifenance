@@ -63,13 +63,11 @@ public class ReceitaControle implements IReceitaDAO {
         for (int i = 0; i < receitas.size(); i++) {
             Receita aux = receitas.get(i);
             
-            if (aux.getTipo() == TipoReceita.FIXA)
+            if (aux.getTipo() == TipoReceita.FIXA && aux.getiDContaCorrente() == conta.getId())
                 achados.add(aux);
-            else {
-                if (aux.getiDContaCorrente() == conta.getId() && aux.getDataDaReceita().getMonth() == data.getMonth() 
+            else if (aux.getiDContaCorrente() == conta.getId() && aux.getDataDaReceita().getMonth() == data.getMonth() 
                         && aux.getDataDaReceita().getYear() == data.getYear()) {
                     achados.add(aux);
-                }
             }
             
         }

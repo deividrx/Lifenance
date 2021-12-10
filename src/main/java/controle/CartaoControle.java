@@ -24,7 +24,6 @@ public class CartaoControle implements ICartaoDAO {
 
     @Override
     public void alterar(Cartao objeto) throws Exception {
-        if (consultarPorID(objeto.getId()) == null) throw new Exception("Alterar o Id do Cartao não é permitido!");
         cartaoDAO.alterar(objeto);
     }
 

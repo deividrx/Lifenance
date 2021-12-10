@@ -7,6 +7,7 @@ package modelos.entidades;
 
 import controle.DespesaControle;
 import controle.ReceitaControle;
+import java.util.Date;
 
 /**
  *
@@ -14,26 +15,28 @@ import controle.ReceitaControle;
  */
 public class Calcular {
     
-    public float getDespesasTotais() throws Exception {
+    public float getDespesasTotais(Conta conta, Date data) throws Exception {
         DespesaControle dc = new DespesaControle();
         float soma = 0;
-        for (Despesa despesa : dc.listagem()) {
+        for (Despesa despesa : dc.listagem(data,conta)) {
             soma += despesa.getValor();
         }
         return soma;
     }
     
-    public float getReceitasTotais() throws Exception {
+    public float getReceitasTotais(Conta conta, Date data) throws Exception {
         ReceitaControle rc = new ReceitaControle();
         float soma = 0;
-        for (Receita receita : rc.listagem()) {
+        for (Receita receita : rc.listagem(data,conta)) {
             soma += receita.getValor();
         }
         return soma;
     }
     
-    public float calcularSaldoDisponivel(Conta conta) throws Exception {
-         return conta.getSaldo() + getReceitasTotais() - getDespesasTotais();
+    public float calcularSaldoDisponivel(Conta conta, Date data) throws Exception {
+         float saldo = conta.getSaldo() + getReceitasTotais(conta,data) - getDespesasTotais(conta,data);
+         conta.setSaldo(saldo);
+         return saldo;
     }
     
     //public boolean avisoDeLimite(Cartão card) {
