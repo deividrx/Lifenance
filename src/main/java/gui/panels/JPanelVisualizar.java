@@ -13,14 +13,11 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import jiconfont.icons.font_awesome.FontAwesome;
 import modelos.entidades.Conta;
 import modelos.entidades.Despesa;
 import modelos.entidades.Receita;
-import modelos.entidades.enums.TipoDespesa;
 import util.TelaUtils;
 
 /**
@@ -53,12 +50,12 @@ public class JPanelVisualizar extends javax.swing.JPanel {
                 
                 model = (DefaultTableModel) jTable.getModel();
                 model.setNumRows(arrayDasDespesas.size() + arrayDasReceitas.size());
+                String[] saida = new String[2];
                 
-                //for (int i = 0; i < arrayDasReceitas.size()) {
-                //    String[] saida = new String[2];
-                //    saida[0] = despesa.getNome();
+                for (int i = 0; i < arrayDasReceitas.size(); i++) {
+                    //saida[0] = despesa.getNome();
                     
-                //}
+                }
                 
             }
             

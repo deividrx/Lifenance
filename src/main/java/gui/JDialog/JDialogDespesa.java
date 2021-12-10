@@ -18,11 +18,14 @@ import modelos.entidades.enums.TipoDespesa;
  * @author galdi
  */
 public class JDialogDespesa extends javax.swing.JDialog {
-
+    
+    private boolean alterar;
+    private int idAlterar;
     private ContaControle contaControl;
     
     public JDialogDespesa(java.awt.Frame parent, boolean modal) throws Exception {
         super(parent, modal);
+        alterar = false;
         initComponents();
         contaControl = new ContaControle();
         for (Conta conta : contaControl.listagem()) {
@@ -187,7 +190,12 @@ public class JDialogDespesa extends javax.swing.JDialog {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+    
+     public void alterar(int id) {
+        idAlterar = id;
+        alterar = true;
+    }
+    
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
        this.dispose();
     }//GEN-LAST:event_jButtonCancelarActionPerformed
@@ -197,14 +205,26 @@ public class JDialogDespesa extends javax.swing.JDialog {
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
             DespesaControle despesaControle = new DespesaControle();
             Despesa despesa = new Despesa();
-            despesa.setDataDaReceita(jXDatePicker.getDate());
-            despesa.setDescricao(jTextAreaDescricao.getText());
-            despesa.setIDContaCorrente(contaControl.listagem().get(jComboBoxConta.getSelectedIndex()).getId());
-            despesa.setId(despesa.hashCode());
-            despesa.setNome(jTextFieldNome.getText());
-            despesa.setTipo(TipoDespesa.valueOf(jComboBoxTipo.getSelectedItem().toString().toUpperCase()));
-            despesa.setValor(Float.parseFloat(jTextFieldValor.getText()));
-            despesaControle.incluir(despesa);
+            
+            if (alterar) {
+                despesa.setDataDaReceita(jXDatePicker.getDate());
+                despesa.setDescricao(jTextAreaDescricao.getText());
+                despesa.setIDContaCorrente(contaControl.listagem().get(jComboBoxConta.getSelectedIndex()).getId());
+                despesa.setId(idAlterar);
+                despesa.setNome(jTextFieldNome.getText());
+                despesa.setTipo(TipoDespesa.valueOf(jComboBoxTipo.getSelectedItem().toString().toUpperCase()));
+                despesa.setValor(Float.parseFloat(jTextFieldValor.getText()));
+                despesaControle.alterar(despesa);
+            } else {
+                despesa.setDataDaReceita(jXDatePicker.getDate());
+                despesa.setDescricao(jTextAreaDescricao.getText());
+                despesa.setIDContaCorrente(contaControl.listagem().get(jComboBoxConta.getSelectedIndex()).getId());
+                despesa.setId(despesa.hashCode());
+                despesa.setNome(jTextFieldNome.getText());
+                despesa.setTipo(TipoDespesa.valueOf(jComboBoxTipo.getSelectedItem().toString().toUpperCase()));
+                despesa.setValor(Float.parseFloat(jTextFieldValor.getText()));
+                despesaControle.incluir(despesa);
+            }
             
             this.dispose();
             

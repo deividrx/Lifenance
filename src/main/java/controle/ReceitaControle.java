@@ -62,6 +62,7 @@ public class ReceitaControle implements IReceitaDAO {
         ArrayList<Receita> achados = new ArrayList<>();
         for (int i = 0; i < receitas.size(); i++) {
             Receita aux = receitas.get(i);
+            
             if (aux.getTipo() == TipoReceita.FIXA)
                 achados.add(aux);
             else {

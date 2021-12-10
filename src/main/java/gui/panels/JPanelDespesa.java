@@ -12,8 +12,6 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-
-import gui.jdialog.JDialogBancoAlterar;
 import gui.jdialog.JDialogDespesa;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -51,7 +49,7 @@ public class JPanelDespesa extends javax.swing.JPanel {
             String text = "Número: " + conta.getNumero() + " e Agencia: " + conta.getAgencia();
             jComboBox1.addItem(text);
         }
-        jXDatePicker1.setFormats("MM/yyyy");
+        jXDatePickerMes.setFormats("MM/yyyy");
     }
 
     private void mostrarListagem(Date data, Conta conta) {
@@ -100,7 +98,7 @@ public class JPanelDespesa extends javax.swing.JPanel {
         jTable = new javax.swing.JTable();
         jButtonNovaDespesa = new javax.swing.JButton();
         jButtonPesquisar = new javax.swing.JButton();
-        jXDatePicker1 = new org.jdesktop.swingx.JXDatePicker();
+        jXDatePickerMes = new org.jdesktop.swingx.JXDatePicker();
         jLabel2 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
@@ -175,7 +173,7 @@ public class JPanelDespesa extends javax.swing.JPanel {
             }
         });
 
-        jXDatePicker1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jXDatePickerMes.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Montserrat", 0, 16)); // NOI18N
         jLabel2.setText("Mês:");
@@ -204,7 +202,7 @@ public class JPanelDespesa extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jXDatePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jXDatePickerMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -224,7 +222,7 @@ public class JPanelDespesa extends javax.swing.JPanel {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jButtonPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jXDatePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jXDatePickerMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2)))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jButtonNovaDespesa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -264,9 +262,10 @@ public class JPanelDespesa extends javax.swing.JPanel {
 
     private void jMenuItemEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEditarActionPerformed
         try {
-            JDialogBancoAlterar addBanco = new JDialogBancoAlterar(parent, true, jTable.getValueAt(jTable.getSelectedRow(), 0).toString());
-            addBanco.setVisible(true);
-            //mostrarListagem();
+            JDialogDespesa addDespesa = new JDialogDespesa(parent, true);
+            addDespesa.alterar(Integer.parseInt(model.getValueAt(jTable.getSelectedRow(), 0).toString()));
+            addDespesa.setVisible(true);
+            mostrarListagem(dataSelecionada, contaSelecionada);
         } catch (Exception erro) {
             JOptionPane.showMessageDialog(this, erro.getMessage(), "Erro!", JOptionPane.ERROR_MESSAGE);
         }
@@ -275,7 +274,7 @@ public class JPanelDespesa extends javax.swing.JPanel {
     private void jButtonPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisarActionPerformed
         try {
             ContaControle conta = new ContaControle();
-            dataSelecionada = jXDatePicker1.getDate();
+            dataSelecionada = jXDatePickerMes.getDate();
             contaSelecionada = conta.listagem().get(jComboBox1.getSelectedIndex());
             mostrarListagem(dataSelecionada, contaSelecionada);
         } catch (Exception erro) {
@@ -299,6 +298,6 @@ public class JPanelDespesa extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTable jTable;
-    private org.jdesktop.swingx.JXDatePicker jXDatePicker1;
+    private org.jdesktop.swingx.JXDatePicker jXDatePickerMes;
     // End of variables declaration//GEN-END:variables
 }

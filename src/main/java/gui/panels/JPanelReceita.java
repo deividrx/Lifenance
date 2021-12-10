@@ -11,8 +11,6 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-import gui.jdialog.JDialogBancoAlterar;
-import gui.jdialog.JDialogBancoInserir;
 import gui.jdialog.JDialogReceita;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -22,7 +20,6 @@ import javax.swing.table.TableColumnModel;
 import jiconfont.icons.font_awesome.FontAwesome;
 import modelos.entidades.Conta;
 import modelos.entidades.Receita;
-import modelos.entidades.enums.TipoDespesa;
 import modelos.entidades.enums.TipoReceita;
 import util.TelaUtils;
 
@@ -52,12 +49,12 @@ public class JPanelReceita extends javax.swing.JPanel {
             String text = "Número: " + conta.getNumero() + " e Agencia: " + conta.getAgencia();
             jComboBox1.addItem(text);
         }
-        jXDatePicker1.setFormats("MM/yyyy");
+        jXDatePickerMes.setFormats("MM/yyyy");
     }
 
     private void mostrarListagem(Date data, Conta conta) {
         try {
-            ArrayList<Receita> arrayDasReceitas = receitaControl.listagem();
+            ArrayList<Receita> arrayDasReceitas = receitaControl.listagem(data, conta);
             model = (DefaultTableModel) jTable.getModel();
             model.setNumRows(0);
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -101,12 +98,12 @@ public class JPanelReceita extends javax.swing.JPanel {
         jTable = new javax.swing.JTable();
         jButtonNovaReceita = new javax.swing.JButton();
         jButtonPesquisar = new javax.swing.JButton();
-        jXDatePicker1 = new org.jdesktop.swingx.JXDatePicker();
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jXDatePickerMes = new org.jdesktop.swingx.JXDatePicker();
 
-        jMenuItemEditar.setText("Editar Banco");
+        jMenuItemEditar.setText("Editar Receita");
         jMenuItemEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItemEditarActionPerformed(evt);
@@ -114,7 +111,7 @@ public class JPanelReceita extends javax.swing.JPanel {
         });
         jPopupMenu2.add(jMenuItemEditar);
 
-        jMenuItemExcluir.setText("Excluir Banco");
+        jMenuItemExcluir.setText("Excluir Receita");
         jMenuItemExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItemExcluirActionPerformed(evt);
@@ -176,8 +173,6 @@ public class JPanelReceita extends javax.swing.JPanel {
             }
         });
 
-        jXDatePicker1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-
         jComboBox1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Montserrat", 0, 16)); // NOI18N
@@ -185,6 +180,8 @@ public class JPanelReceita extends javax.swing.JPanel {
 
         jLabel3.setFont(new java.awt.Font("Montserrat", 0, 16)); // NOI18N
         jLabel3.setText("Conta:");
+
+        jXDatePickerMes.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -202,11 +199,11 @@ public class JPanelReceita extends javax.swing.JPanel {
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jXDatePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jXDatePickerMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButtonPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButtonNovaReceita))
@@ -222,20 +219,20 @@ public class JPanelReceita extends javax.swing.JPanel {
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButtonNovaReceita, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
+                    .addComponent(jButtonNovaReceita, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(2, 2, 2))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jButtonPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jXDatePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel2)))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel3)))))
+                        .addGap(0, 7, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2)
+                            .addComponent(jXDatePickerMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 598, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 592, Short.MAX_VALUE)
                 .addGap(20, 20, 20))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -268,7 +265,10 @@ public class JPanelReceita extends javax.swing.JPanel {
 
     private void jMenuItemEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEditarActionPerformed
         try {
-            //mostrarListagem();
+            JDialogReceita addReceita = new JDialogReceita(parent, true);
+            addReceita.alterar(Integer.parseInt(model.getValueAt(jTable.getSelectedRow(), 0).toString()));
+            addReceita.setVisible(true);
+            mostrarListagem(dataSelecionada, contaSelecionada);
         } catch (Exception erro) {
             JOptionPane.showMessageDialog(this, erro.getMessage(), "Erro!", JOptionPane.ERROR_MESSAGE);
         }
@@ -277,7 +277,7 @@ public class JPanelReceita extends javax.swing.JPanel {
     private void jButtonPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisarActionPerformed
         try {
             ContaControle conta = new ContaControle();
-            dataSelecionada = jXDatePicker1.getDate();
+            dataSelecionada = jXDatePickerMes.getDate();
             contaSelecionada = conta.listagem().get(jComboBox1.getSelectedIndex());
             mostrarListagem(dataSelecionada, contaSelecionada);
         } catch (Exception erro) {
@@ -301,6 +301,6 @@ public class JPanelReceita extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTable jTable;
-    private org.jdesktop.swingx.JXDatePicker jXDatePicker1;
+    private org.jdesktop.swingx.JXDatePicker jXDatePickerMes;
     // End of variables declaration//GEN-END:variables
 }

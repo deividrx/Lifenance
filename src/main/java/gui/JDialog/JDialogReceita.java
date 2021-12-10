@@ -14,11 +14,14 @@ import modelos.entidades.Receita;
 import modelos.entidades.enums.TipoReceita;
 
 public class JDialogReceita extends javax.swing.JDialog {
-
+    
+    private boolean alterar;
+    private int idAlterar;
     private ContaControle contaControl;
     
     public JDialogReceita(java.awt.Frame parent, boolean modal) throws Exception {
         super(parent, modal);
+        alterar = false;
         initComponents();
         contaControl = new ContaControle();
         for (Conta conta : contaControl.listagem()) {
@@ -173,20 +176,36 @@ public class JDialogReceita extends javax.swing.JDialog {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    public void alterar(int id) {
+        idAlterar = id;
+        alterar = true;
+    }
+    
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
         try {
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
             ReceitaControle receitaControle = new ReceitaControle();
             Receita receita = new Receita();
-            receita.setDataDaReceita(jXDatePicker.getDate());
-            receita.setDescricao(jTextAreaDescricao.getText());
-            receita.setiDContaCorrente(contaControl.listagem().get(jComboBoxConta.getSelectedIndex()).getId());
-            receita.setId(receita.hashCode());
-            receita.setNome(jTextFieldNome.getText());
-            receita.setTipo(TipoReceita.valueOf(jComboBoxTipo.getSelectedItem().toString().toUpperCase()));
-            receita.setValor(Float.parseFloat(jTextFieldValor.getText()));
-            receitaControle.incluir(receita);
+            if (alterar) {
+                receita.setDataDaReceita(jXDatePicker.getDate());
+                receita.setDescricao(jTextAreaDescricao.getText());
+                receita.setiDContaCorrente(contaControl.listagem().get(jComboBoxConta.getSelectedIndex()).getId());
+                receita.setId(idAlterar);
+                receita.setNome(jTextFieldNome.getText());
+                receita.setTipo(TipoReceita.valueOf(jComboBoxTipo.getSelectedItem().toString().toUpperCase()));
+                receita.setValor(Float.parseFloat(jTextFieldValor.getText()));
+                receitaControle.alterar(receita);
+            } else {
+                receita.setDataDaReceita(jXDatePicker.getDate());
+                receita.setDescricao(jTextAreaDescricao.getText());
+                receita.setiDContaCorrente(contaControl.listagem().get(jComboBoxConta.getSelectedIndex()).getId());
+                receita.setId(receita.hashCode());
+                receita.setNome(jTextFieldNome.getText());
+                receita.setTipo(TipoReceita.valueOf(jComboBoxTipo.getSelectedItem().toString().toUpperCase()));
+                receita.setValor(Float.parseFloat(jTextFieldValor.getText()));
+                receitaControle.incluir(receita);
+            }
 
             this.dispose();
 
