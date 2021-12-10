@@ -158,6 +158,9 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="13" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;b&gt;Aviso: &lt;/b&gt;&#xc9; necess&#xe1;rio reiniciar o programa para aplicar a mudan&#xe7;a&lt;br&gt; de tamanho de tela.&lt;br&gt;&lt;/html&gt;"/>
       </Properties>
     </Component>

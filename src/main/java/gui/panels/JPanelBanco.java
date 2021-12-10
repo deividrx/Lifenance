@@ -10,6 +10,9 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+
+import gui.jdialog.JDialogBancoAlterar;
+import gui.jdialog.JDialogBancoInserir;
 import jiconfont.icons.font_awesome.FontAwesome;
 import modelos.entidades.Banco;
 import util.TelaUtils;
@@ -18,13 +21,13 @@ import util.TelaUtils;
  *
  * @author galdi
  */
-public class JPanelContaCorrente extends javax.swing.JPanel {
+public class JPanelBanco extends javax.swing.JPanel {
     
     private BancoControle objBancoControle;
     private DefaultTableModel model;
     private JFrame parent;
     
-    public JPanelContaCorrente(JFrame parent) throws Exception {
+    public JPanelBanco(JFrame parent) throws Exception {
         objBancoControle = new BancoControle();
         this.parent = parent;
         initComponents();
@@ -59,9 +62,10 @@ public class JPanelContaCorrente extends javax.swing.JPanel {
         jPopupMenu2 = new javax.swing.JPopupMenu();
         jMenuItemEditar = new javax.swing.JMenuItem();
         jMenuItemExcluir = new javax.swing.JMenuItem();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jEditorPane1 = new javax.swing.JEditorPane();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable = new javax.swing.JTable();
         jButtonNovoBanco = new javax.swing.JButton();
@@ -84,15 +88,14 @@ public class JPanelContaCorrente extends javax.swing.JPanel {
         });
         jPopupMenu2.add(jMenuItemExcluir);
 
+        jScrollPane2.setViewportView(jEditorPane1);
+
         setPreferredSize(new java.awt.Dimension(1041, 719));
 
         jLabel1.setFont(new java.awt.Font("Montserrat", 0, 36)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("<html><center>Conta Corrente<center></html>");
+        jLabel1.setText("<html><center>Banco<center></html>");
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-
-        jLabel2.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
-        jLabel2.setText("Selecione o Banco:");
 
         jTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -119,13 +122,11 @@ public class JPanelContaCorrente extends javax.swing.JPanel {
             }
         });
         jScrollPane1.setViewportView(jTable);
-        if (jTable.getColumnModel().getColumnCount() > 0) {
-            jTable.getColumnModel().getColumn(0).setResizable(false);
-            jTable.getColumnModel().getColumn(1).setResizable(false);
-        }
 
         jButtonNovoBanco.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        jButtonNovoBanco.setText("Cadastrar novo Banco");
+        jButtonNovoBanco.setIcon(TelaUtils.getIconFontAwesome(FontAwesome.PLUS, 16)
+        );
+        jButtonNovoBanco.setText("Cadastrar Banco");
         jButtonNovoBanco.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonNovoBancoActionPerformed(evt);
@@ -159,37 +160,32 @@ public class JPanelContaCorrente extends javax.swing.JPanel {
                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 345, Short.MAX_VALUE)
                 .addGap(348, 348, 348))
             .addGroup(layout.createSequentialGroup()
-                .addGap(16, 16, 16)
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addComponent(jLabel2)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 433, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButtonNovoBanco)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonNovoBanco))
+                    .addComponent(jScrollPane1))
+                .addGap(20, 20, 20))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(0, 0, 0)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTextField1)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButtonNovoBanco)
-                .addContainerGap(266, Short.MAX_VALUE))
+                    .addComponent(jButtonNovoBanco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 595, Short.MAX_VALUE)
+                .addGap(20, 20, 20))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -234,7 +230,12 @@ public class JPanelContaCorrente extends javax.swing.JPanel {
             int id = Integer.parseInt(jTextField1.getText());
             BancoControle aux = new BancoControle();
             Banco auxBanco = aux.consultarPorID(id);
-            JOptionPane.showMessageDialog(this, auxBanco.getDescricao(), "Banco", JOptionPane.INFORMATION_MESSAGE);
+            
+            if (auxBanco == null) {
+                throw new Exception("Banco n�o existe!");
+            }
+            
+            JOptionPane.showMessageDialog(this, "ID: " + auxBanco.getId() + " = " + auxBanco.getDescricao(), "Banco Encontrado!", JOptionPane.INFORMATION_MESSAGE);
         } catch (Exception erro) {
             JOptionPane.showMessageDialog(this, erro.getMessage(), "Erro!", JOptionPane.ERROR_MESSAGE);
         }
@@ -248,12 +249,13 @@ public class JPanelContaCorrente extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonNovoBanco;
+    private javax.swing.JEditorPane jEditorPane1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuItem jMenuItemEditar;
     private javax.swing.JMenuItem jMenuItemExcluir;
     private javax.swing.JPopupMenu jPopupMenu2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTable jTable;
     private javax.swing.JTextField jTextField1;

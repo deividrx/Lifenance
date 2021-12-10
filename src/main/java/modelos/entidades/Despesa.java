@@ -7,23 +7,24 @@ package modelos.entidades;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import modelos.entidades.enums.TipoReceita;
+import modelos.entidades.enums.TipoDespesa;
 
-public class Receita {
-
+/**
+ *
+ * @author galdi
+ */
+public class Despesa {
+    
     private int id = 0;
     private String nome = "";
     private String descricao = "";
     private float valor = 0;
     private Date dataDaReceita;
-    private TipoReceita tipo;
+    private TipoDespesa tipo;
     private int IDContaCorrente;
-    private SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-
-    public Receita() {
-    }
+    private SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyyy");
     
-    public Receita(int id, String nome, String descricao, float valor,Date dataDaReceita, TipoReceita tipo, int IDContaCorrente) {
+    public Despesa() {
         this.id = id;
         this.nome = nome;
         this.descricao = descricao;
@@ -32,7 +33,15 @@ public class Receita {
         this.tipo = tipo;
         this.IDContaCorrente = IDContaCorrente;
     }
-    
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getNome() {
         return nome;
     }
@@ -57,14 +66,6 @@ public class Receita {
         this.valor = valor;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public Date getDataDaReceita() {
         return dataDaReceita;
     }
@@ -73,24 +74,25 @@ public class Receita {
         this.dataDaReceita = dataDaReceita;
     }
 
-    public TipoReceita getTipo() {
+    public TipoDespesa getTipo() {
         return tipo;
     }
 
-    public void setTipo(TipoReceita tipo) {
+    public void setTipo(TipoDespesa tipo) {
         this.tipo = tipo;
     }
 
-    public int getiDContaCorrente() {
+    public int getIDContaCorrente() {
         return IDContaCorrente;
     }
 
-    public void setiDContaCorrente(int iDContaCorrente) {
-        this.IDContaCorrente = iDContaCorrente;
+    public void setIDContaCorrente(int IDContaCorrente) {
+        this.IDContaCorrente = IDContaCorrente;
     }
 
     @Override
     public String toString() {
-       return id + ";" + nome + ";" + descricao + ";" + valor + ";" + sdf.format(dataDaReceita) + ";" + tipo + ";" + IDContaCorrente;
+        return id + ";" + nome + ";" + descricao + ";" + valor + ";" + format.format(dataDaReceita) + ";" + tipo + ";" + IDContaCorrente;
     }
+ 
 }

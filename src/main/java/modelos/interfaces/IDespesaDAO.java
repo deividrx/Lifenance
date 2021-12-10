@@ -4,18 +4,20 @@
  * and open the template in the editor.
  */
 package modelos.interfaces;
-import modelos.entidades.Banco;
+
 import java.util.ArrayList;
+
+import modelos.entidades.Cartao;
+import modelos.entidades.Despesa;
+
 /**
  *
  * @author galdi
  */
-public interface IBancoDao {
-    
-    void incluir(Banco objeto) throws Exception;
-    void alterar(Banco objeto) throws Exception;
+public interface IDespesaDAO {
+    void incluir(Despesa objeto) throws Exception;
+    void alterar(Despesa objeto) throws Exception;
     void apagarPorID(int id) throws Exception;
-    Banco consultarPorID(int id) throws Exception;
-    ArrayList<Banco> listagem() throws Exception;
-    
+    Despesa consultarPorID(int id) throws Exception;
+    ArrayList<Despesa> listagem() throws Exception;
 }

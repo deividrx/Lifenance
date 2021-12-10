@@ -1,6 +1,5 @@
 package persistencia;
 
-import modelos.interfaces.IBancoDao;
 import modelos.entidades.Banco;
 import java.util.ArrayList;
 import java.io.BufferedReader;
@@ -8,18 +7,17 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
+import modelos.interfaces.IBancoDAO;
 
-public class BancoDao implements IBancoDao {
+public class BancoDAO implements IBancoDAO {
     //Atributo
     private final File arquivo;
     
     //Metodos
-    public BancoDao(String arquivo) throws Exception{
+    public BancoDAO(String arquivo) throws Exception{
         this.arquivo = new DataFiles(arquivo).getFile();
     }
-    
-    //Git Funciona! :) teste
-    
+
     @Override
     public void incluir(Banco objeto) throws Exception {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(arquivo, true))) {
@@ -32,11 +30,11 @@ public class BancoDao implements IBancoDao {
         ArrayList<Banco> arrayDosBancos = listagem(); 
         
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(arquivo))) {
-            for (int i = 0; i < arrayDosBancos.size(); i++) {
-                if (arrayDosBancos.get(i).getId() == objeto.getId()) {
+            for (Banco banco : arrayDosBancos) {
+                if (banco.getId() == objeto.getId()) {
                     bw.write(objeto.toString() + "\n");
                 } else {
-                    bw.write(arrayDosBancos.get(i).toString() + "\n");
+                    bw.write(banco.toString() + "\n");
                 }
             }       
         }

@@ -3,12 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package modelos.entidades;
+package modelos.entidades.enums;
 
-/**
- *
- * @author galdi
- */
-public enum EnumTipoReceitaDespesa {
-    FIXA, ESPORADICA; 
+public enum TipoReceita {
+    FIXA, ESPORADICA;
+    
 }
