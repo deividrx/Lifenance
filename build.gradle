@@ -1,5 +1,8 @@
 plugins {
     id 'java'
+    id 'war'
+
+    // old plugins
     id 'jacoco'
     id 'application'
     id "com.github.johnrengelman.shadow" version "7.1.0"
@@ -12,10 +15,21 @@ repositories {
 }
 
 dependencies {
+
+    // new dependencies for web
+    implementation 'org.postgresql:postgresql:42.3.5'
+    implementation 'org.apache.commons:commons-lang3:3.12.0'
+    providedCompile 'jakarta.platform:jakarta.jakartaee-web-api:9.1.0'
+
+    // old dependencies
     implementation 'com.formdev:flatlaf:1.6.4'
     implementation 'com.formdev:flatlaf-intellij-themes:1.6.4'
     implementation 'com.github.jiconfont:jiconfont-swing:1.0.1'
     implementation 'com.github.jiconfont:jiconfont-font_awesome:4.7.0.1'
     implementation 'com.formdev:flatlaf-swingx:1.6.4'
     implementation 'org.swinglabs.swingx:swingx-all:1.6.5-1'
+}
+
+war {
+    archiveName 'lifenance.war'
 }

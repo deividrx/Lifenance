@@ -1,7 +1,7 @@
 # Lifenance
 Um sistema simples para controle de gastos financeiros.
 
-![alt text](https://github.com/hypper10/Lifenance/blob/master/screen.png?raw=true)
+- New version using web technologies!
 
 # Dependências
-* Java 11 ou superior.
+* Java 17 ou superior.
