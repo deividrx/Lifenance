@@ -34,11 +34,11 @@ public class Controller extends HttpServlet {
             out.println("<title>Servlet Server</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Server at " + request.getParameter("name") + "</h1>");
+            out.println("<h1>UwU Servlet Server at " + request.getParameter("name") + "</h1>");
             out.println("</body>");
             out.println("</html>");
-            GenericDao<User> userDao = new GenericDao<>("users", User.class);
-            System.out.println(userDao.listing());
+            //GenericDao<User> userDao = new GenericDao<>("users", User.class);
+            //System.out.println(userDao.listing());
         }
     }
 

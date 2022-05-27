@@ -6,12 +6,18 @@ import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import util.TelaUtils;
 
+import java.awt.*;
+import java.net.URI;
+import java.net.URL;
 import java.util.Objects;
 
 public class Application {
     
     public static void main(String[] args) {
         try {
+
+            System.exit(0);
+
             Config config = new Config();
             
             if (config.getProperties().isEmpty()) {
@@ -26,7 +32,7 @@ public class Application {
         }
         
         // Create and display the form
-        java.awt.EventQueue.invokeLater(() -> {
+        EventQueue.invokeLater(() -> {
             new TelaPrincipal().setVisible(true);
         });
     }

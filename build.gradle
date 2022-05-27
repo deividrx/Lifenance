@@ -1,3 +1,5 @@
+import java.awt.Desktop
+
 buildscript {
     repositories {
         gradlePluginPortal()
@@ -48,6 +50,18 @@ cargo {
     remote {
         hostname = 'localhost'
         username = 'tomcat'
-        password = 'secret'
+        password = '123456'
+    }
+}
+
+cargoRedeployRemote {
+    doLast {
+        Desktop.getDesktop().browse(new URL("http://localhost:8888/lifenance").toURI())
+    }
+}
+
+cargoDeployRemote {
+    doLast {
+        Desktop.getDesktop().browse(new URL("http://localhost:8888/lifenance").toURI())
     }
 }
