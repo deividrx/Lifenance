@@ -1,14 +1,17 @@
-package Controller;
+package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+
+import dal.GenericDao;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import models.User;
 
-@WebServlet(name = "Controller", urlPatterns = {"/Controller"})
+@WebServlet(name = "controller", urlPatterns = {"/controller"})
 public class Controller extends HttpServlet {
 
     /**
@@ -31,9 +34,11 @@ public class Controller extends HttpServlet {
             out.println("<title>Servlet Server</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Server at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet Server at " + request.getParameter("name") + "</h1>");
             out.println("</body>");
             out.println("</html>");
+            GenericDao<User> userDao = new GenericDao<>("users", User.class);
+            System.out.println(userDao.listing());
         }
     }
 

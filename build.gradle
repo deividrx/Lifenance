@@ -1,26 +1,29 @@
+buildscript {
+    repositories {
+        gradlePluginPortal()
+    }
+
+    dependencies {
+        classpath 'com.bmuschko:gradle-cargo-plugin:2.9.0'
+    }
+}
+
 plugins {
     id 'java'
     id 'war'
-
-    // old plugins
-    id 'jacoco'
-    id 'application'
-    id "com.github.johnrengelman.shadow" version "7.1.0"
 }
 
-mainClassName = 'application.Application'
+apply plugin: 'com.bmuschko.cargo'
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-
     // new dependencies for web
     implementation 'org.postgresql:postgresql:42.3.5'
     implementation 'org.apache.commons:commons-lang3:3.12.0'
     providedCompile 'jakarta.platform:jakarta.jakartaee-web-api:9.1.0'
-
     // old dependencies
     implementation 'com.formdev:flatlaf:1.6.4'
     implementation 'com.formdev:flatlaf-intellij-themes:1.6.4'
@@ -32,4 +35,19 @@ dependencies {
 
 war {
     archiveName 'lifenance.war'
+}
+
+cargo {
+    containerId = 'tomcat10x'
+    port = 8888
+
+    deployable {
+        context = 'lifenance'
+    }
+
+    remote {
+        hostname = 'localhost'
+        username = 'tomcat'
+        password = 'secret'
+    }
 }
