@@ -3,8 +3,7 @@ trap exit 0
 
 if [[ -z $(command -v podman) ]] ; then
     echo 'Podman not installed!'
-    sudo apt-get -y update
-    sudo apt-get -y install podman
+    exit 1
 fi
 
 echo 'Pulling images...'
