@@ -24,7 +24,7 @@ repositories {
 dependencies {
     // new dependencies for web
     implementation 'org.postgresql:postgresql:42.3.5'
-    implementation 'org.apache.commons:commons-lang3:3.12.0'
+    providedRuntime 'org.apache.commons:commons-lang3:3.12.0'
     providedCompile 'jakarta.platform:jakarta.jakartaee-web-api:9.1.0'
     // old dependencies
     implementation 'com.formdev:flatlaf:1.6.4'

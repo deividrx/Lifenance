@@ -26,19 +26,10 @@ public class Controller extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet Server</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>UwU Servlet Server at " + request.getParameter("name") + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-            //GenericDao<User> userDao = new GenericDao<>("users", User.class);
-            //System.out.println(userDao.listing());
+        GenericDao<User> userDao = new GenericDao<>("users", User.class);
+        PrintWriter out = response.getWriter();
+        for (User aux : userDao.listing()) {
+            out.println(aux.toString());
         }
     }
 

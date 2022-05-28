@@ -5,13 +5,13 @@ import models.annotations.TableId;
 
 public class User {
 
-    @TableId("id_user")
+    @ColumnName("id_user")
     private long id;
     @ColumnName("cpf")
     private String cpf;
-    @ColumnName("name")
+    @ColumnName("user_name")
     private String name;
-    @ColumnName("password")
+    @ColumnName("user_password")
     private String password;
 
     public User(String args) throws NumberFormatException {
@@ -48,5 +48,15 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", cpf='" + cpf + '\'' +
+                ", name='" + name + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 }

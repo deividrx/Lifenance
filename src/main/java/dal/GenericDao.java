@@ -73,10 +73,11 @@ public class GenericDao<T> {
         }
     }
 
-    public Iterator<T> listing() {
+    public ArrayList<T> listing() {
         ArrayList<T> arrayObj = new ArrayList<>();
         try {
             String sql = "SELECT * FROM " + tableName + " ORDER BY id_" + tableName + " ASC";
+            System.out.println(sql);
             Statement s = connection.createStatement();
             ResultSet rs = s.executeQuery(sql);
             ResultSetMetaData rsmd = rs.getMetaData();
@@ -96,7 +97,7 @@ public class GenericDao<T> {
         } catch (InvocationTargetException | IllegalAccessException | InstantiationException e) {
             throw new RuntimeException(e);
         }
-        return arrayObj.iterator();
+        return arrayObj;
     }
 
     public void update(Object obj) {
