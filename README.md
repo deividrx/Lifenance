@@ -1,18 +1,23 @@
 # Lifenance
-Um sistema simples para controle de gastos financeiros.
 
-- New version using web technologies!
+Um sistema web simples para controle de gastos financeiros.
 
-## Configuring development environment
+## Capturas de Tela
 
-Make sure you have [`podman`](https://wiki.archlinux.org/title/Podman) installed.
+## Configurando o ambiente de desenvolvimento
+
+Certifique-se de ter o [`podman`](https://podman.io/getting-started/installation) instalado antes de rodar o script.
 
 ```bash
 git clone https://github.com/hypperd/Lifenance.git
 cd lifenance
 sudo ./config.sh
 ```
-> Caso vc tenha configurado o podman para rotar sem root, remova o sudo
+
+> ⚠️ Caso tenha configurado o podman para rotar sem root, remova o sudo
 
 ## Dependências
-* Java 11 ou superior.
+
+- Java 11
+- Podman
+- Gradle
