@@ -11,6 +11,7 @@ Certifique-se de ter o [`podman`](https://podman.io/getting-started/installation
 ```bash
 git clone https://github.com/hypperd/Lifenance.git
 cd lifenance
+chmod +x config.sh
 sudo ./config.sh
 ```
 
