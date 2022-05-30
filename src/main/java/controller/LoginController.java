@@ -11,8 +11,26 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import models.User;
 
-@WebServlet(name = "controller", urlPatterns = {"/controller"})
-public class Controller extends HttpServlet {
+@WebServlet(name = "login", urlPatterns = {"/login"})
+public class LoginController extends HttpServlet {
+
+
+    protected void processLogin(HttpServletRequest request, HttpServletResponse response) {
+        try (PrintWriter out = response.getWriter()) {
+            out.println("<img src=\"./bacate.jpeg\" width=\"500\" height=\"600\"> ");
+        } catch (Exception IOException) {
+
+        }
+    }
+
+
+
+
+
+
+
+
+
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -42,7 +60,7 @@ public class Controller extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        processLogin(request, response);
     }
 
     @Override

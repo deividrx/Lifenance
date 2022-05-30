@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <script src="js/jquery-3.6.0.js"></script>
     <title>Login Lifenance</title>
 </head>
 
@@ -16,10 +17,10 @@
       <div class="content">      
         <!--FORMULÁRIO DE LOGIN-->
         <div id="login">
-          <form method="post" action="controller">
+          <form method="post" action="login" id="login_form">
             <h1>Lifenance </h1> 
             <p> 
-              <label for="cpf_login">CPF</label>
+              <label for="cpf">CPF</label>
               <input id="cpf" name="cpf" maxlength="11" required="required" type="text" placeholder="12345678910"/>
             </p>
              
@@ -41,8 +42,10 @@
               Ainda não tem conta?
               <a href="cadastro.html">Cadastre-se</a>
             </p>
+            <script src="js/scripts.js"></script>
           </form>
         </div>
-   
+      </div>
+    </div>
 </body>
 </html>

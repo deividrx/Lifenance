@@ -1,11 +1,11 @@
 package models;
 
 import models.annotations.ColumnName;
-import models.annotations.TableId;
+import models.annotations.PrimaryKey;
 
 public class User {
 
-    @ColumnName("id_user")
+    @PrimaryKey("id_user")
     private long id;
     @ColumnName("cpf")
     private String cpf;
