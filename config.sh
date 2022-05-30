@@ -8,9 +8,9 @@ fi
 
 echo 'Pulling images...'
 
-podman pull postgres
-podman pull tomcat
-podman pull dpage/pgadmin4
+podman pull docker.io/library/postgres:latest
+podman pull docker.io/library/tomcat:latest
+podman pull docker.io/dpage/pgadmin4:latest
 
 echo 'Creating pod...'
 
