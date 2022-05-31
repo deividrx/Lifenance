@@ -16,12 +16,12 @@ pull_images() {
 
 create_pod() {
   echo 'Creating pod...'
-  podman pod create --name lifenance -p 8080:80 -p 8888:8080 || die > /dev/null 2>&1
+  podman pod create --name lifenance -p 8080:80 -p 8888:8080 > /dev/null 2>&1 || error 
 }
 
 config_network() {
     echo 'Creating network'
-    docker network create --subnet=172.20.0.0/16 lifenance || die > /dev/null 2>&1
+    docker network create --subnet=172.20.0.0/16 lifenance > /dev/null 2>&1 || error
 }
 
 create_containers() {
@@ -40,22 +40,21 @@ create_containers() {
         --name db_postgres -d \
         -e POSTGRES_USER=admin \
         -e POSTGRES_PASSWORD=admin \
-        docker.io/library/postgres || die > /dev/null 2>&1
+        docker.io/library/postgres > /dev/null 2>&1 || error
 
     $1 run $ARG2 -d --name pgadmin \
         -e PGADMIN_DEFAULT_EMAIL=admin@admin.com \
         -e PGADMIN_DEFAULT_PASSWORD=admin \
-        docker.io/dpage/pgadmin4:latest || die > /dev/null 2>&1
+        docker.io/dpage/pgadmin4:latest > /dev/null 2>&1 || error
 
     $1 run $ARG3 -d --name tomcat \
-        docker.io/library/tomcat:latest || die > /dev/null 2>&1
+        docker.io/library/tomcat:latest > /dev/null 2>&1 || error
 
     echo 'Containers created!'
 }
 
 config_tomcat() {
   echo 'Configuring tomcat...'
-
   $1 exec tomcat rmdir webapps
   $1 exec tomcat mv webapps.dist webapps
   $1 exec tomcat sed -ie '/<Valve/,/>/d' webapps/manager/META-INF/context.xml
@@ -63,8 +62,7 @@ config_tomcat() {
   $1 exec tomcat sed -i '57i\\t<role rolename="manager-jmx"/>' conf/tomcat-users.xml
   $1 exec tomcat sed -i '58i\\t<role rolename="manager-script"/>' conf/tomcat-users.xml
   $1 exec tomcat sed -i '59i\\t<user username="tomcat" password="123456" roles="manager-gui,manager-script,manager-jmx"/>' conf/tomcat-users.xml
-
-  podman restart tomcat
+  $1 restart tomcat
 }
 
 case "$1" in 
