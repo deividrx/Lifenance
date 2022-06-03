@@ -90,7 +90,7 @@ public class GenericDao<T> {
 
     public T get(Long id) {
         try {
-            String sql = "SELECT * FROM " + tableName + " WHERE " + primaryKeyName + " = ?";
+            String sql = "SELECT * FROM " + tableName + " WHERE " + primaryKeyName + " = " + id;
             Statement s = connection.createStatement();
             ResultSet rs = s.executeQuery(sql);
             ResultSetMetaData rsmd = rs.getMetaData();
