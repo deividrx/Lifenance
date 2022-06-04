@@ -19,6 +19,7 @@ public class FieldHandler {
 
     private String getFieldValue(Field field, Object obj) throws IllegalAccessException {
         String text = field.get(obj).toString();
+
         if (!NumberUtils.isCreatable(text)) {
             return "'" + text + "'";
         } else {

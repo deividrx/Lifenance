@@ -1,40 +1,36 @@
 package application;
 
-import persistencia.Config;
-import gui.TelaPrincipal;
-import javax.swing.JOptionPane;
-import javax.swing.UIManager;
-import util.TelaUtils;
+import org.apache.catalina.Context;
+import org.apache.catalina.WebResourceRoot;
+import org.apache.catalina.startup.Tomcat;
+import org.apache.catalina.webresources.StandardRoot;
 
 import java.awt.*;
-import java.net.URI;
+import java.io.File;
 import java.net.URL;
-import java.util.Objects;
 
 public class Application {
     
     public static void main(String[] args) {
         try {
+            Tomcat tomcat = new Tomcat();
+            tomcat.setPort(8888);
+            tomcat.getConnector();
 
-            System.exit(0);
+            String webapp = "src/main/webapp/";
+            Context context = tomcat.addWebapp("/lifenance", new File(webapp).getAbsolutePath());
 
-            Config config = new Config();
-            
-            if (config.getProperties().isEmpty()) {
-                config.createDefaultConfigFile();
-            }
-            
-            System.setProperty("sun.java2d.uiScale", Objects.requireNonNull(TelaUtils.getUiSizeNumber(config.getProperties().getProperty("UiSize"))));
-            UIManager.setLookAndFeel(TelaUtils.getLookAndFeel(config.getProperties().getProperty("LookAndFeel")));
-            
-        } catch (Exception erro) {
-            JOptionPane.showMessageDialog(null, erro.getMessage(), "Erro!", JOptionPane.ERROR_MESSAGE);
+            WebResourceRoot resources = new StandardRoot(context);
+            context.setResources(resources);
+
+            tomcat.start();
+
+            Desktop.getDesktop().browse(new URL("http://localhost:8888/lifenance").toURI());
+            tomcat.getServer().await();
+
+        } catch (Exception e) {
+
         }
-        
-        // Create and display the form
-        EventQueue.invokeLater(() -> {
-            new TelaPrincipal().setVisible(true);
-        });
     }
     
 }

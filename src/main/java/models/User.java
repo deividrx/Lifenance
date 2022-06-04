@@ -5,25 +5,18 @@ import models.annotations.PrimaryKey;
 
 public class User {
 
-    @PrimaryKey("id_user")
-    private long id;
-    @ColumnName("cpf")
+    @PrimaryKey("user_cpf")
     private String cpf;
-    @ColumnName("user_name")
+    @ColumnName("username")
     private String name;
     @ColumnName("user_password")
     private String password;
 
-    public User(String args) throws NumberFormatException {
+    public User(String args) {
         String[] array = args.split(";");
-        this.id = Long.parseLong(array[0]);
-        this.cpf = array[1];
-        this.name = array[2];
-        this.password = array[3];
-    }
-
-    public long getId() {
-        return id;
+        this.cpf = array[0];
+        this.name = array[1];
+        this.password = array[2];
     }
 
     public String getCpf() {
@@ -52,8 +45,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
-                "id=" + id +
+        return "User={" +
                 ", cpf='" + cpf + '\'' +
                 ", name='" + name + '\'' +
                 ", password='" + password + '\'' +

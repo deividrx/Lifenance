@@ -1,27 +1,20 @@
-import java.awt.Desktop
-
-buildscript {
-    repositories {
-        gradlePluginPortal()
-    }
-
-    dependencies {
-        classpath 'com.bmuschko:gradle-cargo-plugin:2.9.0'
-    }
-}
-
 plugins {
     id 'java'
-    id 'war'
+    id 'application'
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
 }
-
-apply plugin: 'com.bmuschko.cargo'
 
 repositories {
     mavenCentral()
 }
 
+mainClassName = 'application.Application'
+
 dependencies {
+
+    implementation 'org.apache.tomcat.embed:tomcat-embed-core:10.0.20'
+    implementation 'org.apache.tomcat.embed:tomcat-embed-jasper:10.0.20'
+
     // new dependencies for web
     implementation 'org.postgresql:postgresql:42.3.5'
     implementation 'org.apache.commons:commons-lang3:3.12.0'
@@ -34,35 +27,4 @@ dependencies {
     implementation 'com.github.jiconfont:jiconfont-font_awesome:4.7.0.1'
     implementation 'com.formdev:flatlaf-swingx:1.6.4'
     implementation 'org.swinglabs.swingx:swingx-all:1.6.5-1'
-}
-
-war {
-    archiveName 'lifenance.war'
-}
-
-cargo {
-    containerId = 'tomcat10x'
-    port = 8888
-
-    deployable {
-        context = 'lifenance'
-    }
-
-    remote {
-        hostname = 'localhost'
-        username = 'tomcat'
-        password = '123456'
-    }
-}
-
-cargoRedeployRemote {
-    doLast {
-        Desktop.getDesktop().browse(new URL("http://localhost:8888/lifenance").toURI())
-    }
-}
-
-cargoDeployRemote {
-    doLast {
-        Desktop.getDesktop().browse(new URL("http://localhost:8888/lifenance").toURI())
-    }
 }
