@@ -14,7 +14,7 @@ public class ConnectionDb {
         if (connection != null) return connection;
 
         String driver = "org.postgresql.Driver";
-        String user = "admin";
+        String user = "postgres";
         String password = "admin";
         String url = "jdbc:postgresql://localhost:5432/lifenance_db";
 

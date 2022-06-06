@@ -35,7 +35,8 @@ public class RegisterServlet extends HttpServlet {
 
         GenericDao<User> userDao = new GenericDao<>("users", User.class);
         User user = new User(firstName, lastName, cpf, email, pwd);
-        userDao.insert(user);
+        userDao.insertWithPK(user);
 
+        resp.sendRedirect("lifenance/login.html");
     }
 }

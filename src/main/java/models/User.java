@@ -18,9 +18,9 @@ public class User {
 
     public User(String args) {
         String[] arg = args.split(";");
-        this.fisrtName = arg[0];
-        this.lastName = arg[1];
-        this.cpf = arg[2];
+        this.cpf = arg[0];
+        this.fisrtName = arg[1];
+        this.lastName = arg[2];
         this.email = arg[3];
         this.pwd = arg[4];
     }
