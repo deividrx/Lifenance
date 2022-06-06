@@ -18,12 +18,17 @@ public class FieldHandler {
     }
 
     private String getFieldValue(Field field, Object obj) throws IllegalAccessException {
-        String text = field.get(obj).toString();
+        if (!field.get(obj).getClass().getPackage().getName().equals("models")) {
+            String text = field.get(obj).toString();
 
-        if (!NumberUtils.isCreatable(text)) {
-            return "'" + text + "'";
+            if (!NumberUtils.isCreatable(text)) {
+                return "'" + text + "'";
+            } else {
+                return text;
+            }
         } else {
-            return text;
+            FieldHandler fh = new FieldHandler(field.getType());
+            return fh.getPrimaryKeyValue(field.get(obj));
         }
     }
 
@@ -57,7 +62,6 @@ public class FieldHandler {
                 String name = field.getDeclaredAnnotation(ColumnName.class).value();
                 String value = getFieldValue(field, object);
                 map.put(name, value);
-                break;
             }
         }
         return map;

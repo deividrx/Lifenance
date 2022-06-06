@@ -42,7 +42,8 @@ public class SessionManager implements Filter {
 
         HttpSession session = req.getSession(false);
 
-        if(session == null && !(uri.endsWith("login.html") || uri.endsWith("deny-acess.html") || uri.endsWith("login"))){
+        if(session == null && !(uri.endsWith("login.html") || uri.endsWith("deny-access.html") || uri.endsWith("/authorization/register") ||
+                uri.endsWith("/authorization/login"))){
             this.context.log("Unauthorized access request");
             res.sendRedirect("deny-access.html");
         }else{

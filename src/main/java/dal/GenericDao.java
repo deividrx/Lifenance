@@ -1,5 +1,8 @@
 package dal;
 
+import application.Application;
+import org.apache.logging.log4j.LogManager;
+
 import java.lang.reflect.InvocationTargetException;
 import java.sql.*;
 import java.util.*;
@@ -7,6 +10,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class GenericDao<T> {
+
+    private static final org.apache.logging.log4j.Logger logger = LogManager.getLogger(GenericDao.class);
 
     private final String tableName;
     private final Connection connection;
@@ -27,6 +32,19 @@ public class GenericDao<T> {
             Map<String, String> columns = fieldHandler.getColumns(object);
             String sql = "INSERT INTO " + tableName + " (" + String.join(", ", columns.keySet()) + ") "
                     + "VALUES (" + String.join(", ", columns.values()) + ")";
+            System.out.println(sql);
+            connection.prepareStatement(sql).execute();
+
+        } catch (SQLException | IllegalAccessException error) {
+            Logger.getLogger(GenericDao.class.getName()).log(Level.SEVERE, null, error);
+        }
+    }
+
+    public void insertWithPK(Object object) {
+        try {
+            Map<String, String> columns = fieldHandler.getColumns(object);
+            String sql = "INSERT INTO " + tableName + " (" + fieldHandler.getPrimaryKeyName() + ", " + String.join(", ", columns.keySet()) + ") "
+                    + "VALUES (" + fieldHandler.getPrimaryKeyValue(object) + ", " + String.join(", ", columns.values()) + ")";
             System.out.println(sql);
             connection.prepareStatement(sql).execute();
 
@@ -111,4 +129,18 @@ public class GenericDao<T> {
 
         return null;
     }
+
+    public boolean contains(Long id) {
+        try {
+            String sql = "SELECT EXISTS(SELECT 1 FROM " + tableName + " WHERE " + primaryKeyName + " = " + id + ")";
+            Statement s = connection.createStatement();
+            ResultSet rs = s.executeQuery(sql);
+            return rs.getBoolean("exists");
+        } catch (SQLException error) {
+            logger.fatal(error.getMessage());
+        }
+
+        return false;
+    }
+
 }

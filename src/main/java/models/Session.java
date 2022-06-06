@@ -6,7 +6,7 @@ import models.annotations.PrimaryKey;
 public class Session {
     @ColumnName("user_id")
     private User user;
-    @ColumnName("session_id")
+    @PrimaryKey("session_id")
     private Long sessionId;
 
     public Long getSessionId() {

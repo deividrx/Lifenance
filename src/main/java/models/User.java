@@ -5,18 +5,48 @@ import models.annotations.PrimaryKey;
 
 public class User {
 
+    @ColumnName("first_name")
+    private String fisrtName;
+    @ColumnName("last_name")
+    private String lastName;
     @PrimaryKey("user_cpf")
     private String cpf;
-    @ColumnName("username")
-    private String name;
+    @ColumnName("user_email")
+    private String email;
     @ColumnName("user_password")
-    private String password;
+    private String pwd;
 
     public User(String args) {
-        String[] array = args.split(";");
-        this.cpf = array[0];
-        this.name = array[1];
-        this.password = array[2];
+        String[] arg = args.split(";");
+        this.fisrtName = arg[0];
+        this.lastName = arg[1];
+        this.cpf = arg[2];
+        this.email = arg[3];
+        this.pwd = arg[4];
+    }
+
+    public User(String fisrtName, String lastName, String cpf, String email, String pwd) {
+        this.fisrtName = fisrtName;
+        this.lastName = lastName;
+        this.cpf = cpf;
+        this.email = email;
+        this.pwd = pwd;
+    }
+
+    public String getFisrtName() {
+        return fisrtName;
+    }
+
+    public void setFisrtName(String fisrtName) {
+        this.fisrtName = fisrtName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getCpf() {
@@ -27,28 +57,19 @@ public class User {
         this.cpf = cpf;
     }
 
-    public String getName() {
-        return name;
+    public String getEmail() {
+        return email;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getPassword() {
-        return password;
+    public String getPwd() {
+        return pwd;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    @Override
-    public String toString() {
-        return "User={" +
-                ", cpf='" + cpf + '\'' +
-                ", name='" + name + '\'' +
-                ", password='" + password + '\'' +
-                '}';
+    public void setPwd(String pwd) {
+        this.pwd = pwd;
     }
 }

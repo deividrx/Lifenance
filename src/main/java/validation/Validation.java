@@ -2,10 +2,12 @@ package validation;
 
 import java.util.InputMismatchException;
 
-public class Dados {
+public class Validation {
 
-    public static boolean isCpf(String cpf) {
+    public static boolean validateCpf(String cpf) {
+
         String regex = "^([0-9])\\1{0,11}$";
+
         if (cpf.matches(regex) || cpf.length() != 11) return false;
 
         char dig10, dig11;
@@ -49,7 +51,7 @@ public class Dados {
             return (dig10 == cpf.charAt(9)) && (dig11 == cpf.charAt(10));
 
         } catch (InputMismatchException error) {
-            return(false);
+            return false;
         }
     }
 }
