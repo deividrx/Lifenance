@@ -1,5 +1,6 @@
 package controller;
 
+import com.google.gson.Gson;
 import dal.GenericDao;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -10,10 +11,14 @@ import models.User;
 import validation.Validation;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.HashMap;
+import java.util.Map;
 
 @WebServlet(name = "Register", urlPatterns = {"/authorization/register"})
 public class RegisterServlet extends HttpServlet {
 
+    private final Map<String, Object> map = new HashMap<>();
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String firstName = req.getParameter("first_name");
@@ -24,12 +29,18 @@ public class RegisterServlet extends HttpServlet {
         String repeatPwd = req.getParameter("repeatPassword");
 
         if (!Validation.validateCpf(cpf)) {
-            resp.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Invalid cpf!");
+            //resp.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Invalid cpf!");
+            map.put("error", "true");
+            map.put("text", "invalid cpf");
+            returnJson(resp);
             return;
         }
 
         if (!pwd.equals(repeatPwd)) {
-            resp.sendError(HttpServletResponse.SC_UNAUTHORIZED, "password not equals!");
+            //resp.sendError(HttpServletResponse.SC_UNAUTHORIZED, "password not equals!");
+            map.put("error", "true");
+            map.put("text", "invalid password");
+            returnJson(resp);
             return;
         }
 
@@ -37,6 +48,16 @@ public class RegisterServlet extends HttpServlet {
         User user = new User(firstName, lastName, cpf, email, pwd);
         userDao.insertWithPK(user);
 
-        resp.sendRedirect("lifenance/login.html");
+        map.put("error", false);
+        map.put("text", "Sucesso!");
+        returnJson(resp);
+    }
+
+    public void returnJson(HttpServletResponse resp) throws IOException {
+        try (PrintWriter output = resp.getWriter()) {
+            resp.setContentType("application/json");
+            resp.setCharacterEncoding("UTF-8");
+            output.write(new Gson().toJson(map));
+        }
     }
 }

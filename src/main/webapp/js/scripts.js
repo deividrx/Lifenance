@@ -1,4 +1,4 @@
-$("#login_form").submit(function(event) {
+$("#login").submit(function(event) {
     // avoid to execute the actual submit of the form.
     event.preventDefault();
 

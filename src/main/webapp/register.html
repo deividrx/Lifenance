@@ -36,7 +36,7 @@
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">Crie uma Conta!</h1>
                             </div>
-                            <form class="user" method="post" action="authorization/register">
+                            <form class="user" method="post" action="authorization/register" id="login">
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="text" name="first_name" class="form-control form-control-user" id="exampleFirstName"
@@ -66,11 +66,10 @@
                                             id="exampleRepeatPassword" placeholder="Repetir a senha">
                                     </div>
                                 </div>
-                                <button class="btn btn-primary btn-user btn-block"  data-toggle="modal" data-target="#siteModal">
+                                <button class="btn btn-primary btn-user btn-block">
                                     Registrar Conta
                                 </button>
                                 <hr>
-                                
                             </form>
                             <hr>
                             
@@ -85,7 +84,7 @@
 
     </div>
 
-    <div id="siteModal"class="modal" tabindex="-1" role="dialog">
+    <div id="siteModal" class="modal" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
 
@@ -115,6 +114,9 @@
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
+
+    <!-- script modal -->
+    <script src="js/script.js"></script>
 
 </body>
 

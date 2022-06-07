@@ -108,11 +108,12 @@ public class GenericDao<T> {
 
     public T get(Long id) {
         try {
-            String sql = "SELECT * FROM " + tableName + " WHERE " + primaryKeyName + " = " + id;
+            String sql = "SELECT * FROM " + tableName + " WHERE " + primaryKeyName + " = '" + id + "'";
             Statement s = connection.createStatement();
             ResultSet rs = s.executeQuery(sql);
             ResultSetMetaData rsmd = rs.getMetaData();
             ArrayList<String> data = new ArrayList<>();
+            rs.next();
             int columnNum = rsmd.getColumnCount();
 
             for (int i = 1; i <= columnNum; i++) {
@@ -132,9 +133,10 @@ public class GenericDao<T> {
 
     public boolean contains(Long id) {
         try {
-            String sql = "SELECT EXISTS(SELECT 1 FROM " + tableName + " WHERE " + primaryKeyName + " = " + id + ")";
+            String sql = "SELECT EXISTS(SELECT 1 FROM " + tableName + " WHERE " + primaryKeyName + " = '" + id + "')";
             Statement s = connection.createStatement();
             ResultSet rs = s.executeQuery(sql);
+            rs.next();
             return rs.getBoolean("exists");
         } catch (SQLException error) {
             logger.fatal(error.getMessage());
