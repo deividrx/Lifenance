@@ -25,6 +25,9 @@ hs_err_pid*
 # Tomcat
 tomcat.8888
 
+# Vscode
+bin
+
 # Other Stuff
 /Lifenance_Data/
 /build/libs/Lifenance_Data/

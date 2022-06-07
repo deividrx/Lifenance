@@ -16,5 +16,9 @@ dependencies {
     implementation 'org.postgresql:postgresql:42.3.5'
     implementation 'org.apache.commons:commons-lang3:3.12.0'
     implementation 'com.google.code.gson:gson:2.9.0'
-    implementation 'jakarta.platform:jakarta.jakartaee-web-api:9.1.0'
+    //implementation 'jakarta.platform:jakarta.jakartaee-web-api:9.1.0'
+
+    implementation 'org.webjars.npm:fortawesome__fontawesome-free:5.15.3'
+    implementation 'org.webjars.npm:jquery:3.6.0'
+    implementation 'org.webjars:webjars-locator:0.45'
 }
