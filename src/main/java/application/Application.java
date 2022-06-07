@@ -10,6 +10,7 @@ import org.apache.catalina.webresources.StandardRoot;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.tomcat.JarScanner;
+import org.apache.tomcat.util.scan.StandardJarScanner;
 
 import java.awt.Desktop;
 import java.io.File;
@@ -29,10 +30,6 @@ public class Application {
 
             String webapp = "src/main/webapp/";
             Context context = tomcat.addWebapp("/lifenance", new File(webapp).getAbsolutePath());
-
-
-            //context.getJarScanner().setJarScanFilter();
-
 
             File webInfClasses = new File("build/classes");
             WebResourceRoot resources = new StandardRoot(context);
