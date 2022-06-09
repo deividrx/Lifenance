@@ -6,7 +6,7 @@
 package controle;
 
 import java.util.ArrayList;
-import modelos.entidades.Conta;
+import models.Conta;
 import modelos.interfaces.IContaDAO;
 import persistencia.ContaDAO;
 
@@ -27,12 +27,12 @@ public class ContaControle implements IContaDAO {
         if (contaDAO.consultarPorID(objeto.getId()) == null)
             contaDAO.incluir(objeto);
         else
-            throw new Exception("Está conta já está cadastrada!");
+            throw new Exception("Estï¿½ conta jï¿½ estï¿½ cadastrada!");
     }
 
     @Override
     public void alterar(Conta objeto) throws Exception {
-        if (consultarPorID(objeto.getId()) == null) throw new Exception("Alterar o Id da Conta não é permitido!");
+        if (consultarPorID(objeto.getId()) == null) throw new Exception("Alterar o Id da Conta nï¿½o ï¿½ permitido!");
         contaDAO.alterar(objeto);
     }
 

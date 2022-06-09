@@ -2,11 +2,8 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
-import application.Application;
-import dal.GenericDao;
-import jakarta.servlet.RequestDispatcher;
+import bll.Authorization;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.Cookie;
@@ -14,7 +11,6 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import models.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -25,14 +21,15 @@ public class LoginServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
+            Authorization authorization = new Authorization();
             logger.info("Reached login!");
-            if (!Authorization.isLoggedIn(request)) {
+            if (!authorization.isLoggedIn(request)) {
                 String cpf = request.getParameter("cpf");
                 String password = request.getParameter("password");
                 boolean remember = Boolean.parseBoolean(request.getParameter("remember"));
 
                 logger.info("Reached login: pwd=" + password + " cpf=" + cpf + " remeber=" + remember);
-                if (!Authorization.validateLogin(cpf, password)) {
+                if (!authorization.validateLogin(cpf, password)) {
                     logger.info("Failed login from " + request.getRemoteAddr());
                     response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Invalid username or password!");
                     return;

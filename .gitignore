@@ -28,6 +28,9 @@ tomcat.8888
 # Vscode
 bin
 
+# node
+node_modules
+
 # Other Stuff
 /Lifenance_Data/
 /build/libs/Lifenance_Data/

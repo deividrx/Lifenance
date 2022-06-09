@@ -1,7 +1,8 @@
 package controle;
 
 import java.util.ArrayList;
-import modelos.entidades.Cartao;
+
+import models.Card;
 import modelos.interfaces.ICartaoDAO;
 import persistencia.CartaoDAO;
 
@@ -15,25 +16,25 @@ public class CartaoControle implements ICartaoDAO {
     }
 
     @Override
-    public void incluir(Cartao objeto) throws Exception {
+    public void incluir(Card objeto) throws Exception {
         if (cartaoDAO.consultarPorID(objeto.getId()) == null)
             cartaoDAO.incluir(objeto);
         else
-            throw new Exception("Está conta já está cadastrada!");
+            throw new Exception("Estï¿½ conta jï¿½ estï¿½ cadastrada!");
     }
 
     @Override
-    public void alterar(Cartao objeto) throws Exception {
+    public void alterar(Card objeto) throws Exception {
         cartaoDAO.alterar(objeto);
     }
 
     @Override
-    public Cartao consultarPorID(int id) throws Exception {
+    public Card consultarPorID(int id) throws Exception {
         return cartaoDAO.consultarPorID(id);
     }
     
-    public Cartao consultarPorNumero(Long num) throws Exception {
-        for (Cartao card : listagem()) {
+    public Card consultarPorNumero(Long num) throws Exception {
+        for (Card card : listagem()) {
             if (card.getNumero() == num)
                 return card;
         }
@@ -41,7 +42,7 @@ public class CartaoControle implements ICartaoDAO {
     }
 
     @Override
-    public ArrayList<Cartao> listagem() throws Exception {
+    public ArrayList<Card> listagem() throws Exception {
         return cartaoDAO.listagem();
     }
 

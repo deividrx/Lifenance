@@ -1,4 +1,4 @@
-package modelos.entidades.enums;
+package models.enums;
 
 public enum TipoDeConta {
     CORRENTE, CONJUNTA, POUPANCA;

@@ -7,9 +7,9 @@ package controle;
 
 import java.util.ArrayList;
 import java.util.Date;
-import modelos.entidades.Conta;
-import modelos.entidades.Receita;
-import modelos.entidades.enums.TipoReceita;
+import models.Conta;
+import models.Receita;
+import models.enums.TipoReceita;
 import modelos.interfaces.IReceitaDAO;
 import persistencia.ReceitaDAO;
 
@@ -36,7 +36,7 @@ public class ReceitaControle implements IReceitaDAO {
 
     @Override
     public void alterar(Receita objeto) throws Exception {
-        if (consultarPorID(objeto.getId()) == null) throw new Exception("Alterar o Id da Receita não é permitido!");
+        if (consultarPorID(objeto.getId()) == null) throw new Exception("Alterar o Id da Receita nï¿½o ï¿½ permitido!");
         receita.alterar(objeto);
     }
 
@@ -56,8 +56,8 @@ public class ReceitaControle implements IReceitaDAO {
     }
     
     public ArrayList<Receita> listagem(Date data, Conta conta) throws Exception {
-        if(data == null) throw new Exception("Data inválida!");
-        if(conta == null) throw new Exception("Conta inválida!");
+        if(data == null) throw new Exception("Data invï¿½lida!");
+        if(conta == null) throw new Exception("Conta invï¿½lida!");
         ArrayList<Receita> receitas = listagem();
         ArrayList<Receita> achados = new ArrayList<>();
         for (int i = 0; i < receitas.size(); i++) {

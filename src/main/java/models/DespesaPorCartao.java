@@ -1,20 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package modelos.entidades;
+package models;
 
-import java.text.SimpleDateFormat;
+import models.enums.TipoDespesa;
+
 import java.util.Date;
-import modelos.entidades.enums.TipoDespesa;
 
-/**
- *
- * @author galdi
- */
-public class Despesa {
-    
+public class DespesaPorCartao {
     private int id = 0;
     private String nome = "";
     private String descricao = "";
@@ -22,9 +12,8 @@ public class Despesa {
     private Date dataDaReceita;
     private TipoDespesa tipo;
     private int IDContaCorrente;
-    private SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyyy");
-    
-    public Despesa() {
+
+    public DespesaPorCartao() {
         this.id = id;
         this.nome = nome;
         this.descricao = descricao;
@@ -33,7 +22,6 @@ public class Despesa {
         this.tipo = tipo;
         this.IDContaCorrente = IDContaCorrente;
     }
-
     public int getId() {
         return id;
     }
@@ -92,7 +80,7 @@ public class Despesa {
 
     @Override
     public String toString() {
-        return id + ";" + nome + ";" + descricao + ";" + valor + ";" + format.format(dataDaReceita) + ";" + tipo + ";" + IDContaCorrente;
+        return id + ";" + nome + ";" + descricao + ";" + valor + ";" + dataDaReceita + ";" + tipo + ";" + IDContaCorrente;
     }
- 
+
 }

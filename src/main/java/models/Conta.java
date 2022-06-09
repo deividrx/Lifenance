@@ -1,6 +1,6 @@
-package modelos.entidades;
+package models;
 
-import modelos.entidades.enums.TipoDeConta;
+import models.enums.TipoDeConta;
 
 public class Conta {
     //Atributos

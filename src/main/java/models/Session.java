@@ -9,6 +9,17 @@ public class Session {
     @PrimaryKey("session_id")
     private Long sessionId;
 
+    public Session(User user, Long sessionId) {
+        this.user = user;
+        this.sessionId = sessionId;
+    }
+
+    public Session(String args) { // Constructor for generic dao
+        String[] split = args.split(";");
+        this.user = ModelFactory.getModel(User.class, "users", Long.parseLong(split[0]));
+        this.sessionId = Long.parseLong(split[1]);
+    }
+
     public Long getSessionId() {
         return sessionId;
     }

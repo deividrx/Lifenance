@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package modelos.entidades;
+package models;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import modelos.entidades.enums.TipoReceita;
+import models.enums.TipoReceita;
 
 public class Receita {
 

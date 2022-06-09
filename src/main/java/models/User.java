@@ -16,7 +16,7 @@ public class User {
     @ColumnName("user_password")
     private String pwd;
 
-    public User(String args) {
+    public User(String args) { // Constructor for generic dao
         String[] arg = args.split(";");
         this.cpf = arg[0];
         this.fisrtName = arg[1];

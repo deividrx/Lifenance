@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package modelos.entidades;
+package models;
 
 import controle.DespesaControle;
 import controle.ReceitaControle;
+
 import java.util.Date;
 
 /**
@@ -39,7 +40,7 @@ public class Calcular {
          return saldo;
     }
     
-    //public boolean avisoDeLimite(Cartão card) {
+    //public boolean avisoDeLimite(Cartï¿½o card) {
     //    if (card.get)
     //}
 }

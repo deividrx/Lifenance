@@ -1,6 +1,6 @@
 package controle;
 import java.util.ArrayList;
-import modelos.entidades.Banco;
+import models.Banco;
 import persistencia.BancoDAO;
 import modelos.interfaces.IBancoDAO;
 
@@ -18,7 +18,7 @@ public class BancoControle implements IBancoDAO{
         if (aux == null) {
             objBancoDAO.incluir(objeto);
         } else {
-            throw new Exception("Banco já cadastrado!");
+            throw new Exception("Banco jï¿½ cadastrado!");
         }
     }
 

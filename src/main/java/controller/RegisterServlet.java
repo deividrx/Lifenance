@@ -29,16 +29,14 @@ public class RegisterServlet extends HttpServlet {
         String repeatPwd = req.getParameter("repeatPassword");
 
         if (!Validation.validateCpf(cpf)) {
-            //resp.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Invalid cpf!");
-            map.put("error", "true");
+            map.put("error", true);
             map.put("text", "invalid cpf");
             returnJson(resp);
             return;
         }
 
         if (!pwd.equals(repeatPwd)) {
-            //resp.sendError(HttpServletResponse.SC_UNAUTHORIZED, "password not equals!");
-            map.put("error", "true");
+            map.put("error", true);
             map.put("text", "invalid password");
             returnJson(resp);
             return;
@@ -49,7 +47,7 @@ public class RegisterServlet extends HttpServlet {
         userDao.insertWithPK(user);
 
         map.put("error", false);
-        map.put("text", "Sucesso!");
+        map.put("text", "Sucesso");
         returnJson(resp);
     }
 
