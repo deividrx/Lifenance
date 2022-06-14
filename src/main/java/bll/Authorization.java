@@ -22,10 +22,8 @@ public class Authorization {
     }
 
     public boolean validateLogin(String login, String password) {
-        long id = Long.parseLong(login);
-
-        if (userDao.contains(id)) {
-            return (userDao.get(id).getPwd().equals(password));
+        if (userDao.contains(login)) {
+            return (userDao.get(Long.parseLong(login)).getPwd().equals(password));
         } else {
             return false;
         }
