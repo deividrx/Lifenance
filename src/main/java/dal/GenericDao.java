@@ -131,7 +131,7 @@ public class GenericDao<T> {
         return null;
     }
 
-    public boolean contains(Long id) {
+    public boolean contains(String id) {
         try {
             String sql = "SELECT EXISTS(SELECT 1 FROM " + tableName + " WHERE " + primaryKeyName + " = '" + id + "')";
             Statement s = connection.createStatement();

@@ -7,9 +7,9 @@ public class Session {
     @ColumnName("user_id")
     private User user;
     @PrimaryKey("session_id")
-    private Long sessionId;
+    private String sessionId;
 
-    public Session(User user, Long sessionId) {
+    public Session(User user, String sessionId) {
         this.user = user;
         this.sessionId = sessionId;
     }
@@ -17,14 +17,14 @@ public class Session {
     public Session(String args) { // Constructor for generic dao
         String[] split = args.split(";");
         this.user = ModelFactory.getModel(User.class, "users", Long.parseLong(split[0]));
-        this.sessionId = Long.parseLong(split[1]);
+        this.sessionId = split[1];
     }
 
-    public Long getSessionId() {
+    public String getSessionId() {
         return sessionId;
     }
 
-    public void setSessionId(Long sessionId) {
+    public void setSessionId(String sessionId) {
         this.sessionId = sessionId;
     }
 

@@ -3,19 +3,19 @@ package models;
 import models.annotations.ColumnName;
 import models.annotations.PrimaryKey;
 
-public class Flag {
+public class CardFlag {
 
     @PrimaryKey("flag_id")
     private long id;
     @ColumnName("flag_name")
     private String name;
 
-    public Flag(long id, String name) {
+    public CardFlag(long id, String name) {
         this.id = id;
         this.name = name;
     }
 
-    public Flag(String args) { // Constructor for generic dao
+    public CardFlag(String args) { // Constructor for generic dao
         String[] split = args.split(";");
         this.id = Long.parseLong(split[0]);
         this.name = split[1];

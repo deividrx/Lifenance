@@ -473,11 +473,11 @@
 }
 .#{$fa-css-prefix}.#{$fa-css-prefix}-keyboard-o:before { content: fa-content($fa-var-keyboard); }
 
-.#{$fa-css-prefix}.#{$fa-css-prefix}-flag-o {
+.#{$fa-css-prefix}.#{$fa-css-prefix}-cardFlag-o {
   font-family: 'Font Awesome 5 Free';
   font-weight: 400;
 }
-.#{$fa-css-prefix}.#{$fa-css-prefix}-flag-o:before { content: fa-content($fa-var-flag); }
+.#{$fa-css-prefix}.#{$fa-css-prefix}-cardFlag-o:before { content: fa-content($fa-var-cardFlag); }
 
 .#{$fa-css-prefix}.#{$fa-css-prefix}-mail-reply-all:before { content: fa-content($fa-var-reply-all); }
 

@@ -14,7 +14,7 @@ public class Card {
     @ColumnName("validity")
     private LocalDate validity;
     @ColumnName("card_flag")
-    private Flag flag;
+    private CardFlag cardFlag;
     @ColumnName("multa")
     private int multa;
     @ColumnName("limite")
@@ -25,30 +25,36 @@ public class Card {
     private LocalDate fechamento;
     @ColumnName("card_name")
     private String nome;
+    @ColumnName("user_id")
+    private User user;
 
-    public Card(long id, long number, LocalDate validity, Flag flag, int multa, float limite, LocalDate vencimento, LocalDate fechamento, String nome) {
+    public Card(long id, long number, LocalDate validity, CardFlag cardFlag, int multa, float limite,
+                LocalDate vencimento, LocalDate fechamento, String nome, User user) {
         this.id = id;
         this.number = number;
         this.validity = validity;
-        this.flag = flag;
+        this.cardFlag = cardFlag;
         this.multa = multa;
         this.limite = limite;
         this.vencimento = vencimento;
         this.fechamento = fechamento;
         this.nome = nome;
+        this.user = user;
     }
 
+    // Constructor for genericDAO
     public Card(String arg) {
         String[] split = arg.split(";");
         this.id = Long.parseLong(split[0]);
         this.number = Long.parseLong(split[1]);
         this.validity = LocalDate.parse(split[2]);
-        this.flag = ModelFactory.getModel(Flag.class, "flags", Long.parseLong(split[3]));
+        this.cardFlag = ModelFactory.getModel(CardFlag.class, "flags", Long.parseLong(split[3]));
         this.multa = Integer.parseInt(split[4]);
         this.limite = Float.parseFloat(split[5]);
         this.vencimento = LocalDate.parse(split[6]);
         this.fechamento = LocalDate.parse(split[7]);
         this.nome = split[8];
+        this.user = ModelFactory.getModel(User.class, "users", Long.parseLong(split[9]));
     }
 
     public long getId() {
@@ -75,12 +81,12 @@ public class Card {
         this.validity = validity;
     }
 
-    public Flag getFlag() {
-        return flag;
+    public CardFlag getFlag() {
+        return cardFlag;
     }
 
-    public void setFlag(Flag flag) {
-        this.flag = flag;
+    public void setFlag(CardFlag cardFlag) {
+        this.cardFlag = cardFlag;
     }
 
     public int getMulta() {
@@ -121,6 +127,22 @@ public class Card {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public CardFlag getCardFlag() {
+        return cardFlag;
+    }
+
+    public void setCardFlag(CardFlag cardFlag) {
+        this.cardFlag = cardFlag;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
 
