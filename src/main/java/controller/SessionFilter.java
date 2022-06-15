@@ -42,12 +42,10 @@ public class SessionFilter implements Filter {
             boolean logged = (session != null && session.getAttribute("loggedUser") != null);
 
             if (!logged && cookies != null) {
-                System.out.println("bacate");
                 String selector = null;
                 String rawValidator = null;
 
                 for (Cookie aCookie : cookies) {
-                    System.out.println(aCookie.getName());
                     switch (aCookie.getName()) {
                         case "selector" -> selector = aCookie.getValue();
                         case "validator" -> rawValidator = aCookie.getValue();
@@ -57,18 +55,16 @@ public class SessionFilter implements Filter {
                 if (selector != null && rawValidator != null) {
                     GenericDao<Session> sessionDAO = new GenericDao<>( "user_sessions", Session.class);
                     Session userSession = sessionDAO.getByColumn("selector", selector);
-                    System.out.println("bacate");
 
                     if (userSession != null) {
                         String hashedValidatorDatabase = userSession.getValidator();
                         String hashedValidatorCookie = HashGenerator.generateSHA256(rawValidator);
-                        System.out.println("bacate");
 
                         if (hashedValidatorCookie.equals(hashedValidatorDatabase)) {
-                            session = req.getSession();
-                            session.setAttribute("loggedCustomer", userSession.getUser());
+                            session = req.getSession(true);
+                            session.setAttribute("loggedUser", userSession.getUser());
                             logged = true;
-                            System.out.println("bacate");
+                            System.out.println(session.getId());
                         }
                     }
                 }

@@ -34,6 +34,8 @@ public class Application {
             resources.addPreResources(new DirResourceSet(resources, "/WEB-INF/classes", webInfClasses.getAbsolutePath(), "/"));
             context.setResources(resources);
 
+            context.setSessionCookiePath("/");
+
             tomcat.start();
             Desktop.getDesktop().browse(new URL("http://localhost:8888/lifenance").toURI());
             tomcat.getServer().await();
