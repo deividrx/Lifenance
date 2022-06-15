@@ -7,14 +7,14 @@ import models.User;
 public class UserAuth {
 
     private final String userPassword;
-    private final long userCpf;
+    private final String userCpf;
 
     private final GenericDao<User> userDao = new GenericDao<>("users", User.class);
     private final GenericDao<Session> sessionDao = new GenericDao<>("user_sessions", Session.class);
 
     public UserAuth(String cpf, String password) {
         this.userPassword = password;
-        this.userCpf = Long.parseLong(cpf);
+        this.userCpf = cpf;
     }
 
     public boolean validateLogin() {
@@ -30,6 +30,6 @@ public class UserAuth {
     }
 
     public void insertSession(Session session) {
-        sessionDao.insert(session);
+        sessionDao.insertWithPK(session);
     }
 }

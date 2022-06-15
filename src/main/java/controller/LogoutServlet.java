@@ -20,22 +20,22 @@ public class LogoutServlet extends HttpServlet {
             Cookie[] cookies = request.getCookies();
 
             if (cookies != null) {
-                String selector = null;
+                String sessionId = null;
 
                 for (Cookie aCookie : cookies) {
-                    if (aCookie.getName().equals("selector")) {
-                        selector = aCookie.getValue();
+                    if (aCookie.getName().equals("session_id")) {
+                        sessionId = aCookie.getValue();
                     }
                 }
 
-                if (selector != null) {
+                if (sessionId != null) {
                     GenericDao<Session> sessionDAO = new GenericDao<>( "user_sessions", Session.class);
-                    Session userSession = sessionDAO.getByColumn("selector", selector);
+                    Session userSession = sessionDAO.get(sessionId);
 
                     if (userSession != null) {
                         sessionDAO.remove(userSession.getSessionId());
 
-                        Cookie cookieSelector = new Cookie("selector", "");
+                        Cookie cookieSelector = new Cookie("session_id", "");
                         cookieSelector.setMaxAge(0);
                         cookieSelector.setPath("/");
 

@@ -1,6 +1,5 @@
 package dal;
 
-import application.Application;
 import org.apache.logging.log4j.LogManager;
 
 import java.lang.reflect.InvocationTargetException;
@@ -64,6 +63,17 @@ public class GenericDao<T> {
         }
     }
 
+    public void remove(String id) {
+        try {
+            String sql = "DELETE FROM " + tableName + " WHERE " + primaryKeyName + "= ? ";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setString(1, id);
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(GenericDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     public List<T> getList() {
         ArrayList<T> arrayObj = new ArrayList<>();
         try {
@@ -108,7 +118,7 @@ public class GenericDao<T> {
 
     public T get(Long id) {
         try {
-            String sql = "SELECT * FROM " + tableName + " WHERE " + primaryKeyName + " = '" + id + "'";
+            String sql = "SELECT * FROM " + tableName + " WHERE " + primaryKeyName + " = " + id;
             Statement s = connection.createStatement();
             ResultSet rs = s.executeQuery(sql);
             ResultSetMetaData rsmd = rs.getMetaData();
@@ -132,23 +142,9 @@ public class GenericDao<T> {
         return null;
     }
 
-    public boolean contains(long id) {
+    public T get(String id) {
         try {
-            String sql = "SELECT EXISTS(SELECT 1 FROM " + tableName + " WHERE " + primaryKeyName + " = '" + id + "')";
-            Statement s = connection.createStatement();
-            ResultSet rs = s.executeQuery(sql);
-            rs.next();
-            return rs.getBoolean("exists");
-        } catch (SQLException error) {
-            logger.fatal(error.getMessage());
-        }
-
-        return false;
-    }
-
-    public T getByColumn(String columnName, String value) {
-        try {
-            String sql = "SELECT * FROM " + tableName + " WHERE " + columnName + " = '" + value + "'";
+            String sql = "SELECT * FROM " + tableName + " WHERE " + primaryKeyName + " = '" + id + "'";
             Statement s = connection.createStatement();
             ResultSet rs = s.executeQuery(sql);
             ResultSetMetaData rsmd = rs.getMetaData();
@@ -171,4 +167,33 @@ public class GenericDao<T> {
         }
         return null;
     }
+
+    public boolean contains(String id) {
+        try {
+            String sql = "SELECT EXISTS(SELECT 1 FROM " + tableName + " WHERE " + primaryKeyName + " = '" + id + "')";
+            Statement s = connection.createStatement();
+            ResultSet rs = s.executeQuery(sql);
+            rs.next();
+            return rs.getBoolean("exists");
+        } catch (SQLException error) {
+            logger.fatal(error.getMessage());
+        }
+
+        return false;
+    }
+
+    public boolean contains(long id) {
+        try {
+            String sql = "SELECT EXISTS(SELECT 1 FROM " + tableName + " WHERE " + primaryKeyName + " = " + id + ")";
+            Statement s = connection.createStatement();
+            ResultSet rs = s.executeQuery(sql);
+            rs.next();
+            return rs.getBoolean("exists");
+        } catch (SQLException error) {
+            logger.fatal(error.getMessage());
+        }
+
+        return false;
+    }
+
 }

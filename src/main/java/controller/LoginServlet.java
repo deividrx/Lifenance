@@ -35,17 +35,17 @@ public class LoginServlet extends HttpServlet {
                 if (rememberMe) {
                     Session userSession = new Session();
 
-                    String selector = RandomStringUtils.randomAlphanumeric(12);
+                    String sessionId = RandomStringUtils.randomAlphanumeric(12);
                     String rawValidator =  RandomStringUtils.randomAlphanumeric(64);
                     String hashedValidator = HashGenerator.generateSHA256(rawValidator);
 
-                    userSession.setSelector(selector);
+                    userSession.setSessionId(sessionId);
                     userSession.setValidator(hashedValidator);
                     userSession.setUser(authorization.getUser());
 
                     authorization.insertSession(userSession);
 
-                    Cookie cookieSelector = new Cookie("selector", selector);
+                    Cookie cookieSelector = new Cookie("session_id", sessionId);
                     Cookie cookieValidator = new Cookie("validator", rawValidator);
 
                     cookieSelector.setPath("/");

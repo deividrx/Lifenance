@@ -2,7 +2,6 @@
 package controller;
 
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -42,19 +41,19 @@ public class SessionFilter implements Filter {
             boolean logged = (session != null && session.getAttribute("loggedUser") != null);
 
             if (!logged && cookies != null) {
-                String selector = null;
+                String sessionId = null;
                 String rawValidator = null;
 
                 for (Cookie aCookie : cookies) {
                     switch (aCookie.getName()) {
-                        case "selector" -> selector = aCookie.getValue();
+                        case "session_id" -> sessionId = aCookie.getValue();
                         case "validator" -> rawValidator = aCookie.getValue();
                     }
                 }
 
-                if (selector != null && rawValidator != null) {
+                if (sessionId != null && rawValidator != null) {
                     GenericDao<Session> sessionDAO = new GenericDao<>( "user_sessions", Session.class);
-                    Session userSession = sessionDAO.getByColumn("selector", selector);
+                    Session userSession = sessionDAO.get(sessionId);
 
                     if (userSession != null) {
                         String hashedValidatorDatabase = userSession.getValidator();
