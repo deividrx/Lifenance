@@ -71,7 +71,7 @@ public class SessionFilter implements Filter {
 
             String uri = req.getRequestURI();
 
-            if (uri.endsWith(".css") || uri.endsWith(".js") || uri.endsWith(".map")) {
+            if (uri.endsWith(".css") || uri.endsWith(".js") || uri.endsWith("img/money-image-coins.jpg") || uri.endsWith("img/money.jpg")) {
                 chain.doFilter(request, response);
                 return;
             }

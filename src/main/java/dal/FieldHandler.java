@@ -21,6 +21,8 @@ public class FieldHandler {
         if (!field.get(obj).getClass().getPackage().getName().equals("models")) {
             String text = field.get(obj).toString();
 
+            if (text.isBlank() || text.isBlank()) return null;
+
             if (!NumberUtils.isCreatable(text)) {
                 return "'" + text + "'";
             } else {

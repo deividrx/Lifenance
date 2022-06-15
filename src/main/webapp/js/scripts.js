@@ -1,4 +1,4 @@
-$("#login").submit(function(event) {
+$("#register").submit(function(event) {
     // avoid to execute the actual submit of the form.
     event.preventDefault();
 
@@ -8,19 +8,22 @@ $("#login").submit(function(event) {
     $.ajax({
         type: "POST",
         url: actionUrl,
-        // serializes the form's elements.
         data: form.serialize(), 
         success: function(data) {   
             
-            if (data.erro == true)
-                alert(data.text);
-            else {
-                alert(data.text);
-                window.location.replace("index.jsp");
+            $('#siteModal').modal('show');
+            $('#modal-title').text('Sucesso!');      
+            
+            if (data.error == true) {
+                $('#modal-title').text('Erro!'); 
+            }            
+            $('#modal-text').text(data.text);
+            
+            if (data.error == false) {
+                $("#modal-close").click(function(){
+                    window.location.assign("login.html"); 
+                });
             }
-          
         }
     });
-});
-    
-   
+}); 
