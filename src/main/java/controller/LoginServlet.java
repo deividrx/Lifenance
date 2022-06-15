@@ -64,7 +64,8 @@ public class LoginServlet extends HttpServlet {
                     response.addCookie(cookieSelector);
                     response.addCookie(cookieValidator);
                 }
-                response.sendRedirect("/lifenance/index.html");
+                map.put("error", false);
+                jsonMenssage.returnJson(response);
             }
         } catch (IOException | HashGenerationException error) {
             logger.error(error);

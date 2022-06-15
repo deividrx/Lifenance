@@ -41,18 +41,12 @@ $("#login").submit(function(event) {
         data: form.serialize(), 
         success: function(data) {   
             
-            $('#siteModal').modal('show');
-            $('#modal-title').text('Sucesso!');      
-            
-            if (data.error == true) {
-                $('#modal-title').text('Erro!'); 
-            }            
-            $('#modal-text').text(data.text);
-            
             if (data.error == false) {
-                $("#modal-close").click(function(){
-                    window.location.assign("login.html"); 
-                });
+                window.location.assign("index.html"); 
+            } else {
+                $('#siteModal').modal('show');    
+                $('#modal-title').text('Erro!'); 
+                $('#modal-text').text(data.text);        
             }
         }
     });
