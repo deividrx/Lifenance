@@ -3,7 +3,6 @@ package controller;
 import application.Application;
 import com.google.gson.Gson;
 import dal.GenericDao;
-import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -34,17 +33,19 @@ public class RegisterServlet extends HttpServlet {
             String pwd = req.getParameter("password");
             String repeatPwd = req.getParameter("repeatPassword");
 
+            JsonMenssage jsonMenssage = new JsonMenssage(map);
+
             if (!Validation.validateCpf(cpf)) {
                 map.put("error", true);
                 map.put("text", "CPF inválido!");
-                returnJson(resp);
+                jsonMenssage.returnJson(resp);
                 return;
             }
 
             if (!pwd.equals(repeatPwd)) {
                 map.put("error", true);
                 map.put("text", "Senha não iguais!");
-                returnJson(resp);
+                jsonMenssage.returnJson(resp);
                 return;
             }
 
@@ -54,18 +55,10 @@ public class RegisterServlet extends HttpServlet {
 
             map.put("error", false);
             map.put("text", "Usuário criado com sucesso!");
-            returnJson(resp);
+            jsonMenssage.returnJson(resp);
 
         } catch (IOException error) {
             logger.error(error);
-        }
-    }
-
-    public void returnJson(HttpServletResponse resp) throws IOException {
-        try (PrintWriter output = resp.getWriter()) {
-            resp.setContentType("application/json");
-            resp.setCharacterEncoding("UTF-8");
-            output.write(new Gson().toJson(map));
         }
     }
 }

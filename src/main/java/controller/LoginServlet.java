@@ -2,6 +2,8 @@
 package controller;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import bll.UserAuth;
 import jakarta.servlet.annotation.WebServlet;
@@ -17,6 +19,7 @@ import util.HashGenerator;
 public class LoginServlet extends HttpServlet {
 
     private static final Logger logger = LogManager.getLogger(LoginServlet.class);
+    private Map<String, Object> map = new HashMap<>();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) {
         try {
@@ -26,8 +29,12 @@ public class LoginServlet extends HttpServlet {
             System.out.println(request.getParameter("remember"));
             UserAuth authorization = new UserAuth(userCpf, userPassword);
 
+            JsonMenssage jsonMenssage = new JsonMenssage(map);
+
             if (!authorization.validateLogin()) {
-                response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Invalid username or password!");
+                map.put("error", true);
+                map.put("text", "Invalid username or password!");
+                jsonMenssage.returnJson(response);
             } else {
                 HttpSession session = request.getSession();
                 session.setAttribute("loggedUser", authorization.getUser());

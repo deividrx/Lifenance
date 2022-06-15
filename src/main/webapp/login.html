@@ -41,7 +41,7 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Bem vindo!</h1>
                                     </div>
-                                    <form class="user" method="post" ACTION="authorization/login">
+                                    <form id="login" class="user" method="post" ACTION="authorization/login">
                                         <div class="form-group">
                                             <input type="number" class="form-control form-control-user"
                                                 id="exampleInputEmail" name="cpf" aria-describedby="cpfHelp"
@@ -81,6 +81,26 @@
 
     </div>
 
+    <div id="siteModal" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+
+            <div class="modal-header">
+              <h5 class="modal-title" id="modal-title"></h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p id="modal-text"></p>
+            </div>
+            <div class="modal-footer">
+              <button id="modal-close" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+    </div>
+
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -90,6 +110,7 @@
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
+    <script src="js/scripts.js"></script>
 
 </body>
 
