@@ -3,70 +3,65 @@ package controller;
 
 import java.io.IOException;
 
-import bll.Authorization;
-import jakarta.servlet.ServletException;
+import bll.UserAuth;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.Cookie;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
+import jakarta.servlet.http.*;
+import models.Session;
+import models.exceptions.HashGenerationException;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import util.HashGenerator;
 
 @WebServlet(name = "Login", urlPatterns = {"/authorization/login"})
 public class LoginServlet extends HttpServlet {
 
     private static final Logger logger = LogManager.getLogger(LoginServlet.class);
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
         try {
-            Authorization authorization = new Authorization();
-            logger.info("Reached login!");
-            if (!authorization.isLoggedIn(request)) {
-                String cpf = request.getParameter("cpf");
-                String password = request.getParameter("password");
-                boolean remember = Boolean.parseBoolean(request.getParameter("remember"));
+            String userCpf = request.getParameter("cpf");
+            String userPassword = request.getParameter("password");
+            boolean rememberMe = Boolean.parseBoolean(request.getParameter("remember"));
+            System.out.println(request.getParameter("remember"));
+            UserAuth authorization = new UserAuth(userCpf, userPassword);
 
-                logger.info("Reached login: pwd=" + password + " cpf=" + cpf + " remeber=" + remember);
-                if (!authorization.validateLogin(cpf, password)) {
-                    logger.info("Failed login from " + request.getRemoteAddr());
-                    response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Invalid username or password!");
-                    return;
-                }
-
+            if (!authorization.validateLogin()) {
+                response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Invalid username or password!");
+            } else {
                 HttpSession session = request.getSession();
-                session.setAttribute("user_id", "bacate");
-                //setting session to expiry in 30 mins
-                session.setMaxInactiveInterval(30*60);
-                Cookie userName = new Cookie("user", "11111");
-                userName.setMaxAge(30*60);
-                response.addCookie(userName);
-                response.sendRedirect("index.html");
+                session.setAttribute("loggedUser", authorization.getUser());
 
+                if (rememberMe) {
+                    Session userSession = new Session();
+
+                    String selector = RandomStringUtils.randomAlphanumeric(12);
+                    String rawValidator =  RandomStringUtils.randomAlphanumeric(64);
+                    String hashedValidator = HashGenerator.generateSHA256(rawValidator);
+
+                    userSession.setSelector(selector);
+                    userSession.setValidator(hashedValidator);
+                    userSession.setUser(authorization.getUser());
+
+                    authorization.insertSession(userSession);
+
+                    Cookie cookieSelector = new Cookie("selector", selector);
+                    Cookie cookieValidator = new Cookie("validator", rawValidator);
+
+                    cookieSelector.setPath("/");
+                    cookieValidator.setPath("/");
+
+                    cookieSelector.setMaxAge(604800);
+                    cookieValidator.setMaxAge(604800);
+
+                    response.addCookie(cookieSelector);
+                    response.addCookie(cookieValidator);
+                }
+                response.sendRedirect("/lifenance/index.html");
             }
-
-            response.sendRedirect("index.html");
-        } catch (Exception e) {
-
+        } catch (IOException | HashGenerationException error) {
+            logger.error(error);
         }
-
-
-        System.out.println();
-
-
-
-
-
-
-//        if(user != null && pwd.equals(user.getPassword())){
-//        }else{
-//            RequestDispatcher rd = getServletContext().getRequestDispatcher("login.html");
-//            PrintWriter out= response.getWriter();
-//            out.println("<font color=red>Either user name or password is wrong.</font>");
-//            rd.include(request, response);
-//        }
-
     }
 
 }

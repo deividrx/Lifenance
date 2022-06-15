@@ -5,12 +5,12 @@ import models.annotations.PrimaryKey;
 
 public class User {
 
+    @PrimaryKey("user_cpf")
+    private String cpf;
     @ColumnName("first_name")
     private String fisrtName;
     @ColumnName("last_name")
     private String lastName;
-    @PrimaryKey("user_cpf")
-    private String cpf;
     @ColumnName("user_email")
     private String email;
     @ColumnName("user_password")

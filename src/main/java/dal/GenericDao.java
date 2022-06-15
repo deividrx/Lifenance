@@ -113,11 +113,12 @@ public class GenericDao<T> {
             ResultSet rs = s.executeQuery(sql);
             ResultSetMetaData rsmd = rs.getMetaData();
             ArrayList<String> data = new ArrayList<>();
-            rs.next();
             int columnNum = rsmd.getColumnCount();
 
-            for (int i = 1; i <= columnNum; i++) {
-                data.add(rs.getObject(i).toString());
+            if (rs.next()) {
+                for (int i = 1; i <= columnNum; i++) {
+                    data.add(rs.getObject(i).toString());
+                }
             }
 
             String args = (String.join(";", data));
@@ -131,7 +132,7 @@ public class GenericDao<T> {
         return null;
     }
 
-    public boolean contains(String id) {
+    public boolean contains(long id) {
         try {
             String sql = "SELECT EXISTS(SELECT 1 FROM " + tableName + " WHERE " + primaryKeyName + " = '" + id + "')";
             Statement s = connection.createStatement();
@@ -145,4 +146,29 @@ public class GenericDao<T> {
         return false;
     }
 
+    public T getByColumn(String columnName, String value) {
+        try {
+            String sql = "SELECT * FROM " + tableName + " WHERE " + columnName + " = '" + value + "'";
+            Statement s = connection.createStatement();
+            ResultSet rs = s.executeQuery(sql);
+            ResultSetMetaData rsmd = rs.getMetaData();
+            ArrayList<String> data = new ArrayList<>();
+            int columnNum = rsmd.getColumnCount();
+
+            if (rs.next()) {
+                for (int i = 1; i <= columnNum; i++) {
+                    data.add(rs.getObject(i).toString());
+                }
+            }
+
+            String args = (String.join(";", data));
+            return cls.getDeclaredConstructor(String.class).newInstance(args);
+
+        } catch (SQLException | InvocationTargetException | InstantiationException | IllegalAccessException
+                 | NoSuchMethodException ex) {
+            Logger.getLogger(GenericDao.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("bacate");
+        }
+        return null;
+    }
 }
