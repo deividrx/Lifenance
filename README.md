@@ -4,6 +4,8 @@ Um sistema web simples para controle de gastos financeiros.
 
 ## Capturas de Tela
 
+![Tela de login](login.png)
+
 ## Configurando o ambiente de desenvolvimento
 
 Certifique-se de ter o [`podman`](https://podman.io/getting-started/installation) ou `docker` instalado antes de rodar o script.
