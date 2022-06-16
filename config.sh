@@ -10,7 +10,6 @@ trap 'exit 0' SIGTERM
 pull_images() {
     echo 'Pulling images...'
     $1 pull docker.io/library/postgres:latest || error
-    $1 pull docker.io/library/tomcat:latest || error
     $1 pull docker.io/dpage/pgadmin4:latest || error
 }
 
@@ -29,11 +28,9 @@ create_containers() {
     if [[ "$1" == "podman" ]] ; then
         ARG1="--pod lifenance"
         ARG2="--pod lifenance"
-        ARG3="--pod lifenance"
     else
         ARG1="--net lifenance --ip 172.20.0.10"
         ARG2="--net lifenance --ip 172.20.0.11"
-        ARG3="--net lifenance --ip 172.20.0.12"
     fi  
 
     $1 run $ARG1 \
@@ -47,22 +44,14 @@ create_containers() {
         -e PGADMIN_DEFAULT_PASSWORD=admin \
         docker.io/dpage/pgadmin4:latest > /dev/null 2>&1 || error
 
-    $1 run $ARG3 -d --name tomcat \
-        docker.io/library/tomcat:latest > /dev/null 2>&1 || error
-
     echo 'Containers created!'
 }
 
-config_tomcat() {
-  echo 'Configuring tomcat...'
-  $1 exec tomcat rmdir webapps
-  $1 exec tomcat mv webapps.dist webapps
-  $1 exec tomcat sed -ie '/<Valve/,/>/d' webapps/manager/META-INF/context.xml
-  $1 exec tomcat sed -i '56i\\t<role rolename="manager-gui"/>' conf/tomcat-users.xml
-  $1 exec tomcat sed -i '57i\\t<role rolename="manager-jmx"/>' conf/tomcat-users.xml
-  $1 exec tomcat sed -i '58i\\t<role rolename="manager-script"/>' conf/tomcat-users.xml
-  $1 exec tomcat sed -i '59i\\t<user username="tomcat" password="123456" roles="manager-gui,manager-script,manager-jmx"/>' conf/tomcat-users.xml
-  $1 restart tomcat
+create_database() {
+    echo 'Creating lifenance_db'
+    cd "$(git rev-parse --show-toplevel)" || error
+    $1 exec psql -U postgres lifenance_db < lifenance_db.sql > /dev/null 2>&1 || error
+    echo 'Database created!'
 }
 
 case "$1" in 
@@ -91,12 +80,8 @@ case "$1" in
         pull_images docker
         config_network
         create_containers docker
-        config_tomcat docker
-        echo "Containers IPs:"
-        echo 'NAME      IP'
-        echo 'postgres  172.20.0.10'
-        echo 'pgadmin4  172.20.0.11'
-        echo 'tomcat    172.20.0.12'
+        create_database docker
+        echo 'Successfully!'
     ;;
     "podman")
         if [[ -z $(command -v podman) ]] ; then
@@ -107,18 +92,19 @@ case "$1" in
         pull_images podman
         create_pod
         create_containers podman
-        config_tomcat podman
+        create_database podman
+        echo 'Successfully!'
     ;;
     "clean")
         case "$2" in 
             "podman")
-                podman stop tomcat postgres pgadmin
-                podman rm tomcat postgres pgadmin
+                podman stop postgres pgadmin
+                podman rm postgres pgadmin
                 podman pod rm lifenance
             ;;
             "docker")
-                docker stop tomcat postgres pgadmin
-                docker rm tomcat postgres pgadmin
+                docker stop postgres pgadmin
+                docker rm postgres pgadmin
                 docker network rm lifenance
             ;;
             *)
@@ -132,5 +118,3 @@ case "$1" in
         echo "Try 'config help' for more information"
     ;;
 esac
-
-echo 'Successfully!'
