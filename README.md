@@ -10,6 +10,10 @@ Um sistema web simples para controle de gastos financeiros.
 
 Certifique-se de ter o [`podman`](https://podman.io/getting-started/installation) ou `docker` instalado antes de rodar o script.
 
+> ⚠️ No Windows
+> 
+> Use o WSL
+
 ```bash
 git clone https://github.com/hypperd/Lifenance.git
 cd lifenance
@@ -38,6 +42,6 @@ Clean targets:
 
 ## Dependências
 
-- Java 11
-- Podman
-- Gradle
+- Java 17
+- Podman ou docker
+- Gradle >= 7.2
