@@ -6,16 +6,33 @@ Um sistema web simples para controle de gastos financeiros.
 
 ## Configurando o ambiente de desenvolvimento
 
-Certifique-se de ter o [`podman`](https://podman.io/getting-started/installation) instalado antes de rodar o script.
+Certifique-se de ter o [`podman`](https://podman.io/getting-started/installation) ou `docker` instalado antes de rodar o script.
 
 ```bash
 git clone https://github.com/hypperd/Lifenance.git
 cd lifenance
 chmod +x config.sh
-sudo ./config.sh
+sudo ./config.sh docker
+# or ./config.sh podman
 ```
 
-> ⚠️ Caso tenha configurado o podman para rotar sem root, remova o sudo
+Opções do script config:
+
+```bash
+Usage:
+  config.sh [docker|help|podman]
+  config.sh clean [podman|docker]
+
+Commands:
+  docker: create development environment using docker.
+  podman: crete development environment using podman.
+  help: Show this message and exit.
+  clean: remove all stuff created by this script.
+
+Clean targets:
+  podman: remove all stuff created by this script using podman.
+  docker: remove all stuff created by this script using docker.
+```
 
 ## Dependências
 
