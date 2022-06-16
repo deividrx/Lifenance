@@ -15,7 +15,7 @@ pull_images() {
 
 create_pod() {
   echo 'Creating pod...'
-  podman pod create --name lifenance -p 8080:80 -p 8888:8080 > /dev/null 2>&1 || error 
+  podman pod create --name lifenance -p 8080:80 -p 5432:5432 > /dev/null 2>&1 || error 
 }
 
 config_network() {
@@ -34,8 +34,7 @@ create_containers() {
     fi  
 
     $1 run $ARG1 \
-        --name db_postgres -d \
-        -e POSTGRES_USER=admin \
+        --name postgres -d \
         -e POSTGRES_PASSWORD=admin \
         docker.io/library/postgres > /dev/null 2>&1 || error
 
@@ -49,8 +48,13 @@ create_containers() {
 
 create_database() {
     echo 'Creating lifenance_db'
-    cd "$(git rev-parse --show-toplevel)" || error
-    $1 exec psql -U postgres lifenance_db < lifenance_db.sql > /dev/null 2>&1 || error
+    
+    while ! $1 exec postgres pg_isready -q ;do 
+        echo 'Wating postgres startup'
+        sleep 5
+    done
+    
+    ($1 exec -i postgres psql -U postgres < lifenance_db.sql) > /dev/null 2>&1 || error
     echo 'Database created!'
 }
 
