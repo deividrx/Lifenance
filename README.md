@@ -18,7 +18,7 @@ sudo ./config.sh docker
 
 Opções do script config:
 
-```bash
+```
 Usage:
   config.sh [docker|help|podman]
   config.sh clean [podman|docker]
