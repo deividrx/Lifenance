@@ -27,7 +27,7 @@ public class Application {
             tomcat.getConnector();
 
             String webapp = "src/main/webapp/";
-            Context context = tomcat.addWebapp("/lifenance", new File(webapp).getAbsolutePath());
+            Context context = tomcat.addWebapp("", new File(webapp).getAbsolutePath());
 
             File webInfClasses = new File("build/classes");
             WebResourceRoot resources = new StandardRoot(context);
@@ -37,7 +37,7 @@ public class Application {
             context.setSessionCookiePath("/");
 
             tomcat.start();
-            Desktop.getDesktop().browse(new URL("http://localhost:8888/lifenance").toURI());
+            Desktop.getDesktop().browse(new URL("http://localhost:8888").toURI());
             tomcat.getServer().await();
 
         } catch (LifecycleException | URISyntaxException | IOException error) {

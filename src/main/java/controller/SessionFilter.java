@@ -70,12 +70,6 @@ public class SessionFilter implements Filter {
             }
 
             String uri = req.getRequestURI();
-
-            if (uri.endsWith(".css") || uri.endsWith(".js") || uri.endsWith("img/money-image-coins.jpg") || uri.endsWith("img/money.jpg")) {
-                chain.doFilter(request, response);
-                return;
-            }
-
             if (!logged && !pagesWithoutLoginAcess(uri)) {
                 res.sendRedirect("deny-access.html");
             } else {
@@ -92,6 +86,7 @@ public class SessionFilter implements Filter {
 
     private boolean pagesWithoutLoginAcess(String uri) {
         return (uri.endsWith("login.html") || uri.endsWith("deny-access.html") || uri.endsWith("/authorization/register") ||
-                uri.endsWith("/authorization/login") || uri.endsWith("register.html"));
+                uri.endsWith("/authorization/login") || uri.endsWith("register.html") || uri.endsWith(".css") || uri.endsWith(".js")
+                || uri.endsWith("img/money-image-coins.jpg") || uri.endsWith("img/money.jpg") || uri.endsWith("favicon.ico"));
     }
 }

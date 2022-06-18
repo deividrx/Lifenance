@@ -101,7 +101,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree"
                     aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-table"></i>
+                    <i class="fas fa-credit-card"></i>
                     <span>Cartão</span>
                 </a>
                 <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
