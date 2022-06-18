@@ -48,6 +48,14 @@ public class RegisterServlet extends HttpServlet {
             }
 
             GenericDao<User> userDao = new GenericDao<>("users", User.class);
+
+            if (userDao.contains(cpf)) {
+                map.put("error", true);
+                map.put("text", "Este CPF já foi cadastrado!");
+                jsonMenssage.returnJson(resp);
+                return;
+            }
+
             User user = new User(firstName, lastName, cpf, email, pwd);
             userDao.insertWithPK(user);
 
