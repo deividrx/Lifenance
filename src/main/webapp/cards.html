@@ -11,11 +11,12 @@
 
     <title>Registrar Cartao</title>
 
-    <!-- Custom fonts for this template-->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
+    <link href="webjars/fortawesome__fontawesome-free/6.1.1/css/all.min.css" rel="stylesheet" type="text/css">
+
     <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
+            href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+            rel="stylesheet">
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
@@ -31,7 +32,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.jsp">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-dollar-sign"></i>
                 </div>
@@ -43,7 +44,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="index.jsp">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -57,7 +58,7 @@
             </div>
 
             <!-- Nav Item - Menu Despesas -->
-            <li class="nav-item">
+            <li alass="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOne"
                     aria-expanded="true" aria-controls="collapseOne">
                     <i class="fas fa-dollar-sign"></i>
@@ -100,8 +101,25 @@
                 <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Opções:</h6>
-                        <a class="collapse-item" href="card.html">Registrar Cartão</a>
+                        <a class="collapse-item" href="cards.html">Registrar Cartão</a>
                         <a class="collapse-item" href="cards.html">Ver Cartão</a>
+                    </div>
+                </div>
+            </li>
+
+             <!-- Nav Item - Contas Bancarias -->
+            
+             <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFour"
+                    aria-expanded="true" aria-controls="collapseThree">
+                    <i class="fas fa-building-columns"></i>
+                    <span>Conta Bancária</span>
+                </a>
+                <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Opções:</h6>
+                        <a class="collapse-item" href="cards.html">Registrar Conta</a>
+                        <a class="collapse-item" href="cards.html">Ver Contas</a>
                     </div>
                 </div>
             </li>
@@ -265,12 +283,7 @@
                                                   </a>
                                 </li>
                                
-                                <li class="nav-item">
-                                  <a data-toggle="pill" href="#nav-tab-bank" class="nav-link rounded-pill">
-                                                      <i class="fa fa-university"></i>
-                                                       Conta Bancária
-                                                   </a>
-                                </li>
+                                
                               </ul>
                               <!-- End -->
                       
@@ -329,23 +342,6 @@
                                 <!-- End -->
             
                       
-                                <!-- bank transfer info -->
-                                <div id="nav-tab-bank" class="tab-pane fade">
-                                  <h6>Detalhes da account bancária</h6>
-                                  <dl>
-                                    <dt>Banco</dt>
-                                    <dd> CAIXA ECONÔMICA FEDERAL</dd>
-                                  </dl>
-                                  <dl>
-                                    <dt>Número da account</dt>
-                                    <dd>7775877975</dd>
-                                  </dl>
-                                  <dl>
-                                    <dt>Agência</dt>
-                                    <dd>00001</dd>
-                                  </dl>
-                                  <p class="text-muted">A account bancária deverá ser criada antes do registro do cartão para maior segurança dos seus dados</p>
-                                </div>
                                 <!-- End -->
                               </div>
                               <!-- End -->

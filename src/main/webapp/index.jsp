@@ -74,7 +74,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Opções:</h6>
                         <a class="collapse-item" href="despesa.html">Registrar Despesas</a>
-                        <a class="collapse-item" href="cards.html">Ver Despesas</a>
+                        <a class="collapse-item" href="ver-despesa.html">Ver Despesas</a>
                     </div>
                 </div>
             </li>
@@ -124,7 +124,7 @@
                 <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Opções:</h6>
-                        <a class="collapse-item" href="cards.html">Registrar Conta</a>
+                        <a class="collapse-item" href="bank-account.html">Registrar Conta</a>
                         <a class="collapse-item" href="cards.html">Ver Contas</a>
                     </div>
                 </div>
@@ -159,19 +159,7 @@
                         <i class="fa fa-bars"></i>
                     </button>
 
-                    <!-- Topbar Search -->
-                    <form
-                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                        <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Pesquise..."
-                                aria-label="Search" aria-describedby="basic-addon2">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
-                                    <i class="fas fa-search fa-sm"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
