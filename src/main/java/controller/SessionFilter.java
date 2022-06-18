@@ -80,7 +80,7 @@ public class SessionFilter implements Filter {
                 res.sendRedirect("deny-access.html");
             } else {
                 if (logged && (uri.endsWith("login.html") || uri.endsWith("register.html")))
-                    res.sendRedirect("index.html");
+                    res.sendRedirect("index.jsp");
                 else
                     chain.doFilter(request, response);
             }

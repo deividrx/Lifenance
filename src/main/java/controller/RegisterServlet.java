@@ -1,7 +1,6 @@
 package controller;
 
 import application.Application;
-import com.google.gson.Gson;
 import dal.GenericDao;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -13,7 +12,6 @@ import org.apache.logging.log4j.Logger;
 import validation.Validation;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 

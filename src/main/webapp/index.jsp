@@ -1,3 +1,9 @@
+<%@page 
+    contentType="text/html" 
+    pageEncoding="UTF-8"
+    import="models.User"
+    import="java.time.LocalTime"
+%>
 <!DOCTYPE html>
 <html lang="pt_BR">
 
@@ -267,7 +273,25 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+                        <h1 class="h3 mb-0 text-gray-800">
+                            <%
+                                
+                                User user = (User) request.getSession(false).getAttribute("loggedUser");
+                                String[] welcomeTypes = {"Bom dia", "Boa tarde", "Boa noite"};
+                                int hour = LocalTime.now().getHour();
+                                String welcome;
+
+                                if (hour < 12) 
+                                    welcome = welcomeTypes[0];
+                                else if (hour < 18) 
+                                    welcome = welcomeTypes[1];
+                                else
+                                    welcome = welcomeTypes[2];
+
+
+                                out.println(welcome + ", " + user.getFisrtName() + " " + user.getLastName());
+                            %>
+                        </h1>
                        
                     </div>
 
