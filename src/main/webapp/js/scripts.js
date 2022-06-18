@@ -40,7 +40,7 @@ $("#login").submit(function(event) {
         success: function(data) {   
             
             if (data.error == false) {
-                window.location.assign("index.html"); 
+                window.location.assign("index.jsp"); 
             } else {
                 $('#siteModal').modal('show');    
                 $('#modal-title').text('Erro!'); 

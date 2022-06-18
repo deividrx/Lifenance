@@ -289,7 +289,7 @@
                                     welcome = welcomeTypes[2];
 
 
-                                out.println(welcome + ", " + user.getFisrtName() + " " + user.getLastName());
+                                out.println(welcome + ", " + user.getFisrtName() + " " + user.getLastName() + "!");
                             %>
                         </h1>
                        
