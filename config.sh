@@ -29,8 +29,8 @@ create_containers() {
         ARG1="--pod lifenance"
         ARG2="--pod lifenance"
     else
-        ARG1="--net lifenance --ip 172.20.0.10"
-        ARG2="--net lifenance --ip 172.20.0.11"
+        ARG1="--net lifenance --ip 172.20.0.10 -p 5432:5432"
+        ARG2="--net lifenance --ip 172.20.0.11 -p 8080:80"
     fi  
 
     $1 run $ARG1 \
