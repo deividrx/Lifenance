@@ -6,39 +6,51 @@ import models.enumeration.TransactionType;
 
 import java.time.LocalDate;
 
+import org.apache.tomcat.jni.Local;
+
 public class Transaction {
 
-    @PrimaryKey("id_transaction")
+    @PrimaryKey("transaction_id")
     private long idTransaction;
     @ColumnName("transaction_value")
     private float value;
-    @ColumnName("transaction_type")
-    private TransactionType type;
     @ColumnName("transaction_name")
     private String name;
-    @ColumnName("transaction_date")
-    private LocalDate date;
+    @ColumnName("transaction_initial_date")
+    private LocalDate dataInicial;
+    @ColumnName("transaction_final_date")
+    private LocalDate dataFinal;
+    @ColumnName("transaction_description")
+    private String description;
+    @ColumnName("user_cpf")
+    private User user;
 
-    public Transaction(long idTransaction, float value, TransactionType type, String name, LocalDate date) {
+
+    public Transaction(long idTransaction, float value, String name, LocalDate dataInicial, LocalDate dataFinal, String description, User user) {
         this.idTransaction = idTransaction;
         this.value = value;
-        this.type = type;
         this.name = name;
-        this.date = date;
+        this.dataInicial = dataInicial;
+        this.dataFinal = dataFinal;
+        this.description = description;
+        this.user = user;
     }
 
     // Constructor for genericDAO
-    public Transaction(String arg) {
-        String[] split = arg.split(";");
+    public Transaction(String args) {
+        String[] split = args.split(";");
         this.idTransaction = Long.parseLong(split[0]);
         this.value = Float.parseFloat(split[1]);
-        this.type = TransactionType.valueOf(split[2]);
-        this.name = split[3];
-        this.date = LocalDate.parse(split[4]);
+        this.name = split[2];
+        this.dataInicial = LocalDate.parse(split[3]);
+        this.dataFinal = LocalDate.parse(split[4]);
+        this.description = split[5];
+        this.user = ModelFactory.getModel(User.class, "users", split[6]);
     }
 
+
     public long getIdTransaction() {
-        return idTransaction;
+        return this.idTransaction;
     }
 
     public void setIdTransaction(long idTransaction) {
@@ -46,34 +58,51 @@ public class Transaction {
     }
 
     public float getValue() {
-        return value;
+        return this.value;
     }
 
     public void setValue(float value) {
         this.value = value;
     }
 
-    public TransactionType getType() {
-        return type;
-    }
-
-    public void setType(TransactionType type) {
-        this.type = type;
-    }
-
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public LocalDate getDate() {
-        return date;
+    public LocalDate getDataInicial() {
+        return this.dataInicial;
     }
 
-    public void setDate(LocalDate date) {
-        this.date = date;
+    public void setDataInicial(LocalDate dataInicial) {
+        this.dataInicial = dataInicial;
     }
+
+    public LocalDate getDataFinal() {
+        return this.dataFinal;
+    }
+
+    public void setDataFinal(LocalDate dataFinal) {
+        this.dataFinal = dataFinal;
+    }
+
+    public String getDescription() {
+        return this.description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public User getUser() {
+        return this.user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+    
 }

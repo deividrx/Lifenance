@@ -5,12 +5,12 @@ import models.annotations.PrimaryKey;
 
 public class TransactionAccount {
 
-    @PrimaryKey("id_transaction_account")
+    @PrimaryKey("transaction_bank_account_id")
     private long id;
+    @ColumnName("bank_account_id")
+    private Account account;
     @ColumnName("transaction_id")
     private Transaction transaction;
-    @ColumnName("account_id")
-    private Account account;
 
     public TransactionAccount(long id, Transaction transaction, Account account) {
         this.id = id;
@@ -22,8 +22,8 @@ public class TransactionAccount {
     public TransactionAccount(String arg) {
         String[] split = arg.split(";");
         this.id = Long.parseLong(split[0]);
-        this.transaction = ModelFactory.getModel(Transaction.class, "transactions", Long.parseLong(split[1]));
-        this.account = ModelFactory.getModel(Account.class, "accounts", Long.parseLong(split[2]));
+        this.account = ModelFactory.getModel(Account.class, "accounts", Long.parseLong(split[1]));
+        this.transaction = ModelFactory.getModel(Transaction.class, "transactions", Long.parseLong(split[2]));
     }
 
     public long getId() {

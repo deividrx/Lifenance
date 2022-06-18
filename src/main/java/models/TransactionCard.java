@@ -5,7 +5,7 @@ import models.annotations.PrimaryKey;
 
 public class TransactionCard {
 
-    @PrimaryKey("id_transaction_card")
+    @PrimaryKey("transaction_card_id")
     private long idTransactionCard;
     @ColumnName("card_id")
     private Card card;

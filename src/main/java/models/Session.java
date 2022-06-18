@@ -6,10 +6,10 @@ import models.annotations.PrimaryKey;
 public class Session {
     @PrimaryKey("id_session")
     private String sessionId;
-    @ColumnName("user_cpf")
-    private User user;
     @ColumnName("validator")
     private String validator;
+    @ColumnName("user_cpf")
+    private User user;
 
     public Session() {
     }
@@ -23,8 +23,8 @@ public class Session {
     public Session(String args) { // Constructor for generic dao
         String[] split = args.split(";");
         this.sessionId = split[0];
-        this.user = ModelFactory.getModel(User.class, "users", split[1]);
-        this.validator = split[2];
+        this.validator = split[1];
+        this.user = ModelFactory.getModel(User.class, "users", split[2]);
     }
 
     public String getValidator() {

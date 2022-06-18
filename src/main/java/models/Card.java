@@ -9,23 +9,21 @@ public class Card {
 
     @PrimaryKey("card_id")
     private long id;
+    @ColumnName("card_name")
+    private String nome;
     @ColumnName("card_number")
     private long number;
     @ColumnName("validity")
     private LocalDate validity;
-    @ColumnName("card_flag")
-    private CardFlag cardFlag;
-    @ColumnName("multa")
-    private int multa;
     @ColumnName("limite")
     private float limite;
-    @ColumnName("vencimento")
+    @ColumnName("multa")
+    private int multa;
+    @ColumnName("vencimento_fatura")
     private LocalDate vencimento;
-    @ColumnName("fechamento")
-    private LocalDate fechamento;
-    @ColumnName("card_name")
-    private String nome;
-    @ColumnName("user_id")
+    @ColumnName("card_flag_id")
+    private CardFlag cardFlag;
+    @ColumnName("user_cpf")
     private User user;
 
     public Card(long id, long number, LocalDate validity, CardFlag cardFlag, int multa, float limite,
@@ -37,7 +35,6 @@ public class Card {
         this.multa = multa;
         this.limite = limite;
         this.vencimento = vencimento;
-        this.fechamento = fechamento;
         this.nome = nome;
         this.user = user;
     }
@@ -46,15 +43,14 @@ public class Card {
     public Card(String arg) {
         String[] split = arg.split(";");
         this.id = Long.parseLong(split[0]);
-        this.number = Long.parseLong(split[1]);
-        this.validity = LocalDate.parse(split[2]);
-        this.cardFlag = ModelFactory.getModel(CardFlag.class, "flags", Long.parseLong(split[3]));
-        this.multa = Integer.parseInt(split[4]);
-        this.limite = Float.parseFloat(split[5]);
+        this.nome = split[1];
+        this.number = Long.parseLong(split[2]);
+        this.validity = LocalDate.parse(split[3]);
+        this.limite = Float.parseFloat(split[4]);
+        this.multa = Integer.parseInt(split[5]);
         this.vencimento = LocalDate.parse(split[6]);
-        this.fechamento = LocalDate.parse(split[7]);
-        this.nome = split[8];
-        this.user = ModelFactory.getModel(User.class, "users", Long.parseLong(split[9]));
+        this.cardFlag = ModelFactory.getModel(CardFlag.class, "flags", Long.parseLong(split[7]));
+        this.user = ModelFactory.getModel(User.class, "users", Long.parseLong(split[8]));
     }
 
     public long getId() {
@@ -111,14 +107,6 @@ public class Card {
 
     public void setVencimento(LocalDate vencimento) {
         this.vencimento = vencimento;
-    }
-
-    public LocalDate getFechamento() {
-        return fechamento;
-    }
-
-    public void setFechamento(LocalDate fechamento) {
-        this.fechamento = fechamento;
     }
 
     public String getNome() {
