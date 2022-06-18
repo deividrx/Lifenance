@@ -1,17 +1,16 @@
 package application;
 
-import dal.GenericDao;
-import models.ModelFactory;
-import models.User;
-import org.apache.commons.lang3.RandomStringUtils;
+import org.webjars.WebJarAssetLocator;
+
+import java.util.Set;
 
 public class Test {
     public static void main(String[] args) {
 
         try {
-            GenericDao<User> userGenericDao = new GenericDao<>("users", User.class);
-            System.out.println(ModelFactory.getModel(User.class, "users", Long.parseLong("11111111111")));
-            System.out.println(RandomStringUtils.randomAlphanumeric(64));
+            WebJarAssetLocator locator = new WebJarAssetLocator();
+            Set<String> fullPathsOfAssets = locator.listAssets("/");
+            System.out.println(fullPathsOfAssets);
         } catch (Exception e) {
             System.out.println(e);
         }

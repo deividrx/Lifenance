@@ -2,11 +2,8 @@ package models;
 
 import models.annotations.ColumnName;
 import models.annotations.PrimaryKey;
-import models.enumeration.TransactionType;
 
 import java.time.LocalDate;
-
-import org.apache.tomcat.jni.Local;
 
 public class Transaction {
 

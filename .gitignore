@@ -27,6 +27,7 @@ tomcat.8888
 
 # Vscode
 bin
+.vscode
 
 # node
 node_modules
