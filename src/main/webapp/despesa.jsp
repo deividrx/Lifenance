@@ -104,7 +104,7 @@
                                 </div>
                                 <div class="card-body">
                                     <p>A despesa esta ligada a tudo aquilo que você gasta. Gastos como <code>aluguel, mensalidade da escola, água e luz</code> 
-                                        devem ser marcados como <strong>Despesa Fixa</strong>, já gastos como, passeio ao cinema, jantar romântico 
+                                        devem ser marcados como <strong>Despesa Fixa</strong>. Já gastos como, passeio ao cinema, jantar romântico
                                         troca do pneu, devem ser marcados como <strong>Despesa Esporádica.</strong></p>
                                    
                                     <div class="my-2"></div>

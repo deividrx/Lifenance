@@ -66,16 +66,14 @@
                                       <label for="username">Nome Completo (no cartão)</label>
                                       <input type="text" name="username" placeholder="" required class="form-control">
                                     </div>
+
+
                                     <div class="form-group">
                                       <label for="cardNumber">Número</label>
                                       <div class="input-group">
                                         <input type="text" name="cardNumber" placeholder="Número do cartão" class="form-control" required>
                                         <div class="input-group-append">
-                                          <span class="input-group-text text-muted">
-                                                                      <i class="fa fa-cc-visa mx-1"></i>
-                                                                      <i class="fa fa-cc-amex mx-1"></i>
-                                                                      <i class="fa fa-cc-mastercard mx-1"></i>
-                                                                  </span>
+
                                         </div>
                                       </div>
                                     </div>
@@ -84,31 +82,58 @@
                                         <div class="form-group">
                                           <label><span class="hidden-xs">Validade</span></label>
                                           <div class="input-group">
-                                            <input type="number" placeholder="MM" name="" class="form-control" required>
-                                            <input type="number" placeholder="YY" name="" class="form-control" required>
+                                            <input type="number" placeholder="Mês" name="" class="form-control" required>
+                                            <input type="number" placeholder="Ano" name="" class="form-control" required>
                                           </div>
                                         </div>
                                       </div>
                                       <div class="col-sm-4">
                                         <div class="form-group mb-4">
-                                          <label data-toggle="tooltip" title="Tres digitos na parte de trás do cartão">CVV
-                                                                      <i class="fa fa-question-circle"></i>
-                                                                  </label>
+                                          <label data-toggle="tooltip" title="Tres digitos na parte de trás do cartão">CVV </label>
                                           <input type="text" required class="form-control">
                                           
                                         </div>
-                                     
+
                                       </div>
-                      
-                      
-                      
-                                    </div>
-                                    <button type="button" class="subscribe btn btn-primary btn-block rounded-pill shadow-sm"> Confirm  </button>
+
+                                  </div>
+                                      <div class="form-group">
+                                         <label for="limite">Limite do cartão</label>
+                                         <input id="limiteCartao" type="text" name="username" placeholder="R$" required class="form-control">
+                                  </div>
+                                  <div class="row">
+                                       <div class="col-sm-8">
+                                           <div class="form-group">
+                                             <label><span class="hidden-xs">Vencimento da fatura</span></label>
+                                             <div class="input-group">
+                                              <input type="number" placeholder="Dia" name="" class="form-control" required>
+                                             <input type="number" placeholder="Mês" name="" class="form-control" required>
+                                             </div>
+                                          </div>
+                                      </div>
+                                  <div class="col-sm-4">
+
+                                  <div class="form-group mb-4">
+                                       <label data-toggle="tooltip" title="Tres digitos na parte de trás do cartão">Bandeira </label>
+
+                                       <select class="form-select" multiple aria-label="multiple select example">
+                                         <option value="1">Mastercard</option>
+                                         <option value="2">Visa</option>
+                                         <option value="3">American Express</option>
+                                         <option value="4">Hipercard</option>
+                                         <option value="5">Elo</option>
+                                         <option value="6">Outro</option>
+                                       </select>
+
+                                  </div>
+
+
                                   </form>
+
                                 </div>
                                 <!-- End -->
             
-                      
+                                    <button type="button" class="subscribe btn btn-primary btn-block rounded-pill shadow-sm"> Confirmar  </button>
                                 <!-- End -->
                               </div>
                               <!-- End -->
