@@ -58,7 +58,7 @@
                                     <hr>
                                    
                                     <div class="text-center">
-                                        <a class="small" href="register.html">Crie uma conta!</a>
+                                        <a class="small" href="register.jsp">Crie uma conta!</a>
                                     </div>
                                 </div>
                             </div>

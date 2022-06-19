@@ -18,7 +18,7 @@ public class FieldHandler {
     }
 
     private String getFieldValue(Field field, Object obj) throws IllegalAccessException {
-        if (!field.get(obj).getClass().getPackage().getName().equals("br/com/lifenance/models")) {
+        if (!field.get(obj).getClass().getPackage().getName().equals("br.com.lifenance.models")) {
             String text = field.get(obj).toString();
 
             if (text.isBlank() || text.isBlank()) return null;
