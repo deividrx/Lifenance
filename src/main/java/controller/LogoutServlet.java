@@ -11,7 +11,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import models.Session;
 
-@WebServlet(name = "Logout", urlPatterns = {"/logout"})
+@WebServlet(name = "Logout", urlPatterns = {"/authorization/logout"})
 public class LogoutServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) {
@@ -49,7 +49,7 @@ public class LogoutServlet extends HttpServlet {
                 }
             }
 
-            response.sendRedirect("login.html");
+            response.sendRedirect("/login.jsp");
         } catch (Exception error) {
             Logger.getLogger(GenericDao.class.getName()).log(Level.SEVERE, null, error);
         }

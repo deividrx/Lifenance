@@ -53,7 +53,7 @@
                                     welcome = welcomeTypes[2];
 
 
-                                out.println(welcome + ", " + user.getFisrtName() + " " + user.getLastName() + "!");
+                                out.println(welcome + ", " + user.getFirstName() + " " + user.getLastName() + "!");
                             %>
                         </h1>
                        
@@ -254,10 +254,8 @@
     <!-- JavaScript for all pages -->
     <jsp:include page="elements/js.html" />
 
-    <!-- Page level plugins -->
+    <!-- Page level JavaScript -->
     <script src="vendor/chart.js/Chart.min.js"></script>
-
-    <!-- Page level custom scripts -->
     <script src="js/demo/chart-area-demo.js"></script>
     <script src="js/demo/chart-pie-demo.js"></script>
 

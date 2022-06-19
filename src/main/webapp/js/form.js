@@ -10,7 +10,7 @@ $("#register").submit(function(event) {
         data: form.serialize(), 
         success: function(data) {   
             
-            $('#siteModal').modal('show');
+            $('#error-modal').modal('show');
             $('#modal-title').text('Sucesso!');      
             
             if (data.error == true) {
@@ -20,7 +20,7 @@ $("#register").submit(function(event) {
             
             if (data.error == false) {
                 $("#modal-close").click(function(){
-                    window.location.assign("login.html"); 
+                    window.location.assign("login.jsp"); 
                 });
             }
         }
@@ -42,7 +42,7 @@ $("#login").submit(function(event) {
             if (data.error == false) {
                 window.location.assign("index.jsp"); 
             } else {
-                $('#siteModal').modal('show');    
+                $('#error-modal').modal('show');    
                 $('#modal-title').text('Erro!'); 
                 $('#modal-text').text(data.text);        
             }

@@ -71,10 +71,10 @@ public class SessionFilter implements Filter {
 
             String uri = req.getRequestURI();
             if (!logged && !pagesWithoutLoginAcess(uri)) {
-                res.sendRedirect("deny-access.html");
+                res.sendRedirect("/deny-access.html");
             } else {
-                if (logged && (uri.endsWith("login.html") || uri.endsWith("register.html")))
-                    res.sendRedirect("index.jsp");
+                if (logged && (uri.endsWith("login.jsp") || uri.endsWith("register.jsp")))
+                    res.sendRedirect("/index.jsp");
                 else
                     chain.doFilter(request, response);
             }
@@ -85,8 +85,8 @@ public class SessionFilter implements Filter {
     }
 
     private boolean pagesWithoutLoginAcess(String uri) {
-        return (uri.endsWith("login.html") || uri.endsWith("deny-access.html") || uri.endsWith("/authorization/register") ||
-                uri.endsWith("/authorization/login") || uri.endsWith("register.html") || uri.endsWith(".css") || uri.endsWith(".js")
+        return (uri.endsWith("login.jsp") || uri.endsWith("deny-access.html") || uri.endsWith("/authorization/register") ||
+                uri.endsWith("/authorization/login") || uri.endsWith("register.jsp") || uri.endsWith(".css") || uri.endsWith(".js")
                 || uri.endsWith("img/money-image-coins.jpg") || uri.endsWith("img/money.jpg") || uri.endsWith("favicon.ico"));
     }
 }
