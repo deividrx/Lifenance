@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Ver despesas</title>
+    <title>Ver conta bancária</title>
 
     <!-- Custom fonts for this template-->
     <link href="webjars/fortawesome__fontawesome-free/6.1.1/css/all.min.css" rel="stylesheet" type="text/css">
@@ -118,8 +118,8 @@
             <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Opções:</h6>
-                    <a class="collapse-item" href="cards.html">Registrar Conta</a>
-                    <a class="collapse-item" href="cards.html">Ver Contas</a>
+                    <a class="collapse-item" href="bank-account.html">Registrar Conta</a>
+                    <a class="collapse-item" href="ver-conta-bancaria.html">Ver Contas</a>
                 </div>
             </div>
         </li>
@@ -257,9 +257,9 @@
             <div class="container-fluid">
 
                 <!-- Page Heading -->
-                <h1 class="h3 mb-2 text-gray-800">Despesas</h1>
-                <p class="mb-4">Suas despesas cadastradas aparecerão nessa página, caso ainda nao tenha registrado <a target="_blank"
-                                                                               href="despesa.html">clique aqui</a>.</p>
+                <h1 class="h3 mb-2 text-gray-800">Conta Bancária</h1>
+                <p class="mb-4">Suas contas bancárias aparecerão nessa página, caso ainda nao tenha registrado <a target="_blank"
+                                                                                                                      href="bank-account.html">clique aqui</a>.</p>
 
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
@@ -268,41 +268,39 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-bordered" id="tableDespesa" width="100%" cellspacing="0">
+                            <table class="table table-bordered" id="tableConta" width="100%" cellspacing="0">
                                 <thead>
                                 <tr>
-                                    <th>Nome da despesa</th>
-                                    <th>Conta</th>
+                                    <th>Nome do Banco</th>
+                                    <th>Agência</th>
+                                    <th>Número</th>
                                     <th>Tipo</th>
-                                    <th>Data</th>
-                                    <th>Valor</th>
+                                    <th>Limite</th>
                                 </tr>
                                 </thead>
                                 <tfoot>
                                 <tr>
-                                    <th>Nome da despesa</th>
-                                    <th>Conta</th>
+                                    <th>Nome do Banco</th>
+                                    <th>Agência</th>
+                                    <th>Número</th>
                                     <th>Tipo</th>
-                                    <th>Data</th>
-                                    <th>Valor</th>
+                                    <th>Limite</th>
                                 </tr>
                                 </tfoot>
                                 <tbody>
                                 <tr>
-                                    <td>Conta de Luz</td>
-                                    <td>Itaú</td>
-                                    <td>Fixa</td>
-
-                                    <td>07/06/2022</td>
-                                    <td>$220</td>
+                                    <td>Caixa Econômica Federal</td>
+                                    <td>12345-6</td>
+                                    <td>224612</td>
+                                    <td>Conta Corrente</td>
+                                    <td>$2.200</td>
                                 </tr>
                                 <tr>
-                                    <td>Agiota</td>
-                                    <td>Quilombo</td>
-                                    <td>Fixa</td>
-
-                                    <td>2011/07/25</td>
-                                    <td>$170,750</td>
+                                    <td>Banco Bacate</td>
+                                    <td>65432-1</td>
+                                    <td>666666</td>
+                                    <td>Conta Poupança</td>
+                                    <td>$5.000.000</td>
                                 </tr>
 
                                 </tbody>
