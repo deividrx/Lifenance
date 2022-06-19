@@ -1,5 +1,7 @@
 plugins {
     id 'java'
+    id "io.freefair.sass-webjars" version "6.4.3.1"
+    id "io.freefair.sass-java" version "6.4.3.1"
 }
 
 repositories {

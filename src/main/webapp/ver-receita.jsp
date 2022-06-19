@@ -16,133 +16,109 @@
 
 <body id="page-top">
 
-<!-- Page Wrapper -->
-<div id="wrapper">
+    <!-- Page Wrapper -->
+    <div id="wrapper">
 
-    <!-- Sidebar -->
-    <jsp:include page="elements/sidebar.html" />
+        <!-- Sidebar -->
+        <jsp:include page="elements/sidebar.html" />
 
-    <!-- Content Wrapper -->
-    <div id="content-wrapper" class="d-flex flex-column">
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
 
-        <!-- Main Content -->
-        <div id="content">
+            <!-- Main Content -->
+            <div id="content">
 
-           <!-- Topbar -->
-           <jsp:include page="elements/topbar.html" />
+            <!-- Topbar -->
+            <jsp:include page="elements/topbar.html" />
 
 
-            <!-- Begin Page Content -->
-            <div class="container-fluid">
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
 
-                <!-- Page Heading -->
-                <h1 class="h3 mb-2 text-gray-800">Receitas</h1>
-                <p class="mb-4">Suas receitas aparecerão nessa página, caso ainda nao tenha registrado <a target="_blank"
-                                                                                                                  href="ver-receita.jsp">clique aqui</a>.</p>
+                    <!-- Page Heading -->
+                    <h1 class="h3 mb-2 text-gray-800">Receitas</h1>
+                    <p class="mb-4">Suas receitas aparecerão nessa página, caso ainda nao tenha registrado <a target="_blank"
+                                                                                                                    href="ver-receita.jsp">clique aqui</a>.</p>
 
-                <!-- DataTales Example -->
-                <div class="card shadow mb-4">
-                    <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Suas Receitas</h6>
-                    </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-bordered" id="tableReceita" width="100%" cellspacing="0">
-                                <thead>
-                                <tr>
-                                    <th>Nome da receita</th>
-                                    <th>Conta</th>
-                                    <th>Tipo</th>
-                                    <th>Data</th>
-                                    <th>Valor</th>
-                                </tr>
-                                </thead>
-                                <tfoot>
-                                <tr>
-                                    <th>Nome da receita</th>
-                                    <th>Conta</th>
-                                    <th>Tipo</th>
-                                    <th>Data</th>
-                                    <th>Valor</th>
-                                </tr>
-                                </tfoot>
-                                <tbody>
-                                <tr>
-                                    <td>Salário</td>
-                                    <td>Caixa economica federal</td>
-                                    <td>fixo</td>
-                                    <td>29/07</td>
-                                    <td>$2.200</td>
-                                </tr>
-                                <tr>
-                                    <td>Venda</td>
-                                    <td>Nubank</td>
-                                    <td>esporádico</td>
-                                    <td>06/06</td>
-                                    <td>$320</td>
-                                </tr>
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Suas Receitas</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="tableReceita" width="100%" cellspacing="0">
+                                    <thead>
+                                    <tr>
+                                        <th>Nome da receita</th>
+                                        <th>Conta</th>
+                                        <th>Tipo</th>
+                                        <th>Data</th>
+                                        <th>Valor</th>
+                                    </tr>
+                                    </thead>
+                                    <tfoot>
+                                    <tr>
+                                        <th>Nome da receita</th>
+                                        <th>Conta</th>
+                                        <th>Tipo</th>
+                                        <th>Data</th>
+                                        <th>Valor</th>
+                                    </tr>
+                                    </tfoot>
+                                    <tbody>
+                                    <tr>
+                                        <td>Salário</td>
+                                        <td>Caixa economica federal</td>
+                                        <td>fixo</td>
+                                        <td>29/07</td>
+                                        <td>$2.200</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Venda</td>
+                                        <td>Nubank</td>
+                                        <td>esporádico</td>
+                                        <td>06/06</td>
+                                        <td>$320</td>
+                                    </tr>
 
-                                </tbody>
-                            </table>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
+
                 </div>
 
             </div>
+            <!-- End of Main Content -->
 
-        </div>
-        <!-- End of Main Content -->
-
-        <!-- Footer -->
-        <footer class="sticky-footer bg-white">
-            <div class="container my-auto">
-                <div class="copyright text-center my-auto">
-                    <span>Copyright &copy; Lifenance²</span>
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; Lifenance²</span>
+                    </div>
                 </div>
-            </div>
-        </footer>
-        <!-- End of Footer -->
+            </footer>
+            <!-- End of Footer -->
 
-    </div>
-    <!-- End of Content Wrapper -->
-
-</div>
-<!-- End of Page Wrapper -->
-
-<!-- Scroll to Top Button-->
-<a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-</a>
-
-<!-- Logout Modal-->
-<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="login.html">Logout</a>
-            </div>
         </div>
+        <!-- End of Content Wrapper -->
+
     </div>
-</div>
+    <!-- End of Page Wrapper -->
 
-<!-- Bootstrap core JavaScript-->
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
 
-<!-- Core plugin JavaScript-->
-<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Logout Modal-->
+    <jsp:include page="elements/logout-modal.html" />
 
-<!-- Custom scripts for all pages-->
-<script src="js/sb-admin-2.min.js"></script>
+    <!-- JavaScript for all pages -->
+    <jsp:include page="elements/js.html" />
 
 </body>
 
