@@ -52,7 +52,7 @@
                                         <th>Número</th>
                                         <th>CVV</th>
                                         <th>Validade</th>
-                                        
+
                                     </tr>
                                     </thead>
                                     <tfoot>
