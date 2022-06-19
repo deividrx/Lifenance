@@ -43,43 +43,43 @@
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Despesas</h6>
+                        <h6 class="m-0 font-weight-bold text-primary">Suas Receitas</h6>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-bordered" id="tableConta" width="100%" cellspacing="0">
+                            <table class="table table-bordered" id="tableReceita" width="100%" cellspacing="0">
                                 <thead>
                                 <tr>
-                                    <th>Nome do Banco</th>
-                                    <th>Agência</th>
-                                    <th>Número</th>
+                                    <th>Nome da receita</th>
+                                    <th>Conta</th>
                                     <th>Tipo</th>
-                                    <th>Limite</th>
+                                    <th>Data</th>
+                                    <th>Valor</th>
                                 </tr>
                                 </thead>
                                 <tfoot>
                                 <tr>
-                                    <th>Nome do Banco</th>
-                                    <th>Agência</th>
-                                    <th>Número</th>
+                                    <th>Nome da receita</th>
+                                    <th>Conta</th>
                                     <th>Tipo</th>
-                                    <th>Limite</th>
+                                    <th>Data</th>
+                                    <th>Valor</th>
                                 </tr>
                                 </tfoot>
                                 <tbody>
                                 <tr>
-                                    <td>Caixa Econômica Federal</td>
-                                    <td>12345-6</td>
-                                    <td>224612</td>
-                                    <td>Conta Corrente</td>
+                                    <td>Salário</td>
+                                    <td>Caixa economica federal</td>
+                                    <td>fixo</td>
+                                    <td>29/07</td>
                                     <td>$2.200</td>
                                 </tr>
                                 <tr>
-                                    <td>Banco Bacate</td>
-                                    <td>65432-1</td>
-                                    <td>666666</td>
-                                    <td>Conta Poupança</td>
-                                    <td>$5.000.000</td>
+                                    <td>Venda</td>
+                                    <td>Nubank</td>
+                                    <td>esporádico</td>
+                                    <td>06/06</td>
+                                    <td>$320</td>
                                 </tr>
 
                                 </tbody>

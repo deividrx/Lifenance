@@ -1,5 +1,5 @@
-<%@page 
-    contentType="text/html" 
+<%@page
+    contentType="text/html"
     pageEncoding="UTF-8"
 %>
 
@@ -9,7 +9,7 @@
 <head>
 
     <jsp:include page="elements/head.html" />
-    <title>Ver Despesas</title>
+    <title>Ver Cartões</title>
 
 </head>
 
@@ -34,25 +34,25 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Despesas</h1>
-                    <p class="mb-4">Suas despesas cadastradas aparecerão nessa página, caso ainda nao tenha registrado <a target="_blank"
-                                                                                href="despesa.html">clique aqui</a>.</p>
+                    <h1 class="h3 mb-2 text-gray-800">Cartão</h1>
+                    <p class="mb-4">Seus cartões cadastrados aparecerão nessa página, caso ainda nao tenha registrado <a
+                                                                                href="cards.jsp">clique aqui</a>.</p>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Ver Despesas</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Ver cartões</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                     <tr>
-                                        <th>Nome da despesa</th>
-                                        <th>Conta</th>
-                                        <th>Tipo</th>
-                                        <th>Data</th>
-                                        <th>Valor</th>
+                                        <th>Nome Completo</th>
+                                        <th>Número</th>
+                                        <th>CVV</th>
+                                        <th>Validade</th>
+                                        
                                     </tr>
                                     </thead>
                                     <tfoot>
