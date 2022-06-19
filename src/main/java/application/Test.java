@@ -2,8 +2,6 @@ package application;
 
 import org.webjars.WebJarAssetLocator;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.Set;
 
 public class Test {
@@ -12,11 +10,9 @@ public class Test {
         try {
 
 
-            System.out.println(LocalTime.now().getHour());
-
-            // WebJarAssetLocator locator = new WebJarAssetLocator();
-            // Set<String> fullPathsOfAssets = locator.listAssets("/");
-            // System.out.println(fullPathsOfAssets);
+            WebJarAssetLocator locator = new WebJarAssetLocator();
+            Set<String> fullPathsOfAssets = locator.listAssets("bootstrap");
+            System.out.println(fullPathsOfAssets);
         } catch (Exception e) {
             System.out.println(e);
         }

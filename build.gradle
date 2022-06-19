@@ -24,5 +24,6 @@ dependencies {
 
     // Frontend dependencies
     implementation 'org.webjars.npm:fortawesome__fontawesome-free:6.1.1'
+    implementation 'org.webjars.npm:bootstrap:4.6.0'
     implementation 'org.webjars:webjars-locator-core:0.50'
 }

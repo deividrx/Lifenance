@@ -23,6 +23,7 @@ public class LoginServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) {
         try {
+            // Verificar se já existe um usuário logado!
             String userCpf = request.getParameter("cpf");
             String userPassword = request.getParameter("password");
             boolean rememberMe = Boolean.parseBoolean(request.getParameter("remember"));
