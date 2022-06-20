@@ -87,6 +87,14 @@
                                           </div>
                                         </div>
                                       </div>
+                                      <div class="col-sm-4">
+
+                                        <div class="form-group">
+                                         <label for="username">Multa</label>
+                                         <input type="text" required="required" placeholder="%" name="numbers" pattern="[0-3]+$" required class="form-control">
+                                         </div>
+                                      </form>
+                                    </div>
 
                                     </div>
                                         <div class="form-group">
@@ -99,7 +107,7 @@
                                               <label><span class="hidden-xs">Vencimento da fatura</span></label>
                                               <div class="input-group">
                                                 <input type="number" placeholder="Dia" name="fatura-dia" class="form-control" required>
-                                              <input type="number" placeholder="Mês" name="fatura-mes" class="form-control" required>
+
                                               </div>
                                             </div>
                                         </div>
