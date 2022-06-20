@@ -25,9 +25,13 @@ public class BankAccountDelete extends  HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
         try {
             String contaId = req.getParameter("id");
-
             System.out.println("id_conta=" + contaId);
+            JsonMenssage jsonMenssage = new JsonMenssage(resp);
 
+            accountDao.remove(Long.parseLong(contaId));
+
+
+            jsonMenssage.sendInfo("Conta Bancária deletada com sucesso!");
         } catch (Exception error) {
             logger.error(error);
         }

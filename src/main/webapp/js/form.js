@@ -72,34 +72,3 @@ $("#account-register").submit(function(event) {
         }
     });
 });
-
-$(".delete-conta").submit(function(event) {
-    event.preventDefault();
-
-    let form = $(this);
-    
-    $.ajax({
-        type: "POST",
-        url: 'controller/bank-account/delete',
-        data: form.serialize(), 
-        success: function(data) {   
-            
-            $('#error-modal').modal('show');
-            $('#modal-title').text('Sucesso!');      
-            
-            if (data.error == true) {
-                $('#modal-title').text('Erro!'); 
-            }            
-            $('#modal-text').text(data.text);
-            
-            if (data.error == false) {
-                $("#modal-close").click(function(){
-                    window.location.assign("login.jsp"); 
-                });
-            }
-        },
-        error : function(data) {
-            alert("Algo deu Errado!");
-        }
-    });
-}); 
