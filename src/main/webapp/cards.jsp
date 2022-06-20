@@ -61,7 +61,7 @@
                                 <!-- credit card info-->
                                 <div id="nav-tab-card" class="tab-pane fade show active">
                                <!--  <p class="alert alert-success"></p> --> 
-                                  <form role="form">
+                                  <form id="register-card" role="form">
                                     <div class="form-group">
                                       <label for="username">Nome Completo (no cartão)</label>
                                       <input type="text" name="username" placeholder="" required class="form-control">
@@ -82,58 +82,44 @@
                                         <div class="form-group">
                                           <label><span class="hidden-xs">Validade</span></label>
                                           <div class="input-group">
-                                            <input type="number" placeholder="Mês" name="" class="form-control" required>
-                                            <input type="number" placeholder="Ano" name="" class="form-control" required>
+                                            <input type="number" placeholder="Mês" name="validadeMes" class="form-control" required>
+                                            <input type="number" placeholder="Ano" name="validadeAno" class="form-control" required>
                                           </div>
                                         </div>
                                       </div>
-                                      <div class="col-sm-4">
-                                        <div class="form-group mb-4">
-                                          <label data-toggle="tooltip" title="Tres digitos na parte de trás do cartão">CVV </label>
-                                          <input type="text" required class="form-control">
-                                          
+
+                                    </div>
+                                        <div class="form-group">
+                                          <label for="limite">Limite do cartão</label>
+                                          <input id="limiteCartao" type="text" name="limiteCard" placeholder="R$" required class="form-control">
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-8">
+                                            <div class="form-group">
+                                              <label><span class="hidden-xs">Vencimento da fatura</span></label>
+                                              <div class="input-group">
+                                                <input type="number" placeholder="Dia" name="fatura-dia" class="form-control" required>
+                                              <input type="number" placeholder="Mês" name="fatura-mes" class="form-control" required>
+                                              </div>
+                                            </div>
                                         </div>
+                                    <div class="col-sm-4">
 
-                                      </div>
-
-                                  </div>
-                                      <div class="form-group">
-                                         <label for="limite">Limite do cartão</label>
-                                         <input id="limiteCartao" type="text" name="username" placeholder="R$" required class="form-control">
-                                  </div>
-                                  <div class="row">
-                                       <div class="col-sm-8">
-                                           <div class="form-group">
-                                             <label><span class="hidden-xs">Vencimento da fatura</span></label>
-                                             <div class="input-group">
-                                              <input type="number" placeholder="Dia" name="" class="form-control" required>
-                                             <input type="number" placeholder="Mês" name="" class="form-control" required>
-                                             </div>
-                                          </div>
-                                      </div>
-                                  <div class="col-sm-4">
-
-                                  <div class="form-group mb-4">
-                                       <label data-toggle="tooltip" title="Tres digitos na parte de trás do cartão">Bandeira </label>
-
-                                       <select class="form-select" multiple aria-label="multiple select example">
-                                         <option value="1">Mastercard</option>
-                                         <option value="2">Visa</option>
-                                         <option value="3">American Express</option>
-                                         <option value="4">Hipercard</option>
-                                         <option value="5">Elo</option>
-                                         <option value="6">Outro</option>
-                                       </select>
-
-                                  </div>
-
-
+                                      <div class="form-group mb-4">
+                                          <label data-toggle="tooltip" title="Tres digitos na parte de trás do cartão">Bandeira </label>
+                                          <select id="selectbody" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                                            <option value="1">Mastercard</option>
+                                            <option value="2">Visa</option>
+                                            <option value="3">American Express</option>
+                                            <option value="4">Hipercard</option>
+                                            <option value="5">Elo</option>
+                                          </select>
+                                    </div>
                                   </form>
-
                                 </div>
                                 <!-- End -->
             
-                                    <button type="button" class="subscribe btn btn-primary btn-block rounded-pill shadow-sm"> Confirmar  </button>
+                                    <button form="register-card" type="submit" class="subscribe btn btn-primary btn-block rounded-pill shadow-sm"> Confirmar  </button>
                                 <!-- End -->
                               </div>
                               <!-- End -->
@@ -168,6 +154,9 @@
 
     <!-- JavaScript for all pages -->
     <jsp:include page="elements/js.html" />
+
+    <script src="js/card-flag.js"></script>
+    <script src="js/form.js"></script>
 
 </body>
 

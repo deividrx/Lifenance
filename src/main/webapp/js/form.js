@@ -72,3 +72,25 @@ $("#account-register").submit(function(event) {
         }
     });
 });
+
+$("#register-card").submit(function(event) {
+    event.preventDefault();
+
+    let form = $(this);
+    
+    $.ajax({
+        type: "POST",
+        url: 'controller/card',
+        data: form.serialize(), 
+        success: function(data) {   
+            
+            $('#error-modal').modal('show');
+            $('#modal-title').text('Sucesso!');      
+            
+            if (data.error == true) {
+                $('#modal-title').text('Erro!'); 
+            }            
+            $('#modal-text').text(data.text);
+        }
+    });
+});
