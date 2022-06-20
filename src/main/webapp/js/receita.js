@@ -14,13 +14,15 @@ function populateTable() {
                         $('#tbody').append(
                                 '<tr><td>'
                                         +'<div class="row">'
+
                                         + '<div class="col-">'
                                         + '<form class="delete-conta" method="post" action="controller/bacate/delete">'
                                             + '<button class="btn btn-primary"><i class="fas fa-trash"></i></button>'
                                             + '<input type="hidden" name="id" value="' + data[i].id + '">'
                                         + '</form>'
+
                                         + '</div>'
-                                        + '<div class="col-sm-3">'
+                                        + '<div class="mx-auto">'
                                             + '<button class="btn btn-primary" onclick="edit(' + i + ')"><i class="fas fa-pen"></i></button>'
                                         + '</div>'
                                         + '</div>'
