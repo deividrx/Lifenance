@@ -3,8 +3,6 @@
     pageEncoding="UTF-8"
 %>
 
-<%@taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="core"%>
-
 <!DOCTYPE html>
 <html lang="pt_BR">
 
@@ -50,6 +48,7 @@
                                 <table class="table table-bordered" id="tableConta" width="100%" cellspacing="0">
                                     <thead>
                                     <tr>
+                                        <th>Opção</th>
                                         <th>Nome do Banco</th>
                                         <th>Agência</th>
                                         <th>Número</th>
@@ -59,6 +58,7 @@
                                     </thead>
                                     <tfoot>
                                     <tr>
+                                        <th>Opção</th>
                                         <th>Nome do Banco</th>
                                         <th>Agência</th>
                                         <th>Número</th>
@@ -66,19 +66,7 @@
                                         <th>Limite</th>
                                     </tr>
                                     </tfoot>
-                                    <tbody>
-                                    <form method="get" action="bank-account">
-                                        <core:forEach items="${lista}" var="linha">
-                                            <tr>
-                                                <td><core:out value="${linha.banco}"/></td>
-                                                <td><core:out value="${linha.agencia}"/></td>
-                                                <td><core:out value="${linha.numero}"/></td>
-                                                <td><core:out value="${linha.tipo}"/></td>
-                                                <td><core:out value="${linha.limite}"/></td>
-                                            </tr>
-                                        </core:forEach>
-                                        <button> Bacate </button>
-                                    </form>
+                                    <tbody id="tbody"> 
                                     </tbody>
                                 </table>
                             </div>
@@ -109,6 +97,9 @@
 
     <!-- JavaScript for all pages -->
     <jsp:include page="elements/js.html" />
+
+    <script src="js/populate-table.js" charset="utf-8"></script>
+    <script src="js/form.js"></script>
 
 </body>
 

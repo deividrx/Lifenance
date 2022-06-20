@@ -16,7 +16,7 @@ public class ConnectionDb {
         String driver = "org.postgresql.Driver";
         String user = "postgres";
         String password = "admin";
-        String url = "jdbc:postgresql://localhost:5432/lifenance_db";
+        String url = "jdbc:postgresql://localhost:5432/lifenance_db?characterEncoding=utf8";
 
         try {
             Class.forName(driver);

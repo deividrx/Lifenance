@@ -105,7 +105,7 @@ public class GenericDao<T> {
             String primaryKeyValue = fieldHandler.getPrimaryKeyValue(obj);
             Map<String, String> columns = fieldHandler.getColumns(obj);
 
-            String sql = "UPDATE " + tableName + " SET "+ String.join(",", columns.values()) +" WHERE "
+            String sql = "UPDATE " + tableName + " SET "+ String.join(",", columns.values() + "=" + columns.entrySet()) +" WHERE "
                     + primaryKeyName + " = " + primaryKeyValue;
 
             System.out.println(sql);

@@ -5,6 +5,7 @@ import br.com.lifenance.dal.GenericDao;
 import br.com.lifenance.models.Account;
 import br.com.lifenance.models.User;
 import br.com.lifenance.models.enumeration.AccountType;
+import com.google.gson.Gson;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -13,7 +14,9 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-@WebServlet(name = "BankAccount", urlPatterns = {"/bank-account"})
+import java.io.PrintWriter;
+
+@WebServlet(name = "BankAccount", urlPatterns = {"/controller/bank-account"})
 public class BankAccountServlet extends HttpServlet {
 
     private static final Logger logger = LogManager.getLogger(Application.class);
@@ -50,9 +53,10 @@ public class BankAccountServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
         try {
-            req.setAttribute("lista", accountDao.getList());
-            RequestDispatcher rd = req.getRequestDispatcher("/ver-conta-bancaria.jsp");
-            rd.forward(req, resp);
+            PrintWriter output = resp.getWriter();
+            resp.setContentType("application/json");
+            resp.setCharacterEncoding("UTF-8");
+            output.write(new Gson().toJson(accountDao.getList()));
         } catch (Exception error) {
             logger.error(error);
         }

@@ -36,7 +36,7 @@ public class JsonMenssage {
 
     private void returnJson() throws IOException {
         try (PrintWriter output = resp.getWriter()) {
-            resp.setContentType("br/com/lifenance/application/json");
+            resp.setContentType("application/json");
             resp.setCharacterEncoding("UTF-8");
             output.write(new Gson().toJson(map));
         }

@@ -412,6 +412,7 @@ COPY public.users (user_cpf, first_name, last_name, user_email, user_password) F
 32129586007	Bruce	Wayne	brucewayne@gmail.com	brucewayne
 47440202082	Monkey	Luffy	monkeyluffy@gmail.com	monkeyluffy
 84326698063	Satoru	Gojo	satorugojo@gmail.com	bacate
+06308065005     Inugami Korone  koroneinugami@hotmail.com       bacate
 \.
 
 
