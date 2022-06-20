@@ -67,22 +67,9 @@
                                     </tr>
                                     </tfoot>
                                     <tbody>
-                                    <tr>
-                                        <td>Salário</td>
-                                        <td>Caixa economica federal</td>
-                                        <td>fixo</td>
-                                        <td>29/07</td>
-                                        <td>$2.200</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Venda</td>
-                                        <td>Nubank</td>
-                                        <td>esporádico</td>
-                                        <td>06/06</td>
-                                        <td>$320</td>
-                                    </tr>
 
-                                    </tbody>
+
+                                     </tbody>
                                 </table>
                             </div>
                         </div>

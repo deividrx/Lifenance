@@ -65,24 +65,9 @@
                                     </tr>
                                     </tfoot>
                                     <tbody>
-                                    <tr>
-                                        <td>Conta de Luz</td>
-                                        <td>Itaú</td>
-                                        <td>Fixa</td>
 
-                                        <td>07/06/2022</td>
-                                        <td>$220</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Agiota</td>
-                                        <td>Quilombo</td>
-                                        <td>Fixa</td>
 
-                                        <td>2011/07/25</td>
-                                        <td>$170,750</td>
-                                    </tr>
-
-                                    </tbody>
+                                     </tbody>
                                 </table>
                             </div>
                         </div>
