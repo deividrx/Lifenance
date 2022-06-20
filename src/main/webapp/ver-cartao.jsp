@@ -49,38 +49,27 @@
                                     <thead>
                                     <tr>
                                         <th>Nome Completo</th>
-                                        <th>Número</th>
-                                        <th>CVV</th>
+                                        <th>Numero</th>
                                         <th>Validade</th>
-
+                                        <th>CVV</th>
+                                        <th>Limite</th>
+                                        <th>Vencimento da fatura</th>
+                                        <th>Bandeira</th>
                                     </tr>
                                     </thead>
                                     <tfoot>
                                     <tr>
-                                        <th>Nome da despesa</th>
-                                        <th>Conta</th>
-                                        <th>Tipo</th>
-                                        <th>Data</th>
-                                        <th>Valor</th>
+                                        <th>Nome Completo</th>
+                                        <th>Numero</th>
+                                        <th>Validade</th>
+                                        <th>CVV</th>
+                                        <th>Limite</th>
+                                        <th>Vencimento da fatura</th>
+                                        <th>Bandeira</th>
                                     </tr>
                                     </tfoot>
                                     <tbody>
-                                    <tr>
-                                        <td>Conta de Luz</td>
-                                        <td>Itaú</td>
-                                        <td>Fixa</td>
 
-                                        <td>07/06/2022</td>
-                                        <td>$220</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Agiota</td>
-                                        <td>Quilombo</td>
-                                        <td>Fixa</td>
-
-                                        <td>2011/07/25</td>
-                                        <td>$170,750</td>
-                                    </tr>
 
                                     </tbody>
                                 </table>
