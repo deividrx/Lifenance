@@ -155,8 +155,7 @@
     <!-- JavaScript for all pages -->
     <jsp:include page="elements/js.html" />
 
-    <script src="js/populate-table.js"></script>
-    <script src="js/form.js"></script>
+    <script src="js/bank-account.js"></script>
 
 </body>
 

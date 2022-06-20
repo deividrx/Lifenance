@@ -1,6 +1,7 @@
+var contaId;
+
 function edit() {
-    let contaId = $("#conta-id").val();
-    console.log(contaId);
+    contaId = $("#conta-id").val();
     $('#form-modal').modal('show')
     $("#modal-close").click(function(){ 
         $('#form-modal').modal('show');
@@ -77,4 +78,27 @@ $(document).on('submit', '.delete-conta', function(event) {
             alert("Algo deu Errado!");
         }
     });
-}); 
+});
+
+$("#account-register").submit(function(event) {
+    event.preventDefault();
+
+    let form = $(this);
+    let actionUrl = form.attr('action');
+    
+    $.ajax({
+        type: "POST",
+        url: actionUrl,
+        data: form.serialize(), 
+        success: function(data) {   
+            
+            $('#error-modal').modal('show');
+            $('#modal-title').text('Sucesso!');      
+            
+            if (data.error == true) {
+                $('#modal-title').text('Erro!'); 
+            }            
+            $('#modal-text').text(data.text);
+        }
+    });
+});
