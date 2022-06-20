@@ -1,6 +1,7 @@
-package br.com.lifenance.controller;
+package br.com.lifenance.controller.account;
 
 import br.com.lifenance.application.Application;
+import br.com.lifenance.controller.JsonMenssage;
 import br.com.lifenance.dal.GenericDao;
 import br.com.lifenance.models.Account;
 import br.com.lifenance.models.User;
