@@ -30,6 +30,16 @@ public class Account {
         this.user = user;
     }
 
+    public Account(long id, int numero, int agencia, AccountType tipo, float limite, String banco, User user) {
+        this.id = id;
+        this.banco = banco;
+        this.agencia = agencia;
+        this.numero = numero;
+        this.tipo = tipo;
+        this.limite = limite;
+        this.user = user;
+    }
+
     // Constructor for genericDAO
     public Account(String arg) {
         String[] split = arg.split(";");
@@ -88,5 +98,18 @@ public class Account {
 
     public void setBanco(String banco) {
         this.banco = banco;
+    }
+
+    @Override
+    public String toString() {
+        return "Account{" +
+                "id=" + id +
+                ", banco='" + banco + '\'' +
+                ", agencia=" + agencia +
+                ", numero=" + numero +
+                ", tipo=" + tipo +
+                ", limite=" + limite +
+                ", user=" + user +
+                '}';
     }
 }

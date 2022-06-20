@@ -1,12 +1,4 @@
-var contaId;
-
-function edit() {
-    contaId = $("#conta-id").val();
-    $('#form-modal').modal('show')
-    $("#modal-close").click(function(){ 
-        $('#form-modal').modal('show');
-    });
-}
+var arrayData;
 
 function populateTable() {
     $.ajax({
@@ -16,6 +8,7 @@ function populateTable() {
         contentType: "application/json; charset=utf-8",
         success : function(data) {
             $("#tbody").empty();
+            arrayData = data;
             $(data).each(
                     function(i) {
                         $('#tbody').append(
@@ -24,11 +17,11 @@ function populateTable() {
                                         + '<div class="col-sm-3">'
                                         + '<form class="delete-conta" method="post" action="controller/bank-account/delete">' 
                                             + '<button class="btn btn-primary"><i class="fas fa-trash"></i></button>'    
-                                            + '<input id="conta-id" type="hidden" name="id" value="' + data[i].id + '">'
+                                            + '<input type="hidden" name="id" value="' + data[i].id + '">'
                                         + '</form>'
                                         + '</div>'
                                         + '<div class="col-sm-3">'
-                                            + '<button class="btn btn-primary" onclick="edit()"><i class="fas fa-pen"></i></button>'
+                                            + '<button class="btn btn-primary" onclick="edit(' + i + ')"><i class="fas fa-pen"></i></button>'
                                         + '</div>'
                                         + '</div>'
                                         + '</td><td>'
@@ -43,6 +36,53 @@ function populateTable() {
         error : function(data) {
             alert("Algo deu Errado!");
         }
+    });
+}
+
+function edit(index) {
+    let data = arrayData[index];
+
+    $('#conta-id').val(data.id);
+    $('#nomeBanco').val(data.banco);
+    $('#numAgencia').val(data.agencia);
+    $('#numAccount').val(data.numero);
+    $('#limiteConta').val(data.limite);
+    $('#form-modal').modal('show');
+
+    switch (data.tipo) {
+        case 'checking':
+            $('#corrente').attr('checked','checked');
+            break;
+        case 'saving':
+            $('#poupanca').attr('checked','checked');
+            break;
+    }
+
+    $("#account-register").submit(function(event) {
+        event.preventDefault();
+    
+        let form = $(this);
+        let actionUrl = 'controller/bank-account/edit';
+        
+        $.ajax({
+            type: "POST",
+            url: actionUrl,
+            data: form.serialize(), 
+            success: function(data) {     
+                
+                if (data.error == true) {
+                    $('#modal-title').text('Erro!'); 
+                } else {
+                    $('#form-modal').modal('hide');
+                    $('#error-modal').modal('show');
+                    $('#modal-title').text('Sucesso!');     
+                    $('#modal-text').text(data.text);
+                    $("#modal-close").click(function(){ 
+                        populateTable(); 
+                    });
+                }        
+            }
+        });
     });
 }
 
@@ -76,29 +116,6 @@ $(document).on('submit', '.delete-conta', function(event) {
         },
         error : function(data) {
             alert("Algo deu Errado!");
-        }
-    });
-});
-
-$("#account-register").submit(function(event) {
-    event.preventDefault();
-
-    let form = $(this);
-    let actionUrl = form.attr('action');
-    
-    $.ajax({
-        type: "POST",
-        url: actionUrl,
-        data: form.serialize(), 
-        success: function(data) {   
-            
-            $('#error-modal').modal('show');
-            $('#modal-title').text('Sucesso!');      
-            
-            if (data.error == true) {
-                $('#modal-title').text('Erro!'); 
-            }            
-            $('#modal-text').text(data.text);
         }
     });
 });

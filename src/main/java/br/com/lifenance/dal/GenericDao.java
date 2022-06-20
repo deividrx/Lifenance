@@ -105,7 +105,15 @@ public class GenericDao<T> {
             String primaryKeyValue = fieldHandler.getPrimaryKeyValue(obj);
             Map<String, String> columns = fieldHandler.getColumns(obj);
 
-            String sql = "UPDATE " + tableName + " SET "+ String.join(",", columns.values() + "=" + columns.entrySet()) +" WHERE "
+            String[] arraySetElements = new String[columns.size()];
+
+            int i = 0;
+            for (Map.Entry<String, String> entry : columns.entrySet()) {
+                arraySetElements[i] = entry.getKey() + " = " + entry.getValue();
+                i++;
+            }
+
+            String sql = "UPDATE " + tableName + " SET "+ String.join(",", arraySetElements) +" WHERE "
                     + primaryKeyName + " = " + primaryKeyValue;
 
             System.out.println(sql);

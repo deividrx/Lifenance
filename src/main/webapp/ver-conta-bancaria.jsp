@@ -103,8 +103,8 @@
               </button>
             </div>
             <div class="modal-body">
-              <form>
-                <form id="account-register" class="row g-3" action="controller/bank-account" method="post">
+                <form id="account-register">
+                    <input id="conta-id" type="hidden" name="id" value="">
                     <div class="form-group">
                         <label for="input" class="form-label">Nome do banco</label>
                         <input type="name" class="form-control" id="nomeBanco" name="nomeBanco" required>
@@ -140,7 +140,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary" onclick="teste()">Send message</button>
+              <button type="submit" class="btn btn-primary" form="account-register" >Salvar</button>
             </div>
           </div>
         </div>
