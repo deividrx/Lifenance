@@ -77,6 +77,8 @@ $("#register-card").submit(function(event) {
     event.preventDefault();
 
     let form = $(this);
+
+    console.log(form);
     
     $.ajax({
         type: "POST",

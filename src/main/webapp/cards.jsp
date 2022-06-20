@@ -62,6 +62,7 @@
                                 <div id="nav-tab-card" class="tab-pane fade show active">
                                <!--  <p class="alert alert-success"></p> --> 
                                   <form id="register-card" role="form">
+                                    
                                     <div class="form-group">
                                       <label for="username">Nome Completo (no cartão)</label>
                                       <input type="text" name="username" placeholder="" required class="form-control">
@@ -72,12 +73,11 @@
                                       <label for="cardNumber">Número</label>
                                       <div class="input-group">
                                         <input type="text" name="cardNumber" placeholder="Número do cartão" class="form-control" required>
-                                        <div class="input-group-append">
-
-                                        </div>
                                       </div>
                                     </div>
+
                                     <div class="row">
+                                      
                                       <div class="col-sm-8">
                                         <div class="form-group">
                                           <label><span class="hidden-xs">Validade</span></label>
@@ -87,13 +87,12 @@
                                           </div>
                                         </div>
                                       </div>
+                                      
                                       <div class="col-sm-4">
-
                                         <div class="form-group">
-                                         <label for="username">Multa</label>
-                                         <input type="text" required="required" placeholder="%" name="numbers" pattern="[0-3]+$" required class="form-control">
+                                          <label for="username">Multa</label>
+                                          <input type="text" required="required" placeholder="%" name="card-multa" pattern="[0-3]+$" required class="form-control">
                                          </div>
-                                      </form>
                                     </div>
 
                                     </div>
@@ -111,13 +110,14 @@
                                               </div>
                                             </div>
                                         </div>
-                                    <div class="col-sm-4">
+                                      <div class="col-sm-4">
 
-                                      <div class="form-group mb-4">
-                                          <label data-toggle="tooltip" title="Tres digitos na parte de trás do cartão">Bandeira </label>
-                                          <select name="bandeira" id="selectbody" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-                                          </select>
-                                    </div>
+                                        <div class="form-group mb-4">
+                                            <label data-toggle="tooltip" title="Tres digitos na parte de trás do cartão">Bandeira </label>
+                                            <select name="bandeira" id="selectbody" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                                            </select>
+                                        </div>
+                                      </div>
                                   </form>
                                 </div>
                                 <!-- End -->

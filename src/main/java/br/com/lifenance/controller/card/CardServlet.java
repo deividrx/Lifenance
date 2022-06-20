@@ -13,6 +13,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 @WebServlet(name = "Card", urlPatterns = {"/controller/card"})
 public class CardServlet extends HttpServlet {
@@ -24,31 +25,40 @@ public class CardServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
         try {
             String bandeira = req.getParameter("bandeira");
+            System.out.println(bandeira);
             String nomeCard = req.getParameter("username");
+            System.out.println(nomeCard);
             String numCard = req.getParameter("cardNumber");
+            System.out.println(numCard);
             String validadeMes = req.getParameter("validadeMes");
+            System.out.println(validadeMes);
             String validadeAno = req.getParameter("validadeAno");
+            System.out.println(validadeAno);
             String limiteCartao = req.getParameter("limiteCard");
             System.out.println(limiteCartao);
-            String faturaMes = req.getParameter("fatura-mes");
+            String multa = req.getParameter("card-multa");
+            System.out.println(multa);
+            String faturaDia = req.getParameter("fatura-dia");
+            System.out.println(faturaDia);
 
             JsonMenssage jsonMenssage = new JsonMenssage(resp);
             User user = (User) req.getSession(false).getAttribute("loggedUser");
+            DateTimeFormatter df = DateTimeFormatter.ofPattern("dd-MMM-yyyy");
 
             Card card = new Card(
                     Long.parseLong(numCard),
-                    LocalDate.parse(validadeAno + "-" + validadeMes + "-" + "10"),
+                    LocalDate.parse(validadeAno + "-" + validadeMes + "-" + "10", df),
                     ModelFactory.getModel(CardFlag.class, "card_flags", Long.parseLong(bandeira)),
-                    0,
+                    Integer.parseInt(multa),
                     Integer.parseInt(limiteCartao),
-                    null,
+                    Integer.parseInt(faturaDia),
                     nomeCard,
                     user
             );
 
             System.out.println(card.toString());
 
-            cardDao.insert(card);
+            //cardDao.insert(card);
             jsonMenssage.sendInfo("Catão cadastrado com sucesso!");
 
         } catch (Exception error) {

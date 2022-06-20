@@ -20,14 +20,14 @@ public class Card {
     @ColumnName("multa")
     private int multa;
     @ColumnName("vencimento_fatura")
-    private LocalDate vencimentoFatura;
+    private int vencimentoFatura;
     @ColumnName("card_flag_id")
     private CardFlag cardFlag;
     @ColumnName("user_cpf")
     private User user;
 
     public Card(long id, long number, LocalDate validity, CardFlag cardFlag, int multa, float limite,
-                LocalDate vencimentoFatura, String nome, User user) {
+                int vencimentoFatura, String nome, User user) {
         this.id = id;
         this.number = number;
         this.validity = validity;
@@ -40,7 +40,7 @@ public class Card {
     }
 
     public Card(long number, LocalDate validity, CardFlag cardFlag, int multa, float limite,
-                LocalDate vencimentoFatura, String nome, User user) {
+                int vencimentoFatura, String nome, User user) {
         this.number = number;
         this.validity = validity;
         this.cardFlag = cardFlag;
@@ -60,7 +60,7 @@ public class Card {
         this.validity = LocalDate.parse(split[3]);
         this.limite = Float.parseFloat(split[4]);
         this.multa = Integer.parseInt(split[5]);
-        this.vencimentoFatura = LocalDate.parse(split[6]);
+        this.vencimentoFatura = Integer.parseInt(split[6]);
         this.cardFlag = ModelFactory.getModel(CardFlag.class, "card_flags", Long.parseLong(split[7]));
         this.user = ModelFactory.getModel(User.class, "users", Long.parseLong(split[8]));
     }
@@ -113,11 +113,11 @@ public class Card {
         this.limite = limite;
     }
 
-    public LocalDate getVencimentoFatura() {
+    public int getVencimentoFatura() {
         return vencimentoFatura;
     }
 
-    public void setVencimentoFatura(LocalDate vencimentoFatura) {
+    public void setVencimentoFatura(int vencimentoFatura) {
         this.vencimentoFatura = vencimentoFatura;
     }
 
