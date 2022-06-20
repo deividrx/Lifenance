@@ -20,21 +20,33 @@ public class Card {
     @ColumnName("multa")
     private int multa;
     @ColumnName("vencimento_fatura")
-    private LocalDate vencimento;
+    private LocalDate vencimentoFatura;
     @ColumnName("card_flag_id")
     private CardFlag cardFlag;
     @ColumnName("user_cpf")
     private User user;
 
     public Card(long id, long number, LocalDate validity, CardFlag cardFlag, int multa, float limite,
-                LocalDate vencimento, LocalDate fechamento, String nome, User user) {
+                LocalDate vencimentoFatura, String nome, User user) {
         this.id = id;
         this.number = number;
         this.validity = validity;
         this.cardFlag = cardFlag;
         this.multa = multa;
         this.limite = limite;
-        this.vencimento = vencimento;
+        this.vencimentoFatura = vencimentoFatura;
+        this.nome = nome;
+        this.user = user;
+    }
+
+    public Card(long number, LocalDate validity, CardFlag cardFlag, int multa, float limite,
+                LocalDate vencimentoFatura, String nome, User user) {
+        this.number = number;
+        this.validity = validity;
+        this.cardFlag = cardFlag;
+        this.multa = multa;
+        this.limite = limite;
+        this.vencimentoFatura = vencimentoFatura;
         this.nome = nome;
         this.user = user;
     }
@@ -48,8 +60,8 @@ public class Card {
         this.validity = LocalDate.parse(split[3]);
         this.limite = Float.parseFloat(split[4]);
         this.multa = Integer.parseInt(split[5]);
-        this.vencimento = LocalDate.parse(split[6]);
-        this.cardFlag = ModelFactory.getModel(CardFlag.class, "flags", Long.parseLong(split[7]));
+        this.vencimentoFatura = LocalDate.parse(split[6]);
+        this.cardFlag = ModelFactory.getModel(CardFlag.class, "card_flags", Long.parseLong(split[7]));
         this.user = ModelFactory.getModel(User.class, "users", Long.parseLong(split[8]));
     }
 
@@ -101,12 +113,12 @@ public class Card {
         this.limite = limite;
     }
 
-    public LocalDate getVencimento() {
-        return vencimento;
+    public LocalDate getVencimentoFatura() {
+        return vencimentoFatura;
     }
 
-    public void setVencimento(LocalDate vencimento) {
-        this.vencimento = vencimento;
+    public void setVencimentoFatura(LocalDate vencimentoFatura) {
+        this.vencimentoFatura = vencimentoFatura;
     }
 
     public String getNome() {
@@ -131,6 +143,21 @@ public class Card {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    @Override
+    public String toString() {
+        return "Card{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", number=" + number +
+                ", validity=" + validity +
+                ", limite=" + limite +
+                ", multa=" + multa +
+                ", vencimentoFatura=" + vencimentoFatura +
+                ", cardFlag=" + cardFlag +
+                ", user=" + user +
+                '}';
     }
 }
 

@@ -115,12 +115,7 @@
 
                                       <div class="form-group mb-4">
                                           <label data-toggle="tooltip" title="Tres digitos na parte de trás do cartão">Bandeira </label>
-                                          <select id="selectbody" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-                                            <option value="1">Mastercard</option>
-                                            <option value="2">Visa</option>
-                                            <option value="3">American Express</option>
-                                            <option value="4">Hipercard</option>
-                                            <option value="5">Elo</option>
+                                          <select name="bandeira" id="selectbody" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
                                           </select>
                                     </div>
                                   </form>
@@ -157,11 +152,15 @@
         <i class="fas fa-angle-up"></i>
     </a>
 
+    <!-- Error modal -->
+    <jsp:include page="elements/error-modal.html"></jsp:include>
+
     <!-- Logout Modal-->
     <jsp:include page="elements/logout-modal.html" />
 
     <!-- JavaScript for all pages -->
     <jsp:include page="elements/js.html" />
+
 
     <script src="js/card-flag.js"></script>
     <script src="js/form.js"></script>

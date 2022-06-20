@@ -1,4 +1,4 @@
-package br.com.lifenance.controller.account;
+package br.com.lifenance.controller.card;
 
 import br.com.lifenance.application.Application;
 import br.com.lifenance.controller.JsonMenssage;
@@ -11,9 +11,8 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-@WebServlet(name = "BankAccountDelete", urlPatterns = {"/controller/bank-account/delete"})
-public class BankAccountDelete extends  HttpServlet {
-
+@WebServlet(name = "CardDelete", urlPatterns = {"/controller/card/delete"})
+public class CardDelete extends HttpServlet {
     private static final Logger logger = LogManager.getLogger(Application.class);
     private final GenericDao<Account> accountDao = new GenericDao<>("bank_accounts", Account.class);
 
@@ -25,12 +24,10 @@ public class BankAccountDelete extends  HttpServlet {
             JsonMenssage jsonMenssage = new JsonMenssage(resp);
 
             accountDao.remove(Long.parseLong(contaId));
-
-
             jsonMenssage.sendInfo("Conta Bancária deletada com sucesso!");
+            
         } catch (Exception error) {
             logger.error(error);
         }
     }
 }
-
