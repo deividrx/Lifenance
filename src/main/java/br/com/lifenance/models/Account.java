@@ -14,16 +14,14 @@ public class Account {
     private int agencia;
     @ColumnName("account_number")
     private int numero;
-    @ColumnName("account_type")
+    @ColumnName("type_account")
     private AccountType tipo;
     @ColumnName("limite")
     private float limite;
     @ColumnName("user_cpf")
     private User user;
 
-    public Account(Long id, int numero, int agencia, AccountType tipo, float limite, float saldo,
-                   String banco, User user) {
-        this.id = id;
+    public Account(int numero, int agencia, AccountType tipo, float limite, String banco, User user) {
         this.banco = banco;
         this.agencia = agencia;
         this.numero = numero;
@@ -41,7 +39,7 @@ public class Account {
         this.numero = Integer.parseInt(split[3]);
         this.tipo = AccountType.valueOf(split[4]);
         this.limite = Float.parseFloat(split[5]);
-        this.user = ModelFactory.getModel(User.class, "users", Long.parseLong(split[6]));
+        this.user = ModelFactory.getModel(User.class, "users", split[6]);
     }
 
     public Long getId() {

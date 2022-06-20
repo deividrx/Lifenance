@@ -43,8 +43,8 @@ SET row_security = off;
 --
 
 CREATE TYPE public.account_types AS ENUM (
-    'saving',
-    'checking'
+    'SAVING',
+    'CHECKING'
 );
 
 

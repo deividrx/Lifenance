@@ -49,33 +49,33 @@
                                     <h6 class="m-0 font-weight-bold text-primary">Conta</h6>
                                 </div>
                                 <div class="card-body">
-                                    <form class="row g-3">
+                                    <form id="account-register" class="row g-3" action="controller/bank-account" method="post">
                                         <div class="col-md-6">
                                             <label for="input" class="form-label">Nome do banco</label>
-                                            <input type="name" class="form-control" id="nomeBanco" required>
+                                            <input type="name" class="form-control" id="nomeBanco" name="nomeBanco" required>
                                         </div>
                                         <div class="col-md-6">
                                             <label for="" class="form-label">Agência</label>
-                                            <input type="money" class="form-control" id="nomeAgencia" placeholder="1234-5" required>
+                                            <input type="money" class="form-control" id="numAgencia" name="numAgencia" placeholder="1234-5" required>
                                         </div>
                                         <div class="col-md-6">
                                             <label for="input" class="form-label">Número</label>
-                                            <input type="number" class="form-control" id="numeroBanco" required>
+                                            <input type="number" class="form-control" id="numAccount" name="numAccount"  required>
                                         </div>
                                         <div class="col-md-6">
                                             <label for="" class="form-label">Limite</label>
-                                            <input type="money" class="form-control" id="limiteConta" placeholder="R$" required>
+                                            <input type="money" class="form-control" id="limiteConta" name="limiteConta" placeholder="R$" required>
                                         </div>
 
                                         <div class="col-sm-10">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="gridRadios" id="corrente" value="option1" checked>
+                                                <input class="form-check-input" type="radio" name="gridRadios" id="corrente" value="checking" checked>
                                                 <label class="form-check-label" for="gridRadios1" role="" required>
                                                     Conta Corrente
                                                 </label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="gridRadios" id="poupanca" value="option2">
+                                                <input class="form-check-input" type="radio" name="gridRadios" id="poupanca" value="saving">
                                                 <label class="form-check-label" for="gridRadios2" required>
                                                     Conta Poupança
                                                 </label>
@@ -119,8 +119,14 @@
     <!-- Logout Modal-->
     <jsp:include page="elements/logout-modal.html" />
 
+    <!-- Error Modal -->
+    <jsp:include page="elements/error-modal.html" />
+
     <!-- JavaScript for all pages -->
     <jsp:include page="elements/js.html" />
+
+    <!-- Custom script for form send -->
+    <script src="js/form.js"></script>
 
 </body>
 </html>

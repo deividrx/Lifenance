@@ -23,19 +23,16 @@ public class LoginServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) {
         try {
-            // Verificar se já existe um usuário logado!
             String userCpf = request.getParameter("cpf");
             String userPassword = request.getParameter("password");
             boolean rememberMe = Boolean.parseBoolean(request.getParameter("remember"));
             System.out.println(request.getParameter("remember"));
             UserAuth authorization = new UserAuth(userCpf, userPassword);
 
-            JsonMenssage jsonMenssage = new JsonMenssage(map);
+            JsonMenssage jsonMenssage = new JsonMenssage(response);
 
             if (!authorization.validateLogin()) {
-                map.put("error", true);
-                map.put("text", "Invalid CPF or password!");
-                jsonMenssage.returnJson(response);
+                jsonMenssage.sendError("Senha ou CPF inválido!");
             } else {
                 HttpSession session = request.getSession();
                 session.setAttribute("loggedUser", authorization.getUser());
@@ -65,8 +62,8 @@ public class LoginServlet extends HttpServlet {
                     response.addCookie(cookieSelector);
                     response.addCookie(cookieValidator);
                 }
-                map.put("error", false);
-                jsonMenssage.returnJson(response);
+
+                jsonMenssage.sendError(false);
             }
         } catch (IOException | HashGenerationException error) {
             logger.error(error);

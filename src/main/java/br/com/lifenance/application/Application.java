@@ -37,10 +37,10 @@ public class Application {
             context.setSessionCookiePath("/");
 
             tomcat.start();
-            Desktop.getDesktop().browse(new URL("http://localhost:8888").toURI());
+            //Desktop.getDesktop().browse(new URL("http://localhost:8888").toURI());
             tomcat.getServer().await();
 
-        } catch (LifecycleException | URISyntaxException | IOException error) {
+        } catch (LifecycleException /*| URISyntaxException | IOException*/ error) {
             logger.fatal(error.getMessage());
         }
     }

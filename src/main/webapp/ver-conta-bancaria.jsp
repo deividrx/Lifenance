@@ -3,6 +3,8 @@
     pageEncoding="UTF-8"
 %>
 
+<%@taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="core"%>
+
 <!DOCTYPE html>
 <html lang="pt_BR">
 
@@ -65,21 +67,18 @@
                                     </tr>
                                     </tfoot>
                                     <tbody>
-                                    <tr>
-                                        <td>Caixa Econômica Federal</td>
-                                        <td>12345-6</td>
-                                        <td>224612</td>
-                                        <td>Conta Corrente</td>
-                                        <td>$2.200</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Banco Bacate</td>
-                                        <td>65432-1</td>
-                                        <td>666666</td>
-                                        <td>Conta Poupança</td>
-                                        <td>$5.000.000</td>
-                                    </tr>
-
+                                    <form method="get" action="bank-account">
+                                        <core:forEach items="${lista}" var="linha">
+                                            <tr>
+                                                <td><core:out value="${linha.banco}"/></td>
+                                                <td><core:out value="${linha.agencia}"/></td>
+                                                <td><core:out value="${linha.numero}"/></td>
+                                                <td><core:out value="${linha.tipo}"/></td>
+                                                <td><core:out value="${linha.limite}"/></td>
+                                            </tr>
+                                        </core:forEach>
+                                        <button> Bacate </button>
+                                    </form>
                                     </tbody>
                                 </table>
                             </div>

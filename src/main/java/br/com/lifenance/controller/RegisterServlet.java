@@ -31,37 +31,29 @@ public class RegisterServlet extends HttpServlet {
             String pwd = req.getParameter("password");
             String repeatPwd = req.getParameter("repeatPassword");
 
-            JsonMenssage jsonMenssage = new JsonMenssage(map);
+            JsonMenssage jsonMenssage = new JsonMenssage(resp);
 
             if (!Validation.validateCpf(cpf)) {
-                map.put("error", true);
-                map.put("text", "CPF inválido!");
-                jsonMenssage.returnJson(resp);
+                jsonMenssage.sendError("CPF inválido!");
                 return;
             }
 
             if (!pwd.equals(repeatPwd)) {
-                map.put("error", true);
-                map.put("text", "Senha não iguais!");
-                jsonMenssage.returnJson(resp);
+                jsonMenssage.sendError("Senha não iguais!");
                 return;
             }
 
             GenericDao<User> userDao = new GenericDao<>("users", User.class);
 
             if (userDao.contains(cpf)) {
-                map.put("error", true);
-                map.put("text", "Este CPF já foi cadastrado!");
-                jsonMenssage.returnJson(resp);
+                jsonMenssage.sendError("Este CPF já foi cadastrado!");
                 return;
             }
 
             User user = new User(firstName, lastName, cpf, email, pwd);
             userDao.insertWithPK(user);
 
-            map.put("error", false);
-            map.put("text", "Usuário criado com sucesso!");
-            jsonMenssage.returnJson(resp);
+            jsonMenssage.sendInfo("Usuário criado com sucesso!");
 
         } catch (IOException error) {
             logger.error(error);
