@@ -39,6 +39,12 @@ public class TransactionDelete extends HttpServlet {
 
             transactionAccountDao.remove(transactionAccountDao.getList(transactionId, "transaction_id").iterator().next().getId());
 
+            TransactionCard aux = transactionCardDao.getList(transactionId, "transaction_id").iterator().next();
+
+            if (aux != null) {
+                transactionCardDao.remove(aux.getIdTransactionCard());
+            }
+
             transactionDao.remove(Long.parseLong(transactionId));
             jsonMenssage.sendInfo("Conta Bancária deletada com sucesso!");
         } catch (Exception error) {

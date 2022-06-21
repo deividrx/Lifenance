@@ -18,7 +18,7 @@ function populateTable() {
                                         + '<div class="col-">'
                                         + '<form class="delete-transaction" method="post" action="controller/bacate/delete">'
                                             + '<button class="btn btn-primary"><i class="fas fa-trash"></i></button>'
-                                            + '<input type="hidden" name="id" value="' + data[i].id + '">'
+                                            + '<input type="hidden" name="id" value="' + data[i].idTransaction + '">'
                                         + '</form>'
 
                                         + '</div>'

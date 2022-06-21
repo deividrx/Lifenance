@@ -47,24 +47,26 @@
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
-                                    <tr>
-                                        <th>Nome da despesa</th>
-                                        <th>Conta</th>
-                                        <th>Tipo</th>
-                                        <th>Data</th>
-                                        <th>Valor</th>
-                                    </tr>
-                                    </thead>
-                                    <tfoot>
-                                    <tr>
-                                        <th>Nome da despesa</th>
-                                        <th>Conta</th>
-                                        <th>Tipo</th>
-                                        <th>Data</th>
-                                        <th>Valor</th>
-                                    </tr>
-                                    </tfoot>
-                                    <tbody>
+                                        <tr>
+                                            <th>Opções</th>
+                                            <th>Nome da receita</th>
+                                            <th>Valor</th>
+                                            <th>Data Inicial</th>
+                                            <th>Data Final</th>
+                                            <th>Conta</th>
+                                        </tr>
+                                        </thead>
+                                        <tfoot>
+                                        <tr>
+                                            <th>Opções</th>
+                                            <th>Nome da receita</th>
+                                            <th>Valor</th>
+                                            <th>Data Inicial</th>
+                                            <th>Data Final</th>
+                                            <th>Conta</th>
+                                        </tr>
+                                        </tfoot>
+                                    <tbody id="tbody">
 
 
                                      </tbody>
@@ -152,11 +154,13 @@
 
     <!-- Logout Modal-->
     <jsp:include page="elements/logout-modal.html" />
+    <jsp:include page="elements/error-modal.html" />
 
     <!-- JavaScript for all pages -->
     
     <jsp:include page="elements/js.html" />
     <script src="webjars/moment/2.29.3/min/moment.min.js"></script>
+    <jsp:include page="elements/error-modal.html" />
     <script src="js/despesa.js"></script>
 
 </body>

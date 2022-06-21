@@ -2,7 +2,7 @@ var arrayData;
 
 function populateTable() {
     $.ajax({
-        url : 'controller/bacate',
+        url : 'controller/transaction/despesa',
         type : 'GET',
         dataType : 'json',
         contentType: "application/json; charset=utf-8",
@@ -12,27 +12,27 @@ function populateTable() {
             $(data).each(
                     function(i) {
                         $('#tbody').append(
-                                '<tr><td>'
-                                        +'<div class="row">'
+                            '<tr><td>'
+                            +'<div class="row">'
 
-                                        + '<div class="mx-auto">'
-                                        + '<form class="delete-conta" method="post" action="controller/bacate/delete">'
-                                            + '<button class="btn btn-primary"><i class="fas fa-trash"></i></button>'
-                                            + '<input type="hidden" name="id" value="' + data[i].id + '">'
-                                        + '</form>'
-                                        + '</div>'
-                                        + '</div>'
-                                        + '<div class="mx-auto>'
-                                            + '<button class="btn btn-primary" onclick="edit(' + i + ')"><i class="fas fa-pen"></i></button>'
-                                        + '</div>'
-                                        + '</div>'
-                                        + '</td><td>'
-                                        + data[i].nomeDespesa + '</td><td>'
-                                        + data[i].contaDespesa + '</td><td>'
-                                        + data[i].tipo.toLowerCase() + '</td><td>'
-                                        + data[i].dataDespesa + '</td><td>'
-                                        + data[i].valorDespesa +
-                                '</td></tr>')
+                            + '<div class="col-">'
+                            + '<form class="delete-transaction" method="post" action="controller/bacate/delete">'
+                                + '<button class="btn btn-primary"><i class="fas fa-trash"></i></button>'
+                                + '<input type="hidden" name="id" value="' + data[i].idTransaction + '">'
+                            + '</form>'
+
+                            + '</div>'
+                            + '<div class="mx-auto">'
+                                + '<button class="btn btn-primary" onclick="edit(' + i + ')"><i class="fas fa-pen"></i></button>'
+                            + '</div>'
+                            + '</div>'
+                            + '</td><td>'
+                            + data[i].name + '</td><td>'
+                            + data[i].value + '</td><td>'
+                            + data[i].dataInicial + '</td><td>'
+                            + data[i].dataFinal + '</td><td>'
+                            + data[i].valorReceita +
+                    '</td></tr>')
             });
         },
         error : function(data) {
@@ -90,14 +90,14 @@ function edit(index) {
 
 $(document).ready(populateTable());
 
-$(document).on('submit', '.delete-despesa', function(event) {
+$(document).on('submit', '.delete-transaction', function(event) {
     event.preventDefault();
 
     let form = $(this);
 
     $.ajax({
         type: "POST",
-        url: 'controller/bacate/delete',
+        url: 'controller/transaction/delete',
         data: form.serialize(),
         success: function(data) {
 

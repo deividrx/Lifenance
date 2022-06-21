@@ -155,6 +155,7 @@
 
     <!-- Logout Modal-->
     <jsp:include page="elements/logout-modal.html" />
+    <jsp:include page="elements/error-modal.html" />
 
     <!-- JavaScript for all pages -->
     <jsp:include page="elements/js.html" />
