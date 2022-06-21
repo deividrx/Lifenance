@@ -59,7 +59,7 @@
                                           <input type="money" class="form-control" id="valorReceita" placeholder="R$" required>
                                         </div>
                                         <div class="col-md-6">
-                                            <label for="inputEmail4" class="form-label">Data início</label>
+                                            <label for="inputEmail4" class="form-label">Data inicial</label>
                                             <input type="date" class="form-control" id="dataInicio" required>
                                           </div>
                                           <div class="col-md-6">
@@ -73,6 +73,7 @@
 
 
                                           <div class="form-group">
+                                            <label for="" class="form-label">Conta</label>
                                             <textarea class="form-control" placeholder="Descrição da receita" id="floatingTextarea2" style="height: 100px" required></textarea>
                                             <label for="floatingTextarea2"></label>
                                           </div>
