@@ -14,7 +14,7 @@ import org.apache.logging.log4j.Logger;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-@WebServlet(name = "Card", urlPatterns = {"/controller/card"})
+@WebServlet(name = "Receita", urlPatterns = {"/controller/receita"})
 public class TransactionServlet extends HttpServlet {
 
     private static final Logger logger = LogManager.getLogger(Application.class);
@@ -24,15 +24,20 @@ public class TransactionServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
         try {
             String nome = req.getParameter("nomeReceita");
+            System.out.println(nome);
             String valor = req.getParameter("valorReceita");
-
-            String data = req.getParameter("cardNumber");
+            System.out.println(valor);
             
-            String validadeMes = req.getParameter("validadeMes");
-
+            String dataInicio = req.getParameter("dataInicio");
+            System.out.println(dataInicio);
+            String dataFim = req.getParameter("dataFim");
+            System.out.println(dataFim);
+            
+            String conta = req.getParameter("conta");
+            System.out.println(conta);
             
             String description = req.getParameter("description");
-
+            System.out.println(description);
             
 
         } catch (Exception error) {
