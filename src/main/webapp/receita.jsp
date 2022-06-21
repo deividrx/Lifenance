@@ -50,12 +50,12 @@
 										
 										<div class="col-md-6">
 											<label for="inputEmail4" class="form-label">Nome da receita</label>
-											<input type="name" name="nomeReceita" class="form-control"
+											<input type="name" name="nome" class="form-control"
 												id="nomeReceita" required>
 										</div>
 										<div class="col-md-6">
 											<label for="" class="form-label">Valor</label>
-											<input type="money" name="valorReceita" class="form-control"
+											<input type="money" name="valor" class="form-control"
 												id="valorReceita" placeholder="R$" required>
 										</div>
 										<div class="col-md-6">

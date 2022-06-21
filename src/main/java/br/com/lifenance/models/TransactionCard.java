@@ -12,6 +12,9 @@ public class TransactionCard {
     @ColumnName("transaction_id")
     private Transaction transaction;
 
+    public TransactionCard() {
+    }
+
     public TransactionCard(long idTransactionCard, Card card, Transaction transaction) {
         this.idTransactionCard = idTransactionCard;
         this.card = card;

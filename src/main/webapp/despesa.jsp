@@ -52,11 +52,11 @@
                                     <form id="despesa-register" class="row g-3">
                                         <div class="col-md-6">
                                           <label for="inputEmail4" class="form-label">Nome da despesa</label>
-                                          <input type="name" class="form-control" id="nomeDespesa" required>
+                                          <input type="name" name="nome" class="form-control" id="nomes" required>
                                         </div>
                                         <div class="col-md-6">
                                           <label for="" class="form-label">Valor</label>
-                                          <input type="money" class="form-control" id="valorDespesa" placeholder="R$" required>
+                                          <input type="money" name="valor" class="form-control" id="valor" placeholder="R$" required>
                                         </div>
                                         <div class="col-md-6">
 											                        <label for="inputEmail4" class="form-label">Data inicial</label>
@@ -147,6 +147,8 @@
 
     <!-- JavaScript for all pages -->
     <jsp:include page="elements/js.html" />
+    <script src="js/accounts.js"></script>
+    <script src="js/populate-cards.js"></script>
     <script src="js/form.js"></script>
 
 </body>
