@@ -22,6 +22,8 @@ public class Transaction {
     @ColumnName("user_cpf")
     private User user;
 
+    public Transaction() {
+    }
 
     public Transaction(long idTransaction, float value, String name, LocalDate dataInicial, LocalDate dataFinal, String description, User user) {
         this.idTransaction = idTransaction;

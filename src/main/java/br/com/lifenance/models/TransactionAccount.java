@@ -18,6 +18,9 @@ public class TransactionAccount {
         this.account = account;
     }
 
+    public TransactionAccount() {
+    }
+
     // Constructor for genericDao
     public TransactionAccount(String arg) {
         String[] split = arg.split(";");
