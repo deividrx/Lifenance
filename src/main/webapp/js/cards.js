@@ -15,7 +15,7 @@ function populateTable() {
                                 '<tr><td>'
                                         +'<div class="row">'
                                         + '<div class="mx-auto">'
-                                        + '<form class="delete-conta" method="post" action="controller/bacate/delete">'
+                                        + '<form class="delete-card">'
                                             + '<button class="btn btn-primary"><i class="fas fa-trash"></i></button>'
                                             + '<input type="hidden" name="id" value="' + data[i].id + '">'
                                         + '</form>'
@@ -92,14 +92,14 @@ function edit(index) {
 
 $(document).ready(populateTable());
 
-$(document).on('submit', '.delete-despesa', function(event) {
+$(document).on('submit', '.delete-card', function(event) {
     event.preventDefault();
 
     let form = $(this);
 
     $.ajax({
         type: "POST",
-        url: 'controller/bacate/delete',
+        url: '/controller/card/delete',
         data: form.serialize(),
         success: function(data) {
 
