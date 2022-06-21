@@ -110,13 +110,8 @@
                                     caracterizam gastos como aluguel, mensalidade da escola, água e luz etc...</code>
                                         </p>
                                    
-                                    <div class="my-2"></div>
-                                   
-                                    
-                                    
-                                </div>
                             </div>
-
+                            </div>
                         </div>
                         
 
