@@ -54,15 +54,16 @@ public class Card {
     // Constructor for genericDAO
     public Card(String arg) {
         String[] split = arg.split(";");
+        System.out.println(arg);
         this.id = Long.parseLong(split[0]);
         this.nome = split[1];
         this.number = Long.parseLong(split[2]);
         this.validity = LocalDate.parse(split[3]);
         this.limite = Float.parseFloat(split[4]);
         this.multa = Integer.parseInt(split[5]);
-        this.vencimentoFatura = Integer.parseInt(split[6]);
-        this.cardFlag = ModelFactory.getModel(CardFlag.class, "card_flags", Long.parseLong(split[7]));
-        this.user = ModelFactory.getModel(User.class, "users", Long.parseLong(split[8]));
+        this.cardFlag = ModelFactory.getModel(CardFlag.class, "card_flags", Long.parseLong(split[6]));
+        this.user = ModelFactory.getModel(User.class, "users", split[7]);
+        this.vencimentoFatura = Integer.parseInt(split[8]);
     }
 
     public long getId() {

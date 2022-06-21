@@ -48,27 +48,29 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                     <tr>
+                                        <th>Opções</th>
                                         <th>Nome Completo</th>
                                         <th>Numero</th>
                                         <th>Validade</th>
-                                        <th>CVV</th>
                                         <th>Limite</th>
-                                        <th>Vencimento da fatura</th>
+                                        <th>Multa</th>
+                                        <th>Dia Vencimento Fatura</th>
                                         <th>Bandeira</th>
                                     </tr>
                                     </thead>
                                     <tfoot>
                                     <tr>
+                                        <th>Opções</th>
                                         <th>Nome Completo</th>
                                         <th>Numero</th>
                                         <th>Validade</th>
-                                        <th>CVV</th>
                                         <th>Limite</th>
-                                        <th>Vencimento da fatura</th>
+                                        <th>Multa</th>
+                                        <th>Dia Vencimento Fatura</th>
                                         <th>Bandeira</th>
                                     </tr>
                                     </tfoot>
-                                    <tbody>
+                                    <tbody id="tbody">
                                     </tbody>
                                 </table>
                             </div>
@@ -96,9 +98,11 @@
 
     <!-- Logout Modal-->
     <jsp:include page="elements/logout-modal.html" />
+    <jsp:include page="elements/error-modal.html" />
 
     <!-- JavaScript for all pages -->
     <jsp:include page="elements/js.html" />
+    <script src="js/cards.js"></script>
 
 </body>
 

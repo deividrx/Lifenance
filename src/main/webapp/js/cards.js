@@ -2,7 +2,7 @@ var arrayData;
 
 function populateTable() {
     $.ajax({
-        url : 'controller/bacate',
+        url : 'controller/card',
         type : 'GET',
         dataType : 'json',
         contentType: "application/json; charset=utf-8",
@@ -25,13 +25,13 @@ function populateTable() {
                                         + '</div>'
                                         + '</div>'
                                         + '</td><td>'
-                                        + data[i].nomeCompleto + '</td><td>'
-                                        + data[i].numero + '</td><td>'
-                                        + data[i].validade + '</td><td>'
-                                        + data[i].cvv + '</td><td>'
-                                        + data[i].limiteCartao + '</td><td>'
-                                        + data[i].vencimentoFatura+ '</td><td>'
-                                        + data[i].bandeira +
+                                        + data[i].nome + '</td><td>'
+                                        + data[i].number + '</td><td>'
+                                        + data[i].validity + '</td><td>'
+                                        + data[i].limite + '</td><td>'
+                                        + data[i].multa + '</td><td>'
+                                        + data[i].vencimentoFatura + '</td><td>'
+                                        + data[i].cardFlag.name +
                                 '</td></tr>')
             });
         },
