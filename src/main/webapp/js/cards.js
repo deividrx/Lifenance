@@ -101,7 +101,7 @@ $(document).on('submit', '.delete-card', function(event) {
 
     $.ajax({
         type: "POST",
-        url: '/controller/card/delete',
+        url: 'controller/card/delete',
         data: form.serialize(),
         success: function(data) {
 
