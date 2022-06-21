@@ -5,9 +5,6 @@ import br.com.lifenance.controller.JsonMenssage;
 import br.com.lifenance.dal.GenericDao;
 import br.com.lifenance.models.*;
 import br.com.lifenance.models.enumeration.AccountType;
-import br.com.lifenance.util.GsonLocalDate;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -15,20 +12,19 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.PrintWriter;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-@WebServlet(name = "Card", urlPatterns = {"/controller/card"})
-public class CardServlet extends HttpServlet {
+@WebServlet(name = "CardEdit", urlPatterns = {"/controller/card/edit"})
+public class CardEdit extends HttpServlet {
 
-    private static final Logger logger = LogManager.getLogger(Application.class);
     private final GenericDao<Card> cardDao = new GenericDao<>("cards", Card.class);
+    private static final Logger logger = LogManager.getLogger(Application.class);
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
         try {
+            String id = req.getParameter("id");
             String bandeira = req.getParameter("bandeira");
             String nomeCard = req.getParameter("username");
             String numCard = req.getParameter("cardNumber");
@@ -43,6 +39,7 @@ public class CardServlet extends HttpServlet {
             DateTimeFormatter df = DateTimeFormatter.ofPattern("ddMMyyyy");
 
             Card card = new Card(
+                    Long.parseLong(id),
                     Long.parseLong(numCard),
                     LocalDate.parse( LocalDate.now().getDayOfMonth() + validadeMes + validadeAno, df),
                     ModelFactory.getModel(CardFlag.class, "card_flags", Long.parseLong(bandeira)),
@@ -55,28 +52,8 @@ public class CardServlet extends HttpServlet {
 
             System.out.println(card.toString());
 
-            cardDao.insert(card);
-            jsonMenssage.sendInfo("Catão cadastrado com sucesso!");
-
-        } catch (Exception error) {
-            logger.error(error);
-        }
-    }
-
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
-        try {
-            PrintWriter output = resp.getWriter();
-            resp.setContentType("application/json");
-            resp.setCharacterEncoding("UTF-8");
-
-            GsonBuilder gsonBuilder = new GsonBuilder();
-            gsonBuilder.registerTypeAdapter(LocalDate.class, new GsonLocalDate());
-
-
-            Gson gson = gsonBuilder.setPrettyPrinting().create();
-            output.write(gson.toJson(cardDao.getList()));
-
+            //cardDao.update(card);
+            jsonMenssage.sendInfo("Cartão Alterada com sucesso!");
         } catch (Exception error) {
             logger.error(error);
         }
