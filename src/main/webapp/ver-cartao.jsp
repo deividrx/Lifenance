@@ -114,18 +114,18 @@
                         </div>
                         <div class="form-group">
                             <label for="" class="form-label">Número</label>
-                            <input type="number" name="cardNumber" placeholder="Número do cartão" class="form-control" required>
+                            <input type="number" id="cardNumber" name="cardNumber" placeholder="Número do cartão" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label><span class="hidden-xs">Validade</span></label>
                                <div class="input-group">
-                                   <input type="number" placeholder="Mês" name="validadeMes" class="form-control" required>
-                                   <input type="number" placeholder="Ano" name="validadeAno" class="form-control" required>
+                                   <input type="number" placeholder="Mês" id="validadeMes" name="validadeMes" class="form-control" required>
+                                   <input type="number" placeholder="Ano" id="validadeAno" name="validadeAno" class="form-control" required>
                                </div>
                         </div>
                         <div class="form-group">
                             <label for="username">Multa</label>
-                            <input type="text" required="required" placeholder="%" name="card-multa" pattern="[0-3]+$" required class="form-control">
+                            <input type="text" id="multa" required="required" placeholder="%" name="card-multa" pattern="[0-3]+$" required class="form-control">
                         </div>
 
                         <div class="form-group">
@@ -135,7 +135,7 @@
                             </div>
                             <div class="form-group">
                                 <label><span class="hidden-xs">Vencimento da fatura</span></label>
-                                           <input type="number" placeholder="Dia" name="fatura-dia" class="form-control" required>
+                                           <input type="number" id="fatura" placeholder="Dia" name="fatura-dia" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label data-toggle="tooltip" title="Tres digitos na parte de trás do cartão">Bandeira </label>
@@ -159,6 +159,8 @@
 
     <!-- JavaScript for all pages -->
     <jsp:include page="elements/js.html" />
+    <script src="webjars/moment/2.29.3/min/moment.min.js"></script>
+    <script src="js/card-flag.js"></script>
     <script src="js/cards.js"></script>
 
 </body>

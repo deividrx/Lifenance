@@ -44,29 +44,31 @@ function populateTable() {
 function edit(index) {
     let data = arrayData[index];
 
-    $('#receita-id').val(data.id);
-    $('#nomeUser').val(data.nomeCompleto);
-    $('#numero').val(data.numero);
-    $('#cvv').val(data.validade);
-    $('#validade').val(data.cvv);
-    $('#fatura').val(data.limiteCartao);
-    $('#limite').val(data.vencimentoFatura);
+    $('#card-id').val(data.id);
+    $('#username').val(data.nome);
+    $('#cardNumber').val(data.number);
+
+    console.log(data.validity);
+    
+    let date = moment(data.validity, 'DD-MM-YYYY');
+
+    let month = date.format('M');
+    let year  = date.format('YYYY');
+
+    $('#validadeMes').val(month);
+    $('#validadeAno').val(year);
+    
+    $('#multa').val(data.multa);
+    $('#limiteCartao').val(data.limite);
+    populateSelect();
+    $('#fatura').val(data.vencimentoFatura);
     $('#form-modal').modal('show');
 
-    switch (data.bandeira) {
-        case 'Visa':
-            $('#bandeira').attr('checked','checked');
-            break;
-        case 'Mastercard':
-            $('#bandeira').attr('checked','checked');
-            break;
-    }
-
-    $("#account-register").submit(function(event) {
+    $("#card-register").submit(function(event) {
         event.preventDefault();
 
         let form = $(this);
-        let actionUrl = 'controller/bank-account/edit';
+        let actionUrl = 'controller/card/edit';
 
         $.ajax({
             type: "POST",

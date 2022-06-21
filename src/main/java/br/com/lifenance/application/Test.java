@@ -11,7 +11,7 @@ public class Test {
 
 
             WebJarAssetLocator locator = new WebJarAssetLocator();
-            Set<String> fullPathsOfAssets = locator.listAssets("jquery");
+            Set<String> fullPathsOfAssets = locator.listAssets("moment");
             System.out.println(fullPathsOfAssets);
         } catch (Exception e) {
             System.out.println(e);
