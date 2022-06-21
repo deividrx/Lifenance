@@ -132,13 +132,13 @@ ALTER SEQUENCE public.card_flags_flag_id_seq OWNED BY public.card_flags.flag_id;
 CREATE TABLE public.cards (
     card_id bigint NOT NULL,
     card_name character varying(100) NOT NULL,
-    card_number integer NOT NULL,
+    card_number bigint NOT NULL,
     validity date NOT NULL,
     limite double precision NOT NULL,
     multa integer,
-    vencimento_fatura date NOT NULL,
     card_flag_id bigint NOT NULL,
-    user_cpf character varying(11) NOT NULL
+    user_cpf character varying(11) NOT NULL,
+    vencimento_fatura integer NOT NULL
 );
 
 
@@ -348,6 +348,7 @@ ALTER TABLE ONLY public.transactions_cards ALTER COLUMN transaction_card_id SET 
 COPY public.bank_accounts (bank_account_id, bank_name, agencia, account_number, type_account, limite, user_cpf) FROM stdin;
 2	Bradesco	801	251871	CHECKING	200	06308065005
 4	Itaú	6571	501573	CHECKING	300	06308065005
+52	Banco Arroz	123123	12341234	CHECKING	200	06308065005
 \.
 
 
@@ -368,7 +369,8 @@ COPY public.card_flags (flag_id, flag_name) FROM stdin;
 -- Data for Name: cards; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.cards (card_id, card_name, card_number, validity, limite, multa, vencimento_fatura, card_flag_id, user_cpf) FROM stdin;
+COPY public.cards (card_id, card_name, card_number, validity, limite, multa, card_flag_id, user_cpf, vencimento_fatura) FROM stdin;
+1	Seu zeca	5300425364671987	2024-04-20	4000	200	1	06308065005	12
 \.
 
 
@@ -403,6 +405,11 @@ COPY public.transactions_cards (transaction_card_id, card_id, transaction_id) FR
 COPY public.user_sessions (id_session, validator, user_cpf) FROM stdin;
 WX8v6y5IPn5g	dc7475650ad019225db209f6ba5b300e2bd6b80f6503967448367b46dd40572c	06308065005
 x09Parho0xd0	b895e3afd0d0c76ac8313e4c072434a1ae79914b5ca4143610a77a4ebcad7063	06308065005
+wNuEvNQz1hpq	a76db62e2b1953857d3aa015c5dcd917f4cb0528c098925d6b3dbfb7c41cacea	06308065005
+PBysDWX1fJdi	ba12d91106ffad78c37b98a4a6fa8cdf1c643ea18a3d30a9632c6f3bd3c9e794	06308065005
+SgioX8OQ3PRh	5ae2615ecd2968d16a8615940253a7a743bb7547628ccc36cf58e13cc7753ffd	06308065005
+2YYLWLnpiGmw	96c44bdf4412b0f9f506be92e8f1b087c3390da004784a117599e2e948af1ebd	06308065005
+9DC2Z87qv0qW	e69101b210510cf7f0fd97b3e2507d54c82f28a7d4141f2e2a280825c1bbd4c3	06308065005
 \.
 
 
@@ -424,7 +431,7 @@ COPY public.users (user_cpf, first_name, last_name, user_email, user_password) F
 -- Name: bank_accounts_bank_account_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.bank_accounts_bank_account_id_seq', 51, true);
+SELECT pg_catalog.setval('public.bank_accounts_bank_account_id_seq', 52, true);
 
 
 --
@@ -438,7 +445,7 @@ SELECT pg_catalog.setval('public.card_flags_flag_id_seq', 5, true);
 -- Name: cards_card_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.cards_card_id_seq', 1, false);
+SELECT pg_catalog.setval('public.cards_card_id_seq', 1, true);
 
 
 --
