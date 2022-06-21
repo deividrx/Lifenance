@@ -106,8 +106,9 @@
                                     <h6 class="m-0 font-weight-bold text-primary">O que é despesa?</h6>
                                 </div>
                                 <div class="card-body">
-                                    <p>A despesa está ligada a tudo aquilo que você gasta. Gastos como <code>aluguel, mensalidade da escola, água e luz</code>
-                                        devem ser marcados com a a <strong>Data Inicial</strong> e a <strong>Data Final.</strong></p>
+                                    <p>A despesa está ligada a tudo aquilo que você gasta. Geralmente
+                                    caracterizam gastos como aluguel, mensalidade da escola, água e luz etc...</code>
+                                        </p>
                                    
                                     <div class="my-2"></div>
                                    
