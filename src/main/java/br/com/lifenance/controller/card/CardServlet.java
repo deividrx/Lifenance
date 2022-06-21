@@ -43,11 +43,11 @@ public class CardServlet extends HttpServlet {
 
             JsonMenssage jsonMenssage = new JsonMenssage(resp);
             User user = (User) req.getSession(false).getAttribute("loggedUser");
-            DateTimeFormatter df = DateTimeFormatter.ofPattern("dd-MMM-yyyy");
+            DateTimeFormatter df = DateTimeFormatter.ofPattern("ddMMyyyy");
 
             Card card = new Card(
                     Long.parseLong(numCard),
-                    LocalDate.parse(validadeAno + "-" + validadeMes + "-" + "10", df),
+                    LocalDate.parse( LocalDate.now().getDayOfMonth() + validadeMes + validadeAno, df),
                     ModelFactory.getModel(CardFlag.class, "card_flags", Long.parseLong(bandeira)),
                     Integer.parseInt(multa),
                     Integer.parseInt(limiteCartao),
@@ -58,7 +58,7 @@ public class CardServlet extends HttpServlet {
 
             System.out.println(card.toString());
 
-            //cardDao.insert(card);
+            cardDao.insert(card);
             jsonMenssage.sendInfo("Catão cadastrado com sucesso!");
 
         } catch (Exception error) {
