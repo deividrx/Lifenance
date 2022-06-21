@@ -82,7 +82,7 @@
                                             </div>                                           
                                           </div> 
                                           <div class="col-lg-6">
-                                            <textarea class="form-control" placeholder="Descrição da receita" id="floatingTextarea2" style="height: 100px" required></textarea>
+                                            <textarea class="form-control" placeholder="Descrição da receita" id="description" style="height: 100px" required></textarea>
                                             <label for="floatingTextarea2"></label>
                                           </div>
                                           
@@ -108,9 +108,7 @@
                                         rendimentos com pensões e aposentadoria, ganhos com alugueis, ganhos com ações e etc, devem ser marcados como <strong>esporádico.</strong></p>
                                    
                                     <div class="my-2"></div>
-                                   
-                                    
-                                    
+
                                 </div>
                             </div>
 

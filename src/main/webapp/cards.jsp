@@ -82,8 +82,8 @@
                                         <div class="form-group">
                                           <label><span class="hidden-xs">Validade</span></label>
                                           <div class="input-group">
-                                            <input type="number" placeholder="Mês" name="validadeMes" class="form-control" required>
-                                            <input type="number" placeholder="Ano" name="validadeAno" class="form-control" required>
+                                            <input type="number" min="1" max="12" placeholder="Mês" name="validadeMes" class="form-control" required>
+                                            <input type="number" min="1900" max="2100" placeholder="Ano" name="validadeAno" class="form-control" required>
                                           </div>
                                         </div>
                                       </div>
@@ -105,7 +105,7 @@
                                             <div class="form-group">
                                               <label><span class="hidden-xs">Vencimento da fatura</span></label>
                                               <div class="input-group">
-                                                <input type="number" placeholder="Dia" name="fatura-dia" class="form-control" required>
+                                                <input type="number" min="1" max="31" placeholder="Dia" name="fatura-dia" class="form-control" required>
 
                                               </div>
                                             </div>
