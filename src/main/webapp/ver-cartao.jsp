@@ -96,6 +96,63 @@
         <i class="fas fa-angle-up"></i>
     </a>
 
+    <div class="modal fade" id="form-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Editar</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <form id="card-register">
+                        <input id="card-id" type="hidden" name="id" value="">
+                        <div class="form-group">
+                            <label for="input" class="form-label">Nome completo</label>
+                            <input type="name" class="form-control" id="username" name="username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="form-label">Número</label>
+                            <input type="number" name="cardNumber" placeholder="Número do cartão" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label><span class="hidden-xs">Validade</span></label>
+                               <div class="input-group">
+                                   <input type="number" placeholder="Mês" name="validadeMes" class="form-control" required>
+                                   <input type="number" placeholder="Ano" name="validadeAno" class="form-control" required>
+                               </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="username">Multa</label>
+                            <input type="text" required="required" placeholder="%" name="card-multa" pattern="[0-3]+$" required class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <div class="form-check">
+                                 <label for="limite">Limite do cartão</label>
+                                 <input id="limiteCartao" type="text" name="limiteCard" placeholder="R$" required class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label><span class="hidden-xs">Vencimento da fatura</span></label>
+                                           <input type="number" placeholder="Dia" name="fatura-dia" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label data-toggle="tooltip" title="Tres digitos na parte de trás do cartão">Bandeira </label>
+                                    <select name="bandeira" id="selectbody" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                                    </select>
+                            </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-primary" form="card-register" >Salvar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
     <!-- Logout Modal-->
     <jsp:include page="elements/logout-modal.html" />
     <jsp:include page="elements/error-modal.html" />

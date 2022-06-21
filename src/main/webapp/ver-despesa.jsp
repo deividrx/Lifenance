@@ -36,7 +36,7 @@
                     <!-- Page Heading -->
                     <h1 class="h3 mb-2 text-gray-800">Despesas</h1>
                     <p class="mb-4">Suas despesas cadastradas aparecerão nessa página, caso ainda nao tenha registrado <a target="_blank"
-                                                                                href="despesa.html">clique aqui</a>.</p>
+                                                                                href="despesa.jsp">clique aqui</a>.</p>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
@@ -91,6 +91,7 @@
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
+
 
     <!-- Logout Modal-->
     <jsp:include page="elements/logout-modal.html" />
