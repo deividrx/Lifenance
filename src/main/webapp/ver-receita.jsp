@@ -50,25 +50,25 @@
                                 <table class="table table-bordered" id="tableReceita" width="100%" cellspacing="0">
                                     <thead>
                                     <tr>
+                                        <th>Opções</th>
                                         <th>Nome da receita</th>
-                                        <th>Conta</th>
-                                        <th>Tipo</th>
-                                        <th>Data</th>
                                         <th>Valor</th>
+                                        <th>Data Inicial</th>
+                                        <th>Data Final</th>
+                                        <th>Conta</th>
                                     </tr>
                                     </thead>
                                     <tfoot>
                                     <tr>
+                                        <th>Opções</th>
                                         <th>Nome da receita</th>
-                                        <th>Conta</th>
-                                        <th>Tipo</th>
-                                        <th>Data</th>
                                         <th>Valor</th>
+                                        <th>Data Inicial</th>
+                                        <th>Data Final</th>
+                                        <th>Conta</th>
                                     </tr>
                                     </tfoot>
-                                    <tbody>
-
-
+                                    <tbody id="tbody">
                                      </tbody>
                                 </table>
                             </div>
@@ -159,7 +159,7 @@
     <!-- JavaScript for all pages -->
     <jsp:include page="elements/js.html" />
     <script src="webjars/moment/2.29.3/min/moment.min.js"></script>
-        <script src="js/receita.js"></script>
+    <script src="js/receita.js"></script>
 
 
 </body>

@@ -2,7 +2,7 @@ var arrayData;
 
 function populateTable() {
     $.ajax({
-        url : 'controller/bacate',
+        url : 'controller/receita',
         type : 'GET',
         dataType : 'json',
         contentType: "application/json; charset=utf-8",
@@ -27,10 +27,10 @@ function populateTable() {
                                         + '</div>'
                                         + '</div>'
                                         + '</td><td>'
-                                        + data[i].nomeReceita + '</td><td>'
-                                        + data[i].conta + '</td><td>'
-                                        + data[i].tipo.toLowerCase() + '</td><td>'
-                                        + data[i].dataReceita + '</td><td>'
+                                        + data[i].name + '</td><td>'
+                                        + data[i].value + '</td><td>'
+                                        + data[i].dataInicial + '</td><td>'
+                                        + data[i].dataFinal + '</td><td>'
                                         + data[i].valorReceita +
                                 '</td></tr>')
             });

@@ -81,6 +81,8 @@
 												style="height: 100px" required></textarea>
 										</div>
 
+										<input type="hidden" value="false" name="despesa">
+
 										<div class="col-12">
 											<button type="submit" class="btn btn-primary btn-lg">Registrar</button>
 										</div>

@@ -25,7 +25,7 @@ public class TransactionAccount {
     public TransactionAccount(String arg) {
         String[] split = arg.split(";");
         this.id = Long.parseLong(split[0]);
-        this.account = ModelFactory.getModel(Account.class, "accounts", Long.parseLong(split[1]));
+        this.account = ModelFactory.getModel(Account.class, "bank_accounts", Long.parseLong(split[1]));
         this.transaction = ModelFactory.getModel(Transaction.class, "transactions", Long.parseLong(split[2]));
     }
 

@@ -87,7 +87,8 @@
 										                      </div>
                                           
                                           
-                                          
+                                          <input type="hidden" value="true" name="despesa">
+
                                           <div class="col-10">
                                             <button type="submit" class="btn btn-primary btn-lg">Registrar</button>
                                           </div>
@@ -146,6 +147,7 @@
 
     <!-- JavaScript for all pages -->
     <jsp:include page="elements/js.html" />
+    <script src="js/form.js"></script>
 
 </body>
 

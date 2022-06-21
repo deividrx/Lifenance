@@ -112,13 +112,32 @@ $("#register-receita").submit(function(event) {
             if (data.error == true) {
                 $('#modal-title').text('Erro!');
             } else {
-                $('#form-modal').modal('hide');
                 $('#error-modal').modal('show');
                 $('#modal-title').text('Sucesso!');
                 $('#modal-text').text(data.text);
-                $("#modal-close").click(function(){
-                    populateTable();
-                });
+            }
+        }
+    });
+});
+
+$("#despesa-register").submit(function(event) {
+    event.preventDefault();
+
+    let form = $(this);
+    let actionUrl = 'controller/receita';
+
+    $.ajax({
+        type: "POST",
+        url: actionUrl,
+        data: form.serialize(),
+        success: function(data) {
+
+            if (data.error == true) {
+                $('#modal-title').text('Erro!');
+            } else {
+                $('#error-modal').modal('show');
+                $('#modal-title').text('Sucesso!');
+                $('#modal-text').text(data.text);
             }
         }
     });
