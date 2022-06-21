@@ -150,8 +150,9 @@
                 </div>
               </div>
             </div>
-          </div>
-
+        </div>
+    </div>
+    </body>
 
     <!-- Logout Modal-->
     <jsp:include page="elements/logout-modal.html" />
