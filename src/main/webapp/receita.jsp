@@ -44,7 +44,7 @@
                            
 
                             <!-- Brand Buttons -->
-                            <div class="card shadow mb-4">
+                            <div class="card shadow mb-3">
                                 <div class="card-header py-3">
                                     <h6 class="m-0 font-weight-bold text-primary">Receita</h6>
                                 </div>
@@ -59,29 +59,20 @@
                                           <input type="money" class="form-control" id="valorReceita" placeholder="R$" required>
                                         </div>
                                         <div class="col-md-6">
-                                            <label for="inputEmail4" class="form-label">Data da receita</label>
-                                            <input type="date" class="form-control" id="dataReceita" required>
+                                            <label for="inputEmail4" class="form-label">Data início</label>
+                                            <input type="date" class="form-control" id="dataInicio" required>
+                                          </div>
+                                          <div class="col-md-6">
+                                             <label for="inputEmail4" class="form-label">Data final</label>
+                                              <input type="date" class="form-control" id="dataFim" required>
                                           </div>
                                           <div class="col-md-6">
                                             <label for="" class="form-label">Conta</label>
-                                            <input type="money" class="form-control" id="account" placeholder="" required>
+                                            <select name="bandeira" id="selectbody" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
                                           </div>
-        
-                                        <div class="col-sm-10">
-                                            <div class="form-check">
-                                              <input class="form-check-input" type="radio" name="gridRadios" id="receitaFixa" value="option1" checked required>
-                                              <label class="form-check-label" for="gridRadios1">
-                                                Fixa
-                                              </label>
-                                            </div>
-                                            <div class="form-check">
-                                              <input class="form-check-input" type="radio" name="gridRadios" id="receitaEsporadica" value="option2" required>
-                                              <label class="form-check-label" for="gridRadios2">
-                                                Esporádica
-                                              </label>
-                                            </div>                                           
-                                          </div> 
-                                          <div class="col-lg-6">
+
+
+                                          <div class="form-group">
                                             <textarea class="form-control" placeholder="Descrição da receita" id="floatingTextarea2" style="height: 100px" required></textarea>
                                             <label for="floatingTextarea2"></label>
                                           </div>
