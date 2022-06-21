@@ -99,12 +99,8 @@
 									<h6 class="m-0 font-weight-bold text-primary">O que é receita?</h6>
 								</div>
 								<div class="card-body">
-									<p>Receita é tudo que adiciona a sua fonte de renda, em geral o
-										<code>salário</code>
-										que pode ser registrado como <strong>receita fixa</strong>, já o rendimento
-										com investimentos, ganhos como freelancer,
-										rendimentos com pensões e aposentadoria, ganhos com alugueis, ganhos com
-										ações e etc, devem ser marcados como <strong>esporádico.</strong></p>
+									<p>Receita é tudo que adicionado a sua fonte de renda, geralmente são:
+									    Salário, investimentos, aposentadoria e ganhos em geral.</p>
 
 									<div class="my-2"></div>
 
