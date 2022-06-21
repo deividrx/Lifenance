@@ -71,12 +71,12 @@
                                             <select name="bandeira" id="selectbody" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
                                           </div>
 
-
-                                          <div class="form-group">
-                                            <label for="" class="form-label">Conta</label>
-                                            <textarea class="form-control" placeholder="Descrição da receita" id="floatingTextarea2" style="height: 100px" required></textarea>
-                                            <label for="floatingTextarea2"></label>
+                                          <div class="col-md-6">
+                                            <label for="exampleFormControlTextarea5">Descrição da receita</label>
+                                                                                        <textarea class="form-control" id="exampleFormControlTextarea5" rows="3"></textarea>
                                           </div>
+
+
                                           
                                           <div class="col-12">
                                             <button type="submit" class="btn btn-primary btn-lg">Registrar</button>
@@ -99,9 +99,7 @@
                                         que pode ser registrado como <strong>receita fixa</strong>, já o rendimento com investimentos, ganhos como freelancer, 
                                         rendimentos com pensões e aposentadoria, ganhos com alugueis, ganhos com ações e etc, devem ser marcados como <strong>esporádico.</strong></p>
                                    
-                                    <div class="my-2"></div>
 
-                                </div>
                             </div>
 
                         </div>
