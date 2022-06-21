@@ -100,9 +100,7 @@
                                         rendimentos com pensões e aposentadoria, ganhos com alugueis, ganhos com ações e etc, devem ser marcados como <strong>esporádico.</strong></p>
                                    
                                     <div class="my-2"></div>
-                                   
-                                    
-                                    
+
                                 </div>
                             </div>
 
