@@ -54,10 +54,11 @@ public class BankAccountServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
         try {
+            User user = (User) req.getSession(false).getAttribute("loggedUser");
             PrintWriter output = resp.getWriter();
             resp.setContentType("application/json");
             resp.setCharacterEncoding("UTF-8");
-            output.write(new Gson().toJson(accountDao.getList()));
+            output.write(new Gson().toJson(accountDao.getList(user.getCpf(), "user_cpf")));
         } catch (Exception error) {
             logger.error(error);
         }

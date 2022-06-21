@@ -74,7 +74,8 @@ public class CardServlet extends HttpServlet {
 
 
             Gson gson = gsonBuilder.setPrettyPrinting().create();
-            output.write(gson.toJson(cardDao.getList()));
+            User user = (User) req.getSession(false).getAttribute("loggedUser");
+            output.write(gson.toJson(cardDao.getList(user.getCpf(), "user_cpf")));
 
         } catch (Exception error) {
             logger.error(error);

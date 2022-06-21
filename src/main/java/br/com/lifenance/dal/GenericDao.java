@@ -100,6 +100,32 @@ public class GenericDao<T> {
         return arrayObj;
     }
 
+    public List<T> getList(String value, String collumn) {
+        ArrayList<T> arrayObj = new ArrayList<>();
+        try {
+            String sql = "SELECT * FROM " + tableName + " WHERE " + collumn + " = '"  + value + "' ORDER BY " + primaryKeyName + " ASC";
+            System.out.println(sql);
+            Statement s = connection.createStatement();
+            ResultSet rs = s.executeQuery(sql);
+            ResultSetMetaData rsmd = rs.getMetaData();
+            int columnNum = rsmd.getColumnCount();
+            while (rs.next()) {
+                ArrayList<String> data = new ArrayList<>();
+
+                for (int i = 1; i <= columnNum; i++) {
+                    data.add(rs.getObject(i).toString());
+                }
+
+                String args = (String.join(";", data));
+                arrayObj.add(cls.getDeclaredConstructor(String.class).newInstance(args));
+            }
+        } catch (SQLException | NoSuchMethodException | InvocationTargetException | IllegalAccessException |
+                 InstantiationException ex) {
+            Logger.getLogger(ConnectionDb.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return arrayObj;
+    }
+
     public void update(Object obj) {
         try {
             String primaryKeyValue = fieldHandler.getPrimaryKeyValue(obj);
