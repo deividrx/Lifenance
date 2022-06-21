@@ -56,7 +56,7 @@
                                         </div>
                                         <div class="col-md-6">
                                           <label for="" class="form-label">Valor</label>
-                                          <input type="money" class="form-control" id="inputPassword4" placeholder="R$" required>
+                                          <input type="money" class="form-control" id="valorDespesa" placeholder="R$" required>
                                         </div>
                                         <div class="col-md-6">
 											                        <label for="inputEmail4" class="form-label">Data inicial</label>
