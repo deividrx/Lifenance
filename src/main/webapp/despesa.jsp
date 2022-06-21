@@ -49,7 +49,7 @@
                                     <h6 class="m-0 font-weight-bold text-primary">Despesa</h6>
                                 </div>
                                 <div class="card-body">
-                                    <form class="row g-3">
+                                    <form id="despesa-register" class="row g-3">
                                         <div class="col-md-6">
                                           <label for="inputEmail4" class="form-label">Nome da despesa</label>
                                           <input type="name" class="form-control" id="nomeDespesa" required>
@@ -59,34 +59,36 @@
                                           <input type="money" class="form-control" id="inputPassword4" placeholder="R$" required>
                                         </div>
                                         <div class="col-md-6">
-                                            <label for="inputEmail4" class="form-label">Data da despesa</label>
-                                            <input type="date" class="form-control" id="nomeDespesa" required>
-                                          </div>
+											                        <label for="inputEmail4" class="form-label">Data inicial</label>
+											                        <input type="date" name="dataInicio" class="form-control"
+												                      id="dataInicio" required>
+										                    </div>
+                                        <div class="col-md-6">
+											                      <label for="inputEmail4" class="form-label">Data final</label>
+											                      <input type="date" name="dataFim" class="form-control" id="dataFim">
+									                    	</div>
+                                        <div class="col-md-6">
+										                      	<label for="selectbody" class="form-label">Conta</label>
+										                      	<select name="conta" name="conta" id="selectbody"
+											                    	class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+										                    	</select>
+									                    	</div>
+                                        <div class="col-md-6">
+										                      	<label for="selectcard" class="form-label">Cartão</label>
+										                      	<select name="card" name="card" id="selectcard"
+											                    	class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+										                    	</select>
+									                    	</div>
                                           <div class="col-md-6">
-                                            <label for="" class="form-label">Conta</label>
-                                            <input type="money" class="form-control" id="inputPassword4" placeholder="" required>
-                                          </div>
-        
-                                        <div class="col-sm-10">
-                                            <div class="form-check">
-                                              <input class="form-check-input" type="radio" name="gridRadios" id="fixa" value="option1" checked>
-                                              <label class="form-check-label" for="gridRadios1" role="" required>
-                                                Fixa
-                                              </label>
-                                            </div>
-                                            <div class="form-check">
-                                              <input class="form-check-input" type="radio" name="gridRadios" id="esporadica" value="option2">
-                                              <label class="form-check-label" for="gridRadios2" required>
-                                                Esporádica
-                                              </label>
-                                            </div>                                           
-                                          </div> 
-                                          <div class="col-lg-6">
-                                            <textarea class="form-control" placeholder="Descrição da despesa" id="floatingTextarea2" style="height: 100px" required></textarea>
-                                            <label for="floatingTextarea2"></label>
-                                          </div>
+										                      	  <label for="despesa-des" class="form-label"></label>
+											                        <textarea id="description" name="description" class="form-control"
+												                      placeholder="Descrição da despesa" id="despesa-des"
+												                      style="height: 100px" required></textarea>
+										                      </div>
                                           
-                                          <div class="col-12">
+                                          
+                                          
+                                          <div class="col-10">
                                             <button type="submit" class="btn btn-primary btn-lg">Registrar</button>
                                           </div>
                                       </form> 
