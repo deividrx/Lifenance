@@ -18,7 +18,7 @@ import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-@WebServlet(name = "Receita", urlPatterns = {"/controller/receita"})
+@WebServlet(name = "Transaction", urlPatterns = {"/controller/transaction"})
 public class TransactionServlet extends HttpServlet {
 
     private static final Logger logger = LogManager.getLogger(Application.class);
@@ -68,6 +68,7 @@ public class TransactionServlet extends HttpServlet {
 
             transactionAccountDao.insert(transactionAccount);
 
+
             if (isDespesa) {
                 String card = req.getParameter("card");
                 if (!card.equals("null")) {
@@ -76,9 +77,10 @@ public class TransactionServlet extends HttpServlet {
                     transactionCard.setCard(cardDao.get(Long.parseLong(card)));
                     transactionCardDao.insert(transactionCard);
                 }
-            }
+                jsonMenssage.sendInfo("Despesa cadastrada com sucesso!");
+            } else
+                jsonMenssage.sendInfo("Receita cadastrada com sucesso!");
 
-            jsonMenssage.sendInfo("Despesa cadastrada com sucesso!");
 
         } catch (Exception error) {
             logger.error(error);

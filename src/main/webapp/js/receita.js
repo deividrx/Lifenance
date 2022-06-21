@@ -2,7 +2,7 @@ var arrayData;
 
 function populateTable() {
     $.ajax({
-        url : 'controller/receita',
+        url : 'controller/transaction/receita',
         type : 'GET',
         dataType : 'json',
         contentType: "application/json; charset=utf-8",
@@ -16,7 +16,7 @@ function populateTable() {
                                         +'<div class="row">'
 
                                         + '<div class="col-">'
-                                        + '<form class="delete-conta" method="post" action="controller/bacate/delete">'
+                                        + '<form class="delete-transaction" method="post" action="controller/bacate/delete">'
                                             + '<button class="btn btn-primary"><i class="fas fa-trash"></i></button>'
                                             + '<input type="hidden" name="id" value="' + data[i].id + '">'
                                         + '</form>'
@@ -90,14 +90,14 @@ function edit(index) {
 
 $(document).ready(populateTable());
 
-$(document).on('submit', '.delete-despesa', function(event) {
+$(document).on('submit', '.delete-transaction', function(event) {
     event.preventDefault();
 
     let form = $(this);
 
     $.ajax({
         type: "POST",
-        url: 'controller/bacate/delete',
+        url: 'controller/transaction/delete',
         data: form.serialize(),
         success: function(data) {
 
