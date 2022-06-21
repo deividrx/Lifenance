@@ -39,6 +39,29 @@ public class GenericDao<T> {
         }
     }
 
+    public long insertReturnId(Object object) {
+        try {
+            Map<String, String> columns = fieldHandler.getColumns(object);
+            String sql = "INSERT INTO " + tableName + " (" + String.join(", ", columns.keySet()) + ") "
+                    + "VALUES (" + String.join(", ", columns.values()) + ")";
+            System.out.println(sql);
+            PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            statement.execute();
+            try (ResultSet generatedKeys = statement.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    return generatedKeys.getLong(1);
+                }
+                else {
+                    throw new SQLException("Insert failed, no ID obtained.");
+                }
+            }
+
+        } catch (SQLException | IllegalAccessException error) {
+            Logger.getLogger(GenericDao.class.getName()).log(Level.SEVERE, null, error);
+        }
+        return 0;
+    }
+
     public void insertWithPK(Object object) {
         try {
             Map<String, String> columns = fieldHandler.getColumns(object);

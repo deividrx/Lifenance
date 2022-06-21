@@ -65,8 +65,7 @@
 										</div>
 										<div class="col-md-6">
 											<label for="inputEmail4" class="form-label">Data final</label>
-											<input type="date" name="dataFim" class="form-control" id="dataFim"
-												required>
+											<input type="date" name="dataFim" class="form-control" id="dataFim">
 										</div>
 										<div class="col-md-6">
 											<label for="selectbody" class="form-label">Conta</label>
@@ -137,9 +136,11 @@
 
 	<!-- Logout Modal-->
 	<jsp:include page="elements/logout-modal.html" />
+	<jsp:include page="elements/error-modal.html" />
 
 	<!-- JavaScript for all pages -->
 	<jsp:include page="elements/js.html" />
+	<script src="js/accounts.js"></script>
 	<script src="js/form.js"></script>
 
 </body>

@@ -7,7 +7,6 @@ import br.com.lifenance.models.Account;
 import br.com.lifenance.models.User;
 import br.com.lifenance.models.enumeration.AccountType;
 import com.google.gson.Gson;
-import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;

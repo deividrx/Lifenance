@@ -19,26 +19,44 @@ public class TransactionServlet extends HttpServlet {
 
     private static final Logger logger = LogManager.getLogger(Application.class);
     private final GenericDao<Transaction> transactionDao = new GenericDao<>("transactions", Transaction.class);
+    private final GenericDao<TransactionAccount> transactionAccountDao = new GenericDao<>("transactions_bank_accounts", TransactionAccount.class);
+    private final GenericDao<Account> accountDao = new GenericDao<>("bank_accounts", Account.class);
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
         try {
             String nome = req.getParameter("nomeReceita");
-            System.out.println(nome);
             String valor = req.getParameter("valorReceita");
-            System.out.println(valor);
-            
             String dataInicio = req.getParameter("dataInicio");
-            System.out.println(dataInicio);
             String dataFim = req.getParameter("dataFim");
-            System.out.println(dataFim);
-            
             String conta = req.getParameter("conta");
-            System.out.println(conta);
-            
             String description = req.getParameter("description");
-            System.out.println(description);
-            
+
+            JsonMenssage jsonMenssage = new JsonMenssage(resp);
+            User user = (User) req.getSession(false).getAttribute("loggedUser");
+            DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-M-d");
+
+            Transaction transaction = new Transaction();
+            transaction.setName(nome);
+            transaction.setValue(Float.parseFloat(valor));
+            transaction.setDataInicial(LocalDate.parse(dataInicio, df));
+            transaction.setDescription(description);
+            transaction.setUser(user);
+            if (dataFim != null)
+                transaction.setDataFinal(LocalDate.parse(dataFim, df));
+            else
+                transaction.setDataFinal(null);
+
+            long id = transactionDao.insertReturnId(transaction);
+            transaction.setIdTransaction(id);
+
+            TransactionAccount transactionAccount = new TransactionAccount();
+            transactionAccount.setTransaction(transaction);
+            transactionAccount.setAccount(accountDao.get(Long.parseLong(conta)));
+
+            transactionAccountDao.insert(transactionAccount);
+
+            jsonMenssage.sendInfo("Receita cadastrada com sucesso!");
 
         } catch (Exception error) {
             logger.error(error);
