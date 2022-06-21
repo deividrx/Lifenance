@@ -101,11 +101,66 @@
         <i class="fas fa-angle-up"></i>
     </a>
 
+        <div class="modal fade" id="form-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="receita-register">
+                            <input id="conta-id" type="hidden" name="id" value="">
+                            <div class="form-group">
+                                <label for="inputEmail4" class="form-label">Nome da receita</label>
+                                <input type="name" name="nomeReceita" class="form-control" id="nomeReceita" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="" class="form-label">Valor</label>
+                                <input type="money" name="valorReceita" class="form-control" id="valorReceita" placeholder="R$" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail4" class="form-label">Data inicial</label>
+                                <input type="date" name="dataInicio" class="form-control" id="dataInicio" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail4" class="form-label">Data final</label>
+                                <input type="date" name="dataFim" class="form-control" id="dataFim">
+                            </div>
+
+                            <div class="form-group">
+                                <div class="form-check">
+                                    <label for="selectbody" class="form-label">Conta</label>
+                                    <select name="conta" name="conta" id="selectbody" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                                    </select>
+                                </div>
+                                <div class="form-check">
+                                    <label for="receita-des" class="form-label">Conta</label>
+                                    	<textarea id="description" name="description" class="form-control"
+                                    	placeholder="Descrição da receita" id="receita-des" style="height: 100px" required></textarea>
+                                </div>
+                            </div>
+                      </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button type="submit" class="btn btn-primary" form="receita-register" >Salvar</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
     <!-- Logout Modal-->
     <jsp:include page="elements/logout-modal.html" />
 
     <!-- JavaScript for all pages -->
     <jsp:include page="elements/js.html" />
+    <script src="webjars/moment/2.29.3/min/moment.min.js"></script>
+        <script src="js/receita.js"></script>
+
 
 </body>
 
