@@ -99,8 +99,8 @@
                           </div>
                           <div class="form-group">
                             <label for="limite">Limite do cartão</label>
-                            <input id="limiteCartao" type="text" name="limiteCard" placeholder="R$" required
-                              class="form-control">
+                            <input id="limiteCartao" type="number" name="limiteCard" placeholder="R$" required
+                              class="form-control" min="1">
                           </div>
                           <div class="row">
                             <div class="col-sm-8">

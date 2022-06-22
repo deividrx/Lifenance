@@ -46,7 +46,7 @@
 									<h6 class="m-0 font-weight-bold text-primary">Receita</h6>
 								</div>
 								<div class="card-body">
-									<form id="receita-register" class="row g-3">
+									<form id="register-receita" class="row g-3">
 										
 										<div class="col-md-6">
 											<label for="inputEmail4" class="form-label">Nome da receita</label>

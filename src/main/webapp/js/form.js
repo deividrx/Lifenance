@@ -101,7 +101,7 @@ $("#register-receita").submit(function(event) {
     event.preventDefault();
 
     let form = $(this);
-    let actionUrl = 'controller/receita';
+    let actionUrl = 'controller/transaction';
 
     $.ajax({
         type: "POST",
